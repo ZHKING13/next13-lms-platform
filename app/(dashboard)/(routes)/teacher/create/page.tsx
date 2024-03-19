@@ -22,7 +22,7 @@ import { Input } from "@/components/ui/input";
 
 const formSchema = z.object({
   title: z.string().min(1, {
-    message: "Title is required",
+    message: "le titre est requis",
   }),
 });
 
@@ -39,11 +39,15 @@ const CreatePage = () => {
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
-      const response = await axios.post("/api/courses", values);
+      const response = await axios.post(
+          "/api/courses",
+          values
+      );
       router.push(`/teacher/courses/${response.data.id}`);
-      toast.success("Course created");
-    } catch {
-      toast.error("Something went wrong");
+      toast.success("Cours créé");
+    } catch (error) {
+      console.error("Erreur lors de la création du cours:", error);
+      toast.error("Une erreur est survenu");
     }
   }
 
@@ -51,11 +55,11 @@ const CreatePage = () => {
     <div className="max-w-5xl mx-auto flex md:items-center md:justify-center h-full p-6">
       <div>
         <h1 className="text-2xl">
-          Name your course
+          Nommé le cours
         </h1>
-        <p className="text-sm text-slate-600">
+        {/* <p className="text-sm text-slate-600">
           What would you like to name your course? Don&apos;t worry, you can change this later.
-        </p>
+        </p> */}
         <Form {...form}>
           <form
             onSubmit={form.handleSubmit(onSubmit)}
@@ -67,18 +71,18 @@ const CreatePage = () => {
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>
-                    Course title
+                    Titre du cours
                   </FormLabel>
                   <FormControl>
                     <Input
                       disabled={isSubmitting}
-                      placeholder="e.g. 'Advanced web development'"
+                      placeholder="ex. 'mindset du trader'"
                       {...field}
                     />
                   </FormControl>
-                  <FormDescription>
+                  {/* <FormDescription>
                     What will you teach in this course?
-                  </FormDescription>
+                  </FormDescription> */}
                   <FormMessage />
                 </FormItem>
               )}

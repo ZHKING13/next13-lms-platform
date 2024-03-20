@@ -28,7 +28,9 @@ interface ChapterTitleFormProps {
 };
 
 const formSchema = z.object({
-  title: z.string().min(1),
+  title: z.string().min(1, {
+    message: "Le titre est requis",
+  }),
 });
 
 export const ChapterTitleForm = ({
@@ -52,25 +54,25 @@ export const ChapterTitleForm = ({
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
       await axios.patch(`/api/courses/${courseId}/chapters/${chapterId}`, values);
-      toast.success("Chapter updated");
+      toast.success("Titre du chapitre mis à jour");
       toggleEdit();
       router.refresh();
     } catch {
-      toast.error("Something went wrong");
+      toast.error("Un problème est survenu");
     }
   }
 
   return (
     <div className="mt-6 border bg-slate-100 rounded-md p-4">
       <div className="font-medium flex items-center justify-between">
-        Chapter title
+        Titre du chapitre
         <Button onClick={toggleEdit} variant="ghost">
           {isEditing ? (
-            <>Cancel</>
+            <>Annuler</>
           ) : (
             <>
               <Pencil className="h-4 w-4 mr-2" />
-              Edit title
+              Modifier le titre
             </>
           )}
         </Button>
@@ -94,7 +96,7 @@ export const ChapterTitleForm = ({
                   <FormControl>
                     <Input
                       disabled={isSubmitting}
-                      placeholder="e.g. 'Introduction to the course'"
+                      placeholder="ex. 'Introduction au cours'"
                       {...field}
                     />
                   </FormControl>
@@ -107,7 +109,7 @@ export const ChapterTitleForm = ({
                 disabled={!isValid || isSubmitting}
                 type="submit"
               >
-                Save
+                Enregistrer
               </Button>
             </div>
           </form>

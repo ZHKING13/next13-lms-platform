@@ -35,11 +35,11 @@ export const AttachmentForm = ({
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
       await axios.post(`/api/courses/${courseId}/attachments`, values);
-      toast.success("Course updated");
+      toast.success("Cours mis à jour");
       toggleEdit();
       router.refresh();
     } catch {
-      toast.error("Something went wrong");
+      toast.error("Une erreur est survenue");
     }
   };
 
@@ -47,10 +47,10 @@ export const AttachmentForm = ({
     try {
       setDeletingId(id);
       await axios.delete(`/api/courses/${courseId}/attachments/${id}`);
-      toast.success("Attachment deleted");
+      toast.success("Pièce jointe supprimée");
       router.refresh();
     } catch {
-      toast.error("Something went wrong");
+      toast.error("Une erreur est survenue");
     } finally {
       setDeletingId(null);
     }
@@ -59,15 +59,14 @@ export const AttachmentForm = ({
   return (
     <div className="mt-6 border bg-slate-100 rounded-md p-4">
       <div className="font-medium flex items-center justify-between">
-        Course attachments
+        Pièces jointes du cours
         <Button onClick={toggleEdit} variant="ghost">
-          {isEditing && (
-            <>Cancel</>
-          )}
-          {!isEditing && (
+          {isEditing ? (
+            <>Annuler</>
+          ) : (
             <>
               <PlusCircle className="h-4 w-4 mr-2" />
-              Add a file
+              Ajouter un fichier
             </>
           )}
         </Button>
@@ -76,7 +75,7 @@ export const AttachmentForm = ({
         <>
           {initialData.attachments.length === 0 && (
             <p className="text-sm mt-2 text-slate-500 italic">
-              No attachments yet
+              Aucune pièce jointe pour le moment
             </p>
           )}
           {initialData.attachments.length > 0 && (
@@ -90,12 +89,11 @@ export const AttachmentForm = ({
                   <p className="text-xs line-clamp-1">
                     {attachment.name}
                   </p>
-                  {deletingId === attachment.id && (
+                  {deletingId === attachment.id ? (
                     <div>
                       <Loader2 className="h-4 w-4 animate-spin" />
                     </div>
-                  )}
-                  {deletingId !== attachment.id && (
+                  ) : (
                     <button
                       onClick={() => onDelete(attachment.id)}
                       className="ml-auto hover:opacity-75 transition"
@@ -120,7 +118,7 @@ export const AttachmentForm = ({
             }}
           />
           <div className="text-xs text-muted-foreground mt-4">
-            Add anything your students might need to complete the course.
+            Ajoutez tout ce dont vos étudiants pourraient avoir besoin pour suivre le cours.
           </div>
         </div>
       )}

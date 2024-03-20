@@ -44,7 +44,7 @@ export const VideoPlayer = ({
           confetti.onOpen();
         }
 
-        toast.success("Progress updated");
+        toast.success("Progression mise à jour");
         router.refresh();
 
         if (nextChapterId) {
@@ -52,7 +52,7 @@ export const VideoPlayer = ({
         }
       }
     } catch {
-      toast.error("Something went wrong");
+      toast.error("Une erreur est survenue");
     }
   }
 
@@ -67,7 +67,7 @@ export const VideoPlayer = ({
         <div className="absolute inset-0 flex items-center justify-center bg-slate-800 flex-col gap-y-2 text-secondary">
           <Lock className="h-8 w-8" />
           <p className="text-sm">
-            This chapter is locked
+            Ce chapitre est verrouillé
           </p>
         </div>
       )}

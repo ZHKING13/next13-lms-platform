@@ -8,7 +8,6 @@ import { useState } from "react";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import { Chapter, MuxData } from "@prisma/client";
-import Image from "next/image";
 
 import { Button } from "@/components/ui/button";
 import { FileUpload } from "@/components/file-upload";
@@ -37,34 +36,32 @@ export const ChapterVideoForm = ({
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
       await axios.patch(`/api/courses/${courseId}/chapters/${chapterId}`, values);
-      toast.success("Chapter updated");
+      toast.success("Chapitre mis à jour");
       toggleEdit();
       router.refresh();
     } catch {
-      toast.error("Something went wrong");
+      toast.error("Un problème est survenu");
     }
   }
 
   return (
     <div className="mt-6 border bg-slate-100 rounded-md p-4">
       <div className="font-medium flex items-center justify-between">
-        Chapter video
+        Vidéo du chapitre
         <Button onClick={toggleEdit} variant="ghost">
-          {isEditing && (
-            <>Cancel</>
-          )}
-          {!isEditing && !initialData.videoUrl && (
+          {isEditing ? (
+            <>Annuler</>
+          ) : (!initialData.videoUrl ? (
             <>
               <PlusCircle className="h-4 w-4 mr-2" />
-              Add a video
+              Ajouter une vidéo
             </>
-          )}
-          {!isEditing && initialData.videoUrl && (
+          ) : (
             <>
               <Pencil className="h-4 w-4 mr-2" />
-              Edit video
+              Modifier la vidéo
             </>
-          )}
+          ))}
         </Button>
       </div>
       {!isEditing && (
@@ -91,13 +88,13 @@ export const ChapterVideoForm = ({
             }}
           />
           <div className="text-xs text-muted-foreground mt-4">
-           Upload this chapter&apos;s video
+           Télecharger la vidéo de ce chapitre
           </div>
         </div>
       )}
       {initialData.videoUrl && !isEditing && (
         <div className="text-xs text-muted-foreground mt-2">
-          Videos can take a few minutes to process. Refresh the page if video does not appear.
+          Le traitement des vidéos peut prendre quelques minutes. Rafraîchissez la page si la vidéo n'apparaît pas.
         </div>
       )}
     </div>

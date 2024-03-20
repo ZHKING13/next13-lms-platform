@@ -13,13 +13,13 @@ import { Button } from "@/components/ui/button";
 import { FileUpload } from "@/components/file-upload";
 
 interface ImageFormProps {
-  initialData: Course
+  initialData: Course;
   courseId: string;
 };
 
 const formSchema = z.object({
   imageUrl: z.string().min(1, {
-    message: "Image is required",
+    message: "Une image est requise",
   }),
 });
 
@@ -36,32 +36,30 @@ export const ImageForm = ({
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
       await axios.patch(`/api/courses/${courseId}`, values);
-      toast.success("Course updated");
+      toast.success("Cours mis à jour");
       toggleEdit();
       router.refresh();
     } catch {
-      toast.error("Something went wrong");
+      toast.error("Une erreur est survenue");
     }
   }
 
   return (
     <div className="mt-6 border bg-slate-100 rounded-md p-4">
       <div className="font-medium flex items-center justify-between">
-        Course image
+        Image du cours
         <Button onClick={toggleEdit} variant="ghost">
-          {isEditing && (
-            <>Cancel</>
-          )}
-          {!isEditing && !initialData.imageUrl && (
+          {isEditing ? (
+            <>Annuler</>
+          ) : !initialData.imageUrl ? (
             <>
               <PlusCircle className="h-4 w-4 mr-2" />
-              Add an image
+              Ajouter une image
             </>
-          )}
-          {!isEditing && initialData.imageUrl && (
+          ) : (
             <>
               <Pencil className="h-4 w-4 mr-2" />
-              Edit image
+              Modifier l'image
             </>
           )}
         </Button>
@@ -74,7 +72,7 @@ export const ImageForm = ({
         ) : (
           <div className="relative aspect-video mt-2">
             <Image
-              alt="Upload"
+              alt="Image du cours"
               fill
               className="object-cover rounded-md"
               src={initialData.imageUrl}
@@ -93,7 +91,7 @@ export const ImageForm = ({
             }}
           />
           <div className="text-xs text-muted-foreground mt-4">
-            16:9 aspect ratio recommended
+            Un ratio d'aspect de 16:9 est recommandé
           </div>
         </div>
       )}

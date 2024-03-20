@@ -8,7 +8,7 @@ import {
   Draggable,
   DropResult,
 } from "@hello-pangea/dnd";
-import { Grip, Pencil } from "lucide-react";
+import { GripVertical, Pencil } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 import { Badge } from "@/components/ui/badge";
@@ -88,7 +88,7 @@ export const ChaptersList = ({
                       )}
                       {...provided.dragHandleProps}
                     >
-                      <Grip
+                      <GripVertical
                         className="h-5 w-5"
                       />
                     </div>
@@ -96,7 +96,7 @@ export const ChaptersList = ({
                     <div className="ml-auto pr-2 flex items-center gap-x-2">
                       {chapter.isFree && (
                         <Badge>
-                          Free
+                          Gratuit
                         </Badge>
                       )}
                       <Badge
@@ -105,7 +105,7 @@ export const ChaptersList = ({
                           chapter.isPublished && "bg-sky-700"
                         )}
                       >
-                        {chapter.isPublished ? "Published" : "Draft"}
+                        {chapter.isPublished ? "Publié" : "Brouillon"}
                       </Badge>
                       <Pencil
                         onClick={() => onEdit(chapter.id)}

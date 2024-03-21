@@ -111,7 +111,7 @@ const ChapterIdPage = async ({
               <div className="flex items-center gap-x-2">
                 <IconBadge icon={Eye} />
                 <h2 className="text-xl">
-                  Paramètres d'accès
+                  Paramètres d accès
                 </h2>
               </div>
               <ChapterAccessForm

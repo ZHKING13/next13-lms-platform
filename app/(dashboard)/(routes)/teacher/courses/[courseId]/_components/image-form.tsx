@@ -59,7 +59,7 @@ export const ImageForm = ({
           ) : (
             <>
               <Pencil className="h-4 w-4 mr-2" />
-              Modifier l'image
+              Modifier l image
             </>
           )}
         </Button>
@@ -91,7 +91,7 @@ export const ImageForm = ({
             }}
           />
           <div className="text-xs text-muted-foreground mt-4">
-            Un ratio d'aspect de 16:9 est recommandé
+            Un ratio d aspect de 16:9 est recommandé
           </div>
         </div>
       )}

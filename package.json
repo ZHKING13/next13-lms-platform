@@ -67,6 +67,7 @@
         "zustand": "^4.4.1"
     },
     "devDependencies": {
+        "@types/aos": "^3.0.7",
         "prisma": "^5.11.0"
     }
 }

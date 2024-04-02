@@ -14,6 +14,7 @@ import {
 } from "react-icons/fa";
 import { GiTeacher } from "react-icons/gi";
 import { FaPeopleGroup } from "react-icons/fa6";
+import Image from "next/image";
 export default function HomePage() {
      const [active, setActive] = useState("Home");
  const [selectedLink, setSelectedLink] = useState("Acceuil");
@@ -33,7 +34,7 @@ export default function HomePage() {
     <nav className=" border-gray-200 px-4 lg:px-6 py-2.5 -gray-800">
         <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
             <a href="#" className="flex items-center">
-                <img src="/images/logo.png" className="mr-3 h-6 sm:h-9" alt="Flowbite Logo" />
+                <Image src="/images/logo.png" className="mr-3 h-6 sm:h-9" alt="Flowbite Logo" />
                 <span className="self-center text-xl font-semibold whitespace-nowrap text-white">COBALT INVEST LTD</span>
             </a>
             <div className="flex items-center lg:order-2">
@@ -102,7 +103,7 @@ export default function HomePage() {
      data-aos-duration="600"
      data-aos-easing="ease-in-sine" className="mr-auto  place-self-center lg:col-span-7">
             <h1 className="max-w-2xl mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white"> Devenez membre de notre cercle privé</h1>
-            <p className="max-w-2xl mb-6 font-light text-white lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">Obtenez un accompagnement personnalisé ainsi qu'un développement de carrière au sein de COBALT INVEST LTD</p>
+            <p className="max-w-2xl mb-6 font-light text-white lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">Obtenez un accompagnement personnalisé ainsi qu&apos; un développement de carrière au sein de COBALT INVEST LTD</p>
            
               <div>
                 <a  href="#" className="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-white border  rounded-lg bg-green-500 hover:bg-white hover:text-gray-800   dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800">
@@ -111,7 +112,7 @@ export default function HomePage() {
             </div>
         </div>
         <div data-aos="fade-down" data-aos-duration="3000" className="  lg:mt-0 lg:col-span-5 lg:flex">
-            <img src="images/logo.png" alt="mockup"/>
+            <Image src="images/logo.png" alt="mockup"/>
         </div>                
     </div>
 </section>
@@ -130,8 +131,8 @@ export default function HomePage() {
         <div data-aos="flip-left"
      data-aos-easing="ease-out-cubic"
      data-aos-duration="2000" className="grid grid-cols-2 gap-4 mt-8">
-            <img className="w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/content/office-long-2.png" alt="office content 1"/>
-            <img className="mt-4 w-full lg:mt-10 rounded-lg" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/content/office-long-1.png" alt="office content 2"/>
+            <Image className="w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/content/office-long-2.png" alt="office content 1"/>
+            <Image className="mt-4 w-full lg:mt-10 rounded-lg" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/content/office-long-1.png" alt="office content 2"/>
         </div>
     </div>
 </section>
@@ -141,14 +142,14 @@ export default function HomePage() {
     <div  data-aos="fade-down"  data-aos-duration="1500" className="text-center w-full mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8 z-20">
         <h2 className="text-3xl font-extrabold text-white sm:text-4xl">
             <span className="block">
-                Bénéficiez de l'assistance de
+                Bénéficiez de l&apos;assistance de
             </span>
             <span className="block text-indigo-500">
                 véritable traders rentables.
             </span>
         </h2>
         <p className="text-xl mt-4 max-w-80 mx-auto text-white">
-            Nous croyons fermement que la plus grande maîtrise du marché du trading réside dans l'expérience. En côtoyant des traders chevronnés au quotidien, vous allez non seulement acquérir des connaissances approfondies, mais aussi gagner en confiance et en compétence. Chaque transaction, chaque analyse et chaque décision seront des opportunités d'apprentissage qui contribueront à votre croissance en tant que trader prospère.
+            Nous croyons fermement que la plus grande maîtrise du marché du trading réside dans l&apos;expérience. En côtoyant des traders chevronnés au quotidien, vous allez non seulement acquérir des connaissances approfondies, mais aussi gagner en confiance et en compétence. Chaque transaction, chaque analyse et chaque décision seront des opportunités d&apos;apprentissage qui contribueront à votre croissance en tant que trader prospère.
         </p>
         <div className="lg:mt-0 lg:flex-shrink-0">
             <div data-aos="fade-right"  data-aos-duration="400" className="mt-12 inline-flex rounded-md shadow">
@@ -175,7 +176,7 @@ export default function HomePage() {
             </div>
           </div>
           <div className="p-6">
-            <h5 className="mb-4 text-lg font-semibold">Une equipe d'expert</h5>
+            <h5 className="mb-4 text-lg font-semibold">Une equipe d&apos;expert</h5>
             <p>
               Laudantium totam quas cumque pariatur at doloremque hic quos
               quia eius. Reiciendis optio minus mollitia rerum labore
@@ -248,11 +249,11 @@ export default function HomePage() {
             <br />
             <div className="flex items-center gap-3">
               <FaLocationArrow />
-              <p>Noida, Uttar Pradesh</p>
+              <p>Abidjan, zone 4</p>
             </div>
             <div className="mt-3 flex items-center gap-3">
               <FaMobileAlt />
-              <p>+91 123456789</p>
+              <p>+225 123456789</p>
             </div>
             {/* Social Handle */}
           </div>
@@ -260,20 +261,20 @@ export default function HomePage() {
             <div className="">
               <div className="px-4 py-8 ">
                 <h1 className="mb-3 text-justify text-xl font-bold sm:text-left sm:text-xl">
-                  Important Links
+                  Liens utiles
                 </h1>
                 <ul className={`flex flex-col gap-3`}>
                   <li className="cursor-pointer transition-all duration-300 hover:translate-x-[2px]">
-                    Home
+                    Acceuil
                   </li>
                   <li className="cursor-pointer transition-all duration-300 hover:translate-x-[2px]">
-                    About
+                    À propos
                   </li>
                   <li className="cursor-pointer transition-all duration-300 hover:translate-x-[2px]">
-                    Services
+                    Contacte
                   </li>
                   <li className="cursor-pointer transition-all duration-300 hover:translate-x-[2px]">
-                    Login
+                    S'inscrire
                   </li>
                 </ul>
               </div>
@@ -299,7 +300,7 @@ export default function HomePage() {
             <div className="">
               <div className="px-4 py-8 ">
                 <h1 className="mb-3 text-justify text-xl font-bold sm:text-left sm:text-xl">
-                  Social Links
+                  Reseau Sociaux
                 </h1>
                 <div className="flex flex-col gap-3">
                   <h1>Subscribe to our newsletter</h1>
@@ -326,7 +327,7 @@ export default function HomePage() {
         </div>
         <div>
           <div className="border-t-2 border-gray-300/50 py-6 text-center">
-            @copyright 2024 Travery || Dilshad
+            @copyright 2024 COBALT INVEST LTD 
           </div>
         </div>
       </section>

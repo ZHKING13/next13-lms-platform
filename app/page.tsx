@@ -39,7 +39,7 @@ export default function HomePage() {
             </a>
             <div className="flex items-center lg:order-2">
         
-                <a href="#" className="text-white bg-green-500 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:bg-primary-600 hover:bg-white hover:text-gray-800  dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800">S'inscrire</a>
+                <a href="#" className="text-white bg-green-500 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:bg-primary-600 hover:bg-white hover:text-gray-800  dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800">S&apos;inscrire</a>
                 <button data-collapse-toggle="mobile-menu-2" type="button" className="inline-flex items-center p-2 ml-1 text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="mobile-menu-2" aria-expanded="false">
                     <span className="sr-only">Open main menu</span>
                     <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>
@@ -124,7 +124,7 @@ export default function HomePage() {
      className="gap-16 items-center w-[100%] h-[100%] py-8 px-4 mx-auto max-w-screen-xl lg:grid lg:grid-cols-2 lg:py-16 lg:px-6">
         <div className="font-light text-white sm:text-lg dark:text-gray-400">
             <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-white">Joignez-vous à des traders rentables pour garantir votre rentabilité</h2>
-            <p className="mb-4">Rejoignez notre cercle de traders rentables et bénéficiez d'interactions directes avec des mentors expérimentés. </p>
+            <p className="mb-4">Rejoignez notre cercle de traders rentables et bénéficiez d&apos;interactions directes avec des mentors expérimentés. </p>
             <p>Leur expertise accumulée sur des années vous permettra de gagner en expérience et de maximiser vos opportunités sur le marché du trading.</p>
             <p>Rejoignez-nous pour faire évoluer vos compétences et votre succès financier.</p>
         </div>
@@ -274,7 +274,7 @@ export default function HomePage() {
                     Contacte
                   </li>
                   <li className="cursor-pointer transition-all duration-300 hover:translate-x-[2px]">
-                    S'inscrire
+                    S&apos;inscrire
                   </li>
                 </ul>
               </div>
@@ -300,7 +300,7 @@ export default function HomePage() {
             <div className="">
               <div className="px-4 py-8 ">
                 <h1 className="mb-3 text-justify text-xl font-bold sm:text-left sm:text-xl">
-                  Reseau Sociaux
+                  Reseau Sociaux 
                 </h1>
                 <div className="flex flex-col gap-3">
                   <h1>Subscribe to our newsletter</h1>

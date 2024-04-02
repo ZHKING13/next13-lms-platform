@@ -34,7 +34,7 @@ export default function HomePage() {
     <nav className=" border-gray-200 px-4 lg:px-6 py-2.5 -gray-800">
         <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
             <a href="#" className="flex items-center">
-                <Image src="/images/logo.png" className="mr-3 h-6 sm:h-9" alt="Flowbite Logo" />
+                <img src="/images/logo.png" className="mr-3 h-6 sm:h-9" alt="Flowbite Logo" />
                 <span className="self-center text-xl font-semibold whitespace-nowrap text-white">COBALT INVEST LTD</span>
             </a>
             <div className="flex items-center lg:order-2">
@@ -112,7 +112,7 @@ export default function HomePage() {
             </div>
         </div>
         <div data-aos="fade-down" data-aos-duration="3000" className="  lg:mt-0 lg:col-span-5 lg:flex">
-            <Image src="images/logo.png" alt="mockup"/>
+            <img src="images/logo.png" alt="mockup"/>
         </div>                
     </div>
 </section>
@@ -131,8 +131,8 @@ export default function HomePage() {
         <div data-aos="flip-left"
      data-aos-easing="ease-out-cubic"
      data-aos-duration="2000" className="grid grid-cols-2 gap-4 mt-8">
-            <Image className="w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/content/office-long-2.png" alt="office content 1"/>
-            <Image className="mt-4 w-full lg:mt-10 rounded-lg" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/content/office-long-1.png" alt="office content 2"/>
+            <img className="w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/content/office-long-2.png" alt="office content 1"/>
+            <img className="mt-4 w-full lg:mt-10 rounded-lg" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/content/office-long-1.png" alt="office content 2"/>
         </div>
     </div>
 </section>

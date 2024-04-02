@@ -1,10 +1,16 @@
 import { Category, Course } from "@prisma/client";
-
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion"
 import { CourseCard } from "@/components/course-card";
+import { AccordionCours } from "./cours-acordion";
 
 type CourseWithProgressWithCategory = Course & {
   category: Category | null;
-  chapters: { id: string }[];
+  chapters: any;
   progress: number | null;
 };
 
@@ -15,10 +21,26 @@ interface CoursesListProps {
 export const CoursesList = ({
   items
 }: CoursesListProps) => {
+  console.log(items);
   return (
     <div>
-      <div className="grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-4 gap-4">
-        {items.map((item) => (
+      <div className="w-full">
+        {/* module */}
+        <Accordion type="single" collapsible>
+          {
+            items.map((item, index) => (
+              <AccordionItem key={index} value={`item-${index}`}>
+                <AccordionTrigger>{item.title}</AccordionTrigger>
+                <AccordionContent>
+                  <div>
+                    <AccordionCours item={item.chapters} />
+                  </div>
+                </AccordionContent>
+              </AccordionItem>
+            ))
+          }
+        </Accordion>
+        {/* {items.map((item) => (
           <CourseCard
             key={item.id}
             id={item.id}
@@ -29,7 +51,7 @@ export const CoursesList = ({
             progress={item.progress}
             category={item?.category?.name!}
           />
-        ))}
+        ))} */}
       </div>
       {items.length === 0 && (
         <div className="text-center text-sm text-muted-foreground mt-10">

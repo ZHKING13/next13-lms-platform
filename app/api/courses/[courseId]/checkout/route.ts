@@ -4,6 +4,7 @@ import { NextResponse } from "next/server";
 
 import { db } from "@/lib/db";
 import { stripe } from "@/lib/stripe";
+import { generateShortOrderId } from "@/lib/format";
 
 export async function POST(
   req: Request,
@@ -40,19 +41,6 @@ export async function POST(
       return new NextResponse("Not found", { status: 404 });
     }
 
-    const line_items: Stripe.Checkout.SessionCreateParams.LineItem[] = [
-      {
-        quantity: 1,
-        price_data: {
-          currency: "USD",
-          product_data: {
-            name: course.title,
-            description: course.description!,
-          },
-          unit_amount: Math.round(course.price! * 100),
-        }
-      }
-    ];
 
     let stripeCustomer = await db.stripeCustomer.findUnique({
       where: {
@@ -76,19 +64,30 @@ export async function POST(
       });
     }
 
-    const session = await stripe.checkout.sessions.create({
-      customer: stripeCustomer.stripeCustomerId,
-      line_items,
-      mode: 'payment',
-      success_url: `${process.env.NEXT_PUBLIC_APP_URL}/courses/${course.id}?success=1`,
-      cancel_url: `${process.env.NEXT_PUBLIC_APP_URL}/courses/${course.id}?canceled=1`,
-      metadata: {
-        courseId: course.id,
-        userId: user.id,
-      }
-    });
+    const paymentRequest = {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer YOUR_ACCESS_TOKEN`,
+        'country-code': 'CI', 
+        'mno-name': 'orange',
+        'channel': 'web', 
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        currency: "XOF",
+        order_id: generateShortOrderId(), // Assurez-vous que c'est unique
+        amount: course.price,
+        return_url: "https://yourdomain.com/payment-success",
+        cancel_url: "https://yourdomain.com/payment-cancelled",
+        // Autres paramètres comme nécessaire
 
-    return NextResponse.json({ url: session.url });
+      })
+    };
+
+    const bizaoResponse = await fetch('https://api.bizao.com/mobilemoney/v1', paymentRequest);
+    const paymentData = await bizaoResponse.json();
+
+    return NextResponse.json({ url: paymentData.payment_url });
   } catch (error) {
     console.log("[COURSE_ID_CHECKOUT]", error);
     return new NextResponse("Internal Error", { status: 500 })

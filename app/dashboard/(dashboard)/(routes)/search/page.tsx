@@ -34,16 +34,18 @@ const SearchPage = async ({
     userId,
     ...searchParams,
   });
-
+console.log("Courses and their chapters:");
+courses.forEach((course, index) => {
+  console.log(`Course ${index + 1}: ${course.title}`);
+  console.log("Chapters:");
+  course.chapters.forEach((chapter, chapterIndex) => {
+    console.log(`Chapter ${chapterIndex + 1}:`, chapter); // Affiche tout l'objet chapitre
+  });
+});
   return (
     <>
-      <div className="px-6 pt-6 md:hidden md:mb-0 block">
-        <SearchInput />
-      </div>
+      
       <div className="p-6 space-y-4">
-        <Categories
-          items={categories}
-        />
         <CoursesList items={courses} />
       </div>
     </>

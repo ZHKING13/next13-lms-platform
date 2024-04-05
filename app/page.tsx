@@ -194,7 +194,7 @@ export default function HomePage() {
             <img  data-aos="fade-left" data-aos-duration="1500" className=" object-fit w-full h-[300px] rounded-lg" src="https://i0.wp.com/phantomtradingfx.com/wp-content/uploads/2022/04/globalcommunity.png" alt="office content 1"/>
         </div>
         <div className="pl-8 font-light  text-start flex items-start flex-col text-xl w-[100%] mt-4 max-w-80 mx-auto text-white sm:text-lg dark:text-gray-400 md:w-1/2">
-            <p>En tant que membre de notre formation spéciale en trading, vous bénéficierez d&apos;une gamme d&apos;avantages conçus pour optimiser votre parcours de trading : accès à une formation complète avec un contenu pédagogique complet et structuré, couvrant tous les aspects du trading, des bases aux stratégies avancées, sessions de mentorat personnalisées avec des traders expérimentés, pour des conseils personnalisés et des retours d&apos;expérience précieux ; utilisation d&apos;outils d'analyse de pointe pour des analyses techniques et fondamentales approfondies, vous aidant à prendre des décisions éclairées sur le marché ; intégration dans une communauté de traders partageant les mêmes intérêts, pour un environnement collaboratif et un soutien continu dans votre apprentissage ; participation à des sessions pratiques pour mettre en œuvre vos connaissances, avec un suivi et des retours pour améliorer constamment vos compétences de trading ; accès à des ressources exclusives telles que des analyses de marché, des webinaires spécialisés et des publications de recherche, pour rester toujours à la pointe des tendances du marché.</p>
+            <p>En tant que membre de notre formation spéciale en trading, vous bénéficierez d&apos;une gamme d&apos;avantages conçus pour optimiser votre parcours de trading : accès à une formation complète avec un contenu pédagogique complet et structuré, couvrant tous les aspects du trading, des bases aux stratégies avancées, sessions de mentorat personnalisées avec des traders expérimentés, pour des conseils personnalisés et des retours d&apos;expérience précieux ; utilisation d&apos;outils d&apos;analyse de pointe pour des analyses techniques et fondamentales approfondies, vous aidant à prendre des décisions éclairées sur le marché ; intégration dans une communauté de traders partageant les mêmes intérêts, pour un environnement collaboratif et un soutien continu dans votre apprentissage ; participation à des sessions pratiques pour mettre en œuvre vos connaissances, avec un suivi et des retours pour améliorer constamment vos compétences de trading ; accès à des ressources exclusives telles que des analyses de marché, des webinaires spécialisés et des publications de recherche, pour rester toujours à la pointe des tendances du marché.</p>
         </div>
          
     </div>
@@ -304,7 +304,6 @@ Noys avons conçu COBLALT INVEST LTD pour que tout le monde puisse s&apos;y plon
             <h1 className="mb-3 text-justify text-xl font-bold sm:text-left sm:text-3xl">
               <a href="/#home" className="">
                 COBALT INVEST LTD
-                <span className="inline-block font-bold text-primary">WEB</span>
               </a>
             </h1>
             <p className="">

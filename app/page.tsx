@@ -27,14 +27,14 @@ export default function HomePage() {
         })
   }, [])
   return (
-      <div   className="bg-gray-900 text-white">
+      <div   className="bg-gray-800 text-white">
         <div className="fixed left-0 right-0 top-0 z-50 bg-gray-900  ">
           {/* <Navbar /> */}
           <header>
     <nav className=" border-gray-200 px-4 lg:px-6 py-2.5 -gray-800">
         <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
             <a href="#" className="flex items-center">
-                <img src="/images/logo.png" className="mr-3 h-6 sm:h-9" alt="Flowbite Logo" />
+                <img src="/images/logo.png" className="mr-3 h-8 sm:h-9" alt="Flowbite Logo" />
                 <span className="self-center text-xl font-semibold whitespace-nowrap text-white">COBALT INVEST LTD</span>
             </a>
             <div className="flex items-center lg:order-2">
@@ -94,66 +94,74 @@ export default function HomePage() {
         {/* fin header */}
       </div>
       {/* hero section */}
-      <div className="flex flex-col  w-[100wh] gap-1 " >
-         <div   className='md:mt-6 h-[100vh]  w-[100%] items-center justify-center'>
+      <div className="flex flex-col  w-[100wh] gap-1  " >
+         <div   className='md:mt-6 h-[97vh]  w-[100%] flex items-center justify-center'>
         
-     <section  className="bg-gray-900 w-[100%] h-[100%]">
-    <div className="flex max-w-screen-xl px-4 w-[100%] h-[100%] flex-wrap flex-col-reverse md:flex-row items-center justify-center md:justify-between py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
-        <div data-aos="example-anim2"
+     <section  className="bg-gradient-to-b from-gray-900 to-gray-800 w-[100%] h-[100%]">
+    <div className="flex   px-4 w-[100%] h-[100%]  flex-col md:flex-row items-center justify-center md:justify-between py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 ">
+        <div data-aos="fade-down" data-aos-duration="3000" className=" md:w-1/2 flex-col  items-center justify-center h-[100%]  lg:mt-0  flex">
+                <img className="md:w-[70%] object-none md:h-[85%] " src="images/logo.png" alt="mockup" />
+                <p className="md:text-5 xl:text-xl ">Plus de 5 000 étudiants formés dans le monde</p>
+        </div> 
+         <div data-aos="example-anim2"
      data-aos-duration="600"
-     data-aos-easing="ease-in-sine" className="mr-auto  place-self-center lg:col-span-7">
+     data-aos-easing="ease-in-sine" className="mr-auto  flex flex-col items-center justify-center md:w-1/2 md:h-[100%]  ">
             <h1 className="max-w-2xl mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white"> Devenez membre de notre cercle privé</h1>
             <p className="max-w-2xl mb-6 font-light text-white lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">Obtenez un accompagnement personnalisé ainsi qu&apos; un développement de carrière au sein de COBALT INVEST LTD</p>
            
-              <div>
-                <a  href="#" className="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-white border  rounded-lg bg-green-500 hover:bg-white hover:text-gray-800   dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800">
-                Rejoindre COBALT INVEST LTD
-            </a> 
+              <div className="mt-3 w-[100%]">
+                <a href="#" className="bg-green-500 hover:bg-green-600 w-[70%] text-xl  text-white font-semibold py-5 px-6 rounded-lg shadow-md transition duration-200 ease-in-out transform hover:-translate-y-1">
+  Rejoindre COBALT INVEST LTD
+</a>
+
             </div>
         </div>
-        <div data-aos="fade-down" data-aos-duration="3000" className="  lg:mt-0 lg:col-span-5 lg:flex">
-            <img src="images/logo.png" alt="mockup"/>
-        </div>                
+                      
     </div>
 </section>
       </div>
         {/* fin hero section */}
+        <div className="flex flex-wrap bg-gray-300 justify-center gap-5 items-center p-3 mt-8 text-gray-500 ">
+                <a href="#" className="mr-5 mb-5 lg:mb-0 hover:text-gray-800 dark:hover:text-gray-400">
+            <img className="h-10 w-10" src="https://www.4t.com/assets/svg/logo-black.svg" alt="4T logo" /> 
+            
+                </a>
+                <a href="#" className="mr-5 mb-5 lg:mb-0 hover:text-gray-800 dark:hover:text-gray-400">
+                   <img className="h-10 w-10" src="https://rock-capital.eu/wp-content/uploads/2021/09/Rock-Capital-Logo-Black-1.png" alt="rock capital" />                      
+                </a>
+                      
+            </div>
       {/* feature section */}
-      <section  className=" bg-gray-900 h-[100vh] w-[100%]">
+        <section className="pl-3 pr-3    w-[100%]">
+        <h2 className=" md:text-3xl  text-xl mt-6 text-center tracking-tight font-extrabold text-white">Joignez-vous à des traders rentables pour garantir votre rentabilité</h2>
     <div data-aos="fade-up"
-     className="gap-16 items-center w-[100%] h-[100%] py-8 px-4 mx-auto max-w-screen-xl lg:grid lg:grid-cols-2 lg:py-16 lg:px-6">
-        <div className="font-light text-white sm:text-lg dark:text-gray-400">
-            <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-white">Joignez-vous à des traders rentables pour garantir votre rentabilité</h2>
-            <p className="mb-4">Rejoignez notre cercle de traders rentables et bénéficiez d&apos;interactions directes avec des mentors expérimentés. </p>
-            <p>Leur expertise accumulée sur des années vous permettra de gagner en expérience et de maximiser vos opportunités sur le marché du trading.</p>
+            className="gap-16 items-center flex-col md:flex-row  py-4 px-4 mx-auto  flex  md:justify-between lg:py-16 lg:px-6">
+        <div className="pl-8 font-light  text-start flex items-start flex-col text-xl w-[100%] mt-4 max-w-80 mx-auto text-white sm:text-lg dark:text-gray-400 md:w-1/2">
+            <p className="mb-2">Rejoignez notre cercle de traders rentables et bénéficiez d&apos;interactions directes avec des mentors expérimentés. Leur expertise accumulée sur des années vous permettra de gagner en expérience et de maximiser vos opportunités sur le marché du trading.</p>
             <p>Rejoignez-nous pour faire évoluer vos compétences et votre succès financier.</p>
         </div>
-        <div data-aos="flip-left"
-     data-aos-easing="ease-out-cubic"
-     data-aos-duration="2000" className="grid grid-cols-2 gap-4 mt-8">
-            <img className="w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/content/office-long-2.png" alt="office content 1"/>
-            <img className="mt-4 w-full lg:mt-10 rounded-lg" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/content/office-long-1.png" alt="office content 2"/>
+          <div className="pr-8 md:w-1/2 w-full  " >
+            <img className=" object-cover w-full  rounded-lg" src="https://i2.wp.com/phantomtradingfx.com/wp-content/uploads/2022/04/learnfromprofitabletraders.png" alt="office content 1"/>
         </div>
     </div>
 </section>
         {/* feature section */}
         {/* CTA 1 */}
-        <div className=" bg-gray-800 w-full ">
-    <div  data-aos="fade-down"  data-aos-duration="1500" className="text-center w-full mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8 z-20">
-        <h2 className="text-3xl font-extrabold text-white sm:text-4xl">
+        <div className=" bg-gray-800  ">
+    <div  data-aos="fade-down"  data-aos-duration="1500" className="text-center  bg-gray-800 w-2/3 items-center flex-col justify-center flex mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8 z-20">
+        <h2 className="text-xl font-extrabold text-white sm:text-2xl">
             <span className="block">
-                Bénéficiez de l&apos;assistance de
+                Bénéficiez de l&apos;assistance de véritable traders rentables.
+
             </span>
-            <span className="block text-indigo-500">
-                véritable traders rentables.
-            </span>
+
         </h2>
-        <p className="text-xl mt-4 max-w-80 mx-auto text-white">
+        <p className="text-xl w-[100%] mt-4 max-w-80 mx-auto text-white">
             Nous croyons fermement que la plus grande maîtrise du marché du trading réside dans l&apos;expérience. En côtoyant des traders chevronnés au quotidien, vous allez non seulement acquérir des connaissances approfondies, mais aussi gagner en confiance et en compétence. Chaque transaction, chaque analyse et chaque décision seront des opportunités d&apos;apprentissage qui contribueront à votre croissance en tant que trader prospère.
         </p>
         <div className="lg:mt-0 lg:flex-shrink-0">
             <div data-aos="fade-right"  data-aos-duration="400" className="mt-12 inline-flex rounded-md shadow">
-                <button  type="button" className="py-4 px-6  bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg ">
+                <button  type="button" className="py-5 text-xl font-bold px-6 w-[100%]  bg-gray-100 focus:ring-offset-indigo-200 text-gray-800  transition ease-in duration-200 text-center shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg ">
                     Rejoindre COBALT INVEST LTD
                 </button>
             </div> 
@@ -161,76 +169,133 @@ export default function HomePage() {
     </div>
 </div>
         {/* CTA1 FIN */}
-        {/* avantage */}
-        <div className="container my-24 mx-auto md:px-6">
-         <section className="mb-32 text-center">
-    <h2 className="mb-20 text-3xl font-bold">Pourquoi nous rejoindre?</h2>
-
-    <div className="grid lg:grid-cols-3 lg:gap-x-12">
-      <div data-aos="flip-left" data-aos-duration="300" className="mb-12 lg:mb-0">
-        <div
-          className="block h-full rounded-lg  shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] bg-gray-800">
-          <div className="flex justify-center">
-            <div className="-mt-8 inline-block rounded-full bg-indigo-500 p-4  shadow-md">
-             <FaPeopleGroup size={46} />
-            </div>
-          </div>
-          <div className="p-6">
-            <h5 className="mb-4 text-lg font-semibold">Une equipe d&apos;expert</h5>
-            <p>
-              Laudantium totam quas cumque pariatur at doloremque hic quos
-              quia eius. Reiciendis optio minus mollitia rerum labore
-              facilis inventore voluptatem ad, quae quia sint.
-            </p>
-          </div>
+         <div className="mt-8 w-full bg-gray-700  ">
+    <div  data-aos="fade-up"  data-aos-duration="1500" className="text-center  bg-gray-700  items-center flex-col justify-center flex mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8 z-20">
+        
+            <div className="pr-8  w-[100px]  " >
+            <img className=" object-fit w-full h-[100px] rounded-lg" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/content/office-long-2.png" alt="office content 1"/>
         </div>
-      </div>
 
-      <div data-aos="flip-right" data-aos-duration="500" className="mb-12 lg:mb-0">
-        <div
-          className="block h-full rounded-lg  shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] bg-gray-800">
-          <div className="flex justify-center">
-            <div className="-mt-8 inline-block rounded-full bg-green-500 p-4  shadow-md">
-              <GiTeacher size={44} />
-            </div>
-          </div>
-          <div className="p-6">
-            <h5 className="mb-4 text-lg font-semibold">Formation de qualité</h5>
-            <p>
-              Eum nostrum fugit numquam, voluptates veniam neque quibusdam
-              ullam aspernatur odio soluta, quisquam dolore animi mollitia a
-              omnis praesentium, expedita nobis!
+        
+            <div className=" md:w-2/3 mt-4  ">
+              <p className="text-xl max-w-80 mx-auto text-slate-50">
+              Chez COBALT INVEST LTD, vous avez la possibilité de devenir un trader de chez nous afin de pouvoir gérer des fonds que nous allons mettre à votre disposition.
             </p>
-          </div>
         </div>
-      </div>
-
-      <div  className="">
-        <div data-aos="flip-left" data-aos-duration="800"
-          className="block h-full rounded-lg  shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] bg-gray-800">
-          <div className="flex justify-center">
-            <div className="-mt-8 inline-block rounded-full bg-primary-100 p-4 text-primary shadow-md">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
-                stroke="currentColor" className="h-7 w-7">
-                <path stroke-linecap="round" stroke-linejoin="round"
-                  d="M15.59 14.37a6 6 0 01-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 006.16-12.12A14.98 14.98 0 009.631 8.41m5.96 5.96a14.926 14.926 0 01-5.841 2.58m-.119-8.54a6 6 0 00-7.381 5.84h4.8m2.581-5.84a14.927 14.927 0 00-2.58 5.84m2.699 2.7c-.103.021-.207.041-.311.06a15.09 15.09 0 01-2.448-2.448 14.9 14.9 0 01.06-.312m-2.24 2.39a4.493 4.493 0 00-1.757 4.306 4.493 4.493 0 004.306-1.758M16.5 9a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z" />
-              </svg>
-            </div>
-          </div>
-          <div className="p-6">
-            <h5 className="mb-4 text-lg font-semibold">Extremely fast</h5>
-            <p>
-              Enim cupiditate, minus nulla dolor cumque iure eveniet facere
-              ullam beatae hic voluptatibus dolores exercitationem? Facilis
-              debitis aspernatur amet nisi?
-            </p>
-          </div>
-        </div>
-      </div>
+        
     </div>
-  </section>
+        </div>
+        {/* feature2 */}
+          <section className="pl-3 pr-3 md:mt-4   w-[100%]">
+        <h2 className=" md:text-3xl  text-xl mt-6 text-center tracking-tight font-extrabold text-white">Rejoignez notre communauté de traders rentable</h2>
+    <div data-aos="fade-up"
+            className="gap-16 items-center flex-col md:flex-row  py-4 px-4 mx-auto  flex  md:justify-between lg:py-16 lg:px-6">
+             <div className="pr-8 md:w-1/2 w-full  " >
+            <img  data-aos="fade-left" data-aos-duration="1500" className=" object-fit w-full h-[300px] rounded-lg" src="https://i0.wp.com/phantomtradingfx.com/wp-content/uploads/2022/04/globalcommunity.png" alt="office content 1"/>
+        </div>
+        <div className="pl-8 font-light  text-start flex items-start flex-col text-xl w-[100%] mt-4 max-w-80 mx-auto text-white sm:text-lg dark:text-gray-400 md:w-1/2">
+            <p>En tant que membre de notre formation spéciale en trading, vous bénéficierez d&apos;une gamme d&apos;avantages conçus pour optimiser votre parcours de trading : accès à une formation complète avec un contenu pédagogique complet et structuré, couvrant tous les aspects du trading, des bases aux stratégies avancées, sessions de mentorat personnalisées avec des traders expérimentés, pour des conseils personnalisés et des retours d&apos;expérience précieux ; utilisation d&apos;outils d'analyse de pointe pour des analyses techniques et fondamentales approfondies, vous aidant à prendre des décisions éclairées sur le marché ; intégration dans une communauté de traders partageant les mêmes intérêts, pour un environnement collaboratif et un soutien continu dans votre apprentissage ; participation à des sessions pratiques pour mettre en œuvre vos connaissances, avec un suivi et des retours pour améliorer constamment vos compétences de trading ; accès à des ressources exclusives telles que des analyses de marché, des webinaires spécialisés et des publications de recherche, pour rester toujours à la pointe des tendances du marché.</p>
+        </div>
+         
+    </div>
+</section>
+        {/* avantage */}
+         <div className=" bg-gray-700  ">
+    <div  data-aos="fade-down"  data-aos-duration="1500" className="text-center   w-2/3 items-center flex-col justify-center flex mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8 z-20">
+        <h2 className="text-xl font-extrabold text-white sm:text-2xl">
+            <span className="block">
+                Bénéficiez de l&apos;assistance de véritable traders rentables.
+
+            </span>
+
+        </h2>
+        <p className="text-xl w-[100%] text-justify mt-4 max-w-80 mx-auto text-white">
+            Nous croyons fermement que la plus grande maîtrise du marché du trading réside dans l&apos;expérience. En côtoyant des traders chevronnés au quotidien, vous allez non seulement acquérir des connaissances approfondies, mais aussi gagner en confiance et en compétence. Chaque transaction, chaque analyse et chaque décision seront des opportunités d&apos;apprentissage qui contribueront à votre croissance en tant que trader prospère.
+        </p>
+        <div className="lg:mt-0 lg:flex-shrink-0">
+            <div data-aos="flip-down"  data-aos-duration="400" className="mt-12 inline-flex rounded-md shadow">
+                <button  type="button" className="py-5 text-xl font-bold px-6 w-[100%]  bg-green-500 focus:ring-offset-indigo-200 text-white  transition ease-in duration-200 text-center shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg ">
+                    Rejoindre COBALT INVEST LTD
+                </button>
+            </div> 
+        </div>
+    </div>
 </div>
+        {/* center cta 2 */}
+        {/* avantage */}
+        <div className="grid lg:grid-cols-3 md:grid-cols-2 bg-gray-800 gap-12 h-[80vh] items-center lg:gap-8 px-4 sm:px-6 lg:px-8 mt-8 text-white ">
+                <div data-aos="flip-left" data-aos-duration="300" className="  text-center  px-3 rounded-xl cursor-pointer">
+<div className="-mt-8 inline-block rounded-full  shadow-md">
+              <img src="https://phantomtradingfx.com/wp-content/uploads/2022/04/ideas-150x150.png" alt="log" />
+            </div>  
+<h3 className="text-xl font-bold ">Assistance leader du secteur</h3>
+          </div>
+          <div data-aos="flip-right" data-aos-duration="500" className="  text-center  px-3 rounded-xl cursor-pointer">
+<div className="-mt-8 inline-block  ">
+              <img src="https://phantomtradingfx.com/wp-content/uploads/2022/04/video-conference-150x150.png" alt="log" />
+            </div>  
+<h3 className="text-xl font-bold ">CommunauteCommunauté commerciale mondiale</h3>
+          </div>
+          <div data-aos="flip-left" data-aos-duration="800" className="  text-center  px-3 rounded-xl cursor-pointer">
+<div className="-mt-8 inline-block   shadow-md">
+       <img src="https://phantomtradingfx.com/wp-content/uploads/2022/04/financial-profit-150x150.png" alt="log" />
+  </div>  
+<h3 className="text-xl font-bold ">Opportunité de financement accessible</h3>
+</div>
+                      
+            </div>
+        {/* avantage */}
+         <section className="pl-3 pr-3    w-[100%]">
+        <h2 className=" md:text-3xl  text-xl mt-6 text-center tracking-tight font-extrabold text-white">Développez vos competences en trading et obtenez du financement</h2>
+    <div data-aos="zoom-in"
+            className="gap-16 items-center flex-col md:flex-row  py-4 px-4 mx-auto  flex  md:justify-between lg:py-16 lg:px-6">
+        <div className="pl-8 font-light  text-start flex items-start flex-col text-xl w-[100%] mt-1 max-w-80 mx-auto text-white sm:text-lg dark:text-gray-400 md:w-1/2">
+            <p className="mb-2">Chez COBALT INVEST LTD nous ne vous vendons pas un rêve irréaliste au lieu de cela, nous fournissons les outils et les stratégies pour que les traders de tout niveaux puissent les maitriser, qu&apos;il soient complètement nouveaux dans le trading ou qu&apos;il soient des vétérans expérimentés des marchés.
+Noys avons conçu COBLALT INVEST LTD pour que tout le monde puisse s&apos;y plonger et apprendre à trader exactement de la même manière que nous.</p>
+            <p>Personne chez COBALR INVEST LTD ne pretend que le trading est un parcours facile, mais en suivant notre cadre, nous avons aidé des milliers de traders à trouver des financés.</p>
+        </div>
+          <div className="pr-8 md:w-1/2 w-full  " >
+            <img className=" object-cover w-full  rounded-lg" src="https://i2.wp.com/phantomtradingfx.com/wp-content/uploads/2022/04/DESKTOP.png" alt="office content 1"/>
+        </div>
+    </div>
+</section>
         {/* fin avantage */}
+        <section className="pl-3 pr-3    w-[100%]">
+        <h2 className=" md:text-3xl  text-xl mt-6 text-center tracking-tight font-extrabold text-white">Devenez rentable et réussissez les defis de financements</h2>
+    <div data-aos="zoom-up"
+            className="gap-16 items-center flex-col md:flex-row  py-4 px-4 mx-auto  flex  md:justify-between lg:py-16 lg:px-6">
+        <div className="pl-8 font-light  text-start flex items-start flex-col text-xl w-[100%] mt-1 max-w-80 mx-auto text-white sm:text-lg dark:text-gray-400 md:w-1/2">
+            <p className="mb-2">Que vous négocier maintenant un compte démo ou un petit compte personnel, que vous n&apos;ayez jamais relevé ou réussi à obtenir un financement, ou que vous ayez réussi à obtenir un financement via une société mais que vous ayez fait exploser votre compte... nous somme là pour vous.</p>
+            <p>COBALT INVEST LTD a pour objectif de vous aider, à obtenir un financement et, surtout, à vous aider à la conserver et à la faire évoluer!</p>
+        </div>
+          <div className="pr-8 md:w-1/2 w-full  " >
+            <img className=" object-cover w-full  rounded-lg" src="https://i3.wp.com/phantomtradingfx.com/wp-content/uploads/2022/04/Proftiable-Challenge.png" alt="office content 1"/>
+        </div>
+    </div>
+        </section>
+          <div className="  ">
+    <div  data-aos="fade-down"  data-aos-duration="1500" className="text-center  bg-black  w-2/3 items-center flex-col justify-center flex mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8 z-20">
+        <h2 className="text-xl font-extrabold text-white sm:text-2xl">
+            <span className="block">
+                COBALT INVEST LTD est conçu pour vous aider à trouver votre cohérence en tant que trader.
+            </span>
+
+        </h2>
+        <p className="text-xl w-[100%] text-justify mt-4 max-w-80 mx-auto text-white">
+           COBALT INVEST LTD  a été conçu dès le premier jour dans le but d&apos;enseigner aux traders un ensemble unique de compétences en analyse technique, en gestion des risques et en psychologie commerciale afin qu&apos;ils puissent obtenir un financement dentreprise, un financement privé, créer leurs comptes de trading personnel et gagner un temps plein vivre du trading.
+        </p>
+        <div className="lg:mt-0 lg:flex-shrink-0">
+            <div data-aos="flip-down"  data-aos-duration="400" className="mt-12 inline-flex rounded-md shadow">
+                <button  type="button" className="py-5 text-xl font-bold px-6 w-[100%]  bg-green-500 focus:ring-offset-indigo-200 text-white  transition ease-in duration-200 text-center shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg ">
+                    Rejoindre COBALT INVEST LTD
+                </button>
+            </div> 
+        </div>
+    </div>
+        </div>
+        <div className="px-8">
+          <img src="https://phantomtradingfx.com/wp-content/uploads/2023/06/certs-1.png" alt="certificat" />
+        </div>
       {/* footer */}
         <div className="rounded-t-3xl ">
       <section className="mx-auto max-w-[1200px] dark:text-white">

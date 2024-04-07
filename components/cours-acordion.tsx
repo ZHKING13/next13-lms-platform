@@ -4,10 +4,14 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion"
+import { redirect } from "next/navigation";
 import { Preview } from "./preview"
 import PjAcordion from "./pj-acordion"
-
-export function AccordionCours({ item }: {item:any}) {
+export function AccordionCours({ item,coursId }: { item: any,coursId:any }) {
+  const handleVideoClick = () => {
+    // Rediriger l'utilisateur vers une autre page
+    redirect(`/dashboard/courses/${coursId}`);
+  };
   return (
       <div className="px-5" >
            <Accordion type="single" collapsible className="w-full">
@@ -17,7 +21,8 @@ export function AccordionCours({ item }: {item:any}) {
                 <AccordionTrigger>{chapter.title}</AccordionTrigger>
                 <AccordionContent>
                   <div className="flex justify-between gap-5 p-2 sm:p1 flex-col md:flex-row">
-                    {chapter.videoUrl && <video className="md:w-2/5 md:h-80 w-full h-40" src={chapter.videoUrl} controls />}
+                     {chapter.videoUrl && <video className="md:w-2/5 md:h-80 w-full h-40" src={chapter.videoUrl} onClick={handleVideoClick} />}
+
                     <div style={{
                     backgroundColor: "white"
                     }} className="card border-spacing-1 border-2 md:w-3/5 w-full p-3 " >

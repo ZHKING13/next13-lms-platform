@@ -52,7 +52,7 @@ const CourseIdPage = async ({
   });
 
   if (!course) {
-    return redirect("/");
+    return redirect("/dashboard");
   }
 
   const requiredFields = [

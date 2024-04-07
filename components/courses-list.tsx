@@ -1,3 +1,4 @@
+"use client"
 import { Category, Course } from "@prisma/client";
 import {
   Accordion,
@@ -33,7 +34,7 @@ export const CoursesList = ({
                 <AccordionTrigger>{item.title}</AccordionTrigger>
                 <AccordionContent>
                   <div>
-                    <AccordionCours item={item.chapters} />
+                    <AccordionCours coursId={item.id} item={item.chapters} />
                   </div>
                 </AccordionContent>
               </AccordionItem>
@@ -55,7 +56,7 @@ export const CoursesList = ({
       </div>
       {items.length === 0 && (
         <div className="text-center text-sm text-muted-foreground mt-10">
-          Oops aucun cours suivie pour l&apos; instant
+          Oops aucun cours suivie pour l&apos;instant
         </div>
       )}
     </div>

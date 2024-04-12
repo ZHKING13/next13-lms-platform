@@ -31,12 +31,12 @@ export default function HomePage() {
         })
   }, [])
   return (
-      <div   className="bg-[#01051e] text-white">
-        <div className="fixed left-0 right-0 top-0 z-50 bg-[#010417]  ">
+      <div   className="bg-[#01051e] w-[100vw]  text-white">
+        <div className="fixed w-full left-0 right-0 container top-0 z-50 bg-[#010417]  ">
           {/* <Navbar /> */}
           <header>
     <nav className=" border-gray-200 px-4 lg:px-6 py-2.5 ">
-        <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
+        <div className="flex flex-wrap justify-between items-end mx-auto md:max-w-screen-xl">
             <a href="/" className="flex items-center">
                 <img src="/images/logo.png" className="mr-3 h-8 sm:h-9" alt="cobalt Logo" />
                 <span className="self-center text-xl font-semibold whitespace-nowrap text-white">COBALT INVEST LTD</span>
@@ -49,10 +49,37 @@ export default function HomePage() {
             onClick={() => {
               setIsMenuOpen(!isMenuOpen);
             }}
-          >
+                >
+                         {isMenuOpen && (
+        <div>
+          <nav className="fixed text-white top-0 right-0 left-0 bottom-0 lg:bottom-auto bg-[#01051e]  ">
+            <div
+              className="hidden max-lg:block fixed right-0  px-8 py-4 cursor-pointer"
+              onClick={() => {
+                setIsMenuOpen(!isMenuOpen);
+              }}
+            >
+              <AiOutlineClose className="text-4xl" />
+            </div>
+            <ul className=" lg:hidden w-full flex flex-col items-center justify-center h-full ">
+              {navigation.map((item) => (
+                <li key={item.name}>
+                  <a
+                    href="#"
+                    className="font-montserrat leading-normal text-lg text-slate-gray"
+                  >
+                    {item.name}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </div>
+      )}
             <RxHamburgerMenu className="text-4xl" />
           </div>
-            </div>
+              </div>
+        
             <div className="hidden justify-between items-center w-full lg:flex lg:w-auto lg:order-1" id="mobile-menu-2">
                  <div className="flex gap-16">
       {navigation.map((item) => {
@@ -93,57 +120,36 @@ export default function HomePage() {
           </a>
         );
       })}
-    </div>
+              </div>
+              </div>
+              
             </div>
-        </div>
+             
     </nav>
 </header>
-          {isMenuOpen && (
-        <div>
-          <nav className="fixed text-white top-0 right-0 left-0 bottom-0 lg:bottom-auto bg-[#01051e]  ">
-            <div
-              className="hidden max-lg:block fixed right-0  px-8 py-4 cursor-pointer"
-              onClick={() => {
-                setIsMenuOpen(!isMenuOpen);
-              }}
-            >
-              <AiOutlineClose className="text-4xl" />
-            </div>
-            <ul className=" lg:hidden w-full flex flex-col items-center justify-center h-full ">
-              {navigation.map((item) => (
-                <li key={item.name}>
-                  <a
-                    href="#"
-                    className="font-montserrat leading-normal text-lg text-slate-gray"
-                  >
-                    {item.name}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </nav>
-        </div>
-      )}
+        
         {/* fin header */}
       </div>
       {/* hero section */}
-      <div className="flex flex-col  w-[100%]   gap-1  " >
-         <div   className='md:mt-6 h-[100vh]   w-[100%] flex items-center justify-center'>
+      <div className="flex flex-col  w-full    gap-1  " >
+         <div   className='md:mt-2 h-[calc(100vh - 50px)]   w-[100%] flex items-center justify-center'>
         
      <section  className="w-full h-[100%]">
-    <div className="flex relative   px-4 w-[100%] h-[100%]  flex-col md:flex-row items-center justify-center md:justify-between py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 ">
+    <div className="flex    px-4 w-[100%] h-[100%]  flex-col md:flex-row items-center justify-center md:justify-between py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 ">
         <div data-aos="fade-down" data-aos-duration="3000" className=" md:w-1/2 flex-col  items-center justify-center h-[100%]  lg:mt-0  flex">
-                <img className="md:w-[70%] object-none md:h-[85%] " src="images/logo.png" alt="mockup" />
-                <p className="md:text-5 xl:text-lg mt-4 ">Plus de 5 000 étudiants formés dans le monde</p>
+                <img className="md:w-[70%] object-fill  " src="images/logo.png" alt="mockup" />
+                <p className="md:text-5 xl:text-lg  md:mb-2 ">Plus de 5 000 étudiants formés dans le monde</p>
               </div> 
-               <div className="blob1"></div>
+               
          <div data-aos="example-anim2"
      data-aos-duration="600"
-     data-aos-easing="ease-in-sine" className="mr-auto  flex flex-col items-center justify-center md:w-1/2 md:h-[100%]  ">
+                data-aos-easing="ease-in-sine" className=" relative flex flex-col items-start justify-center md:w-1/2 md:h-[100%]  ">
+                <div style={{
+                    filter: 'blur(5px)',
+                }} className="w-30 h-30 bg-[#7043EC] absolute bottom-10 right-4 overflow-hidden rounded-full  "></div>
             <h1 className="max-w-2xl mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white"> Devenez membre de notre cercle privé</h1>
             <p className="max-w-2xl mb-6 font-light text-white lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">Obtenez un accompagnement personnalisé ainsi qu&apos; un développement de carrière au sein de COBALT INVEST LTD</p>
-           
-              <div className="mt-3 w-[100%]">
+              <div className="mt-3 self-start">
                 <a href="/dashboard" className="bg-[#7043EC] w-[70%] text-xl  text-white font-semibold py-5 px-6 rounded-lg shadow-md transition duration-200 ease-in-out transform hover:-translate-y-1">
   Rejoindre COBALT INVEST LTD
 </a>
@@ -166,7 +172,7 @@ export default function HomePage() {
                       
             </div>
       {/* feature section */}
-        <section className="pl-3 pr-3    w-[100%]">
+        <section className="pl-3 pr-3 container   w-[100%]">
         <h2 className=" md:text-3xl  text-xl mt-6 text-center tracking-tight font-extrabold text-white">Joignez-vous à des traders rentables pour garantir votre rentabilité</h2>
     <div data-aos="fade-up"
             className="gap-16 items-center flex-col md:flex-row  py-4 px-4 mx-auto  flex  md:justify-between lg:py-16 lg:px-6">
@@ -174,7 +180,7 @@ export default function HomePage() {
             <p className="mb-2">Rejoignez notre cercle de traders rentables et bénéficiez d&apos;interactions directes avec des mentors expérimentés. Leur expertise accumulée sur des années vous permettra de gagner en expérience et de maximiser vos opportunités sur le marché du trading.</p>
             <p>Rejoignez-nous pour faire évoluer vos compétences et votre succès financier.</p>
         </div>
-          <div className="md:pr-8 md:w-1/2 w-full  " >
+          <div className="md:pr-8 md:w-1/2 w-full" >
             <img className=" object-cover w-full  rounded-lg" src="/images/2.png" alt="office content 1"/>
         </div>
     </div>
@@ -218,6 +224,15 @@ export default function HomePage() {
         </div>
         
     </div>
+        </div>
+        <div className="px-8 mt-8">
+          <h2 className="text-xl font-extrabold text-white text-center sm:text-2xl">
+            <span className="block">
+               Ce qu&apos;ils pensent de nous
+            </span>
+
+        </h2>
+          <InfiniteMovingCards speed="slow" items={retourClient} />
         </div>
         {/* feature2 */}
           <section className="pl-3 pr-3 md:mt-4   w-[100%]">
@@ -327,15 +342,7 @@ Noys avons conçu COBLALT INVEST LTD pour que tout le monde puisse s&apos;y plon
         </div>
     </div>
         </div>
-        <div className="px-8 mt-8">
-          <h2 className="text-xl font-extrabold text-white text-center sm:text-2xl">
-            <span className="block">
-               Ce qu&apos;ils pensent de nous
-            </span>
-
-        </h2>
-          <InfiniteMovingCards speed="slow" items={retourClient} />
-        </div>
+        
       {/* footer */}
         <div className="rounded-t-3xl ">
       <section className="mx-auto max-w-[1200px] dark:text-white">

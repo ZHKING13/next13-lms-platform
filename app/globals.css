@@ -79,9 +79,6 @@ body,
     body {
         @apply text-foreground;
     }
-    .blob1 {
-        @apply w-80 h-80 bg-[#7043EC] absolute bottom-10 right-0 -z-10 blur-2xl overflow-hidden rounded-full;
-    }
 }
 
 .ql-container {

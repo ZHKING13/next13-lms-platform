@@ -226,7 +226,7 @@ export default function HomePage() {
             <img  data-aos="fade-down" data-aos-duration="1500" className=" object-cover objet-center w-full rounded-lg" src="images/p.png" alt="office content 1"/>
         </div>
         <div className="md:pl-8 font-light md:text-xl  text-start flex items-start flex-col text-lg w-[100%] mt-4 max-w-80 mx-auto text-white sm:text-lg dark:text-gray-400 md:w-[65%]">
-            <p>Une formation de trading exclusive dévoile les secrets du marché et assure un suivi pour le succès des traders. Accédez à une communauté mondiale de traders rentables et bénéficiez d'évaluations personnalisées pour renforcer vos compétences.</p>        </div>
+            <p>Une formation de trading exclusive dévoile les secrets du marché et assure un suivi pour le succès des traders. Accédez à une communauté mondiale de traders rentables et bénéficiez d&apos;évaluations personnalisées pour renforcer vos compétences.</p>        </div>
          
     </div>
 </section>
@@ -238,7 +238,7 @@ export default function HomePage() {
 
 
         </h2>
-        <p className="text-xl w-[100%] text-justify mt-4 max-w-80 mx-auto text-white">
+        <p className="md:text-xl text-lg w-[100%] text-justify mt-4 max-w-80 mx-auto text-white">
             Nous croyons fermement que la plus grande maîtrise du marché du trading réside dans l&apos;expérience. En côtoyant des traders chevronnés au quotidien, vous allez non seulement acquérir des connaissances approfondies, mais aussi gagner en confiance et en compétence. Chaque transaction, chaque analyse et chaque décision seront des opportunités d&apos;apprentissage qui contribueront à votre croissance en tant que trader prospère.
         </p>
         <div className="lg:mt-0 lg:flex-shrink-0">

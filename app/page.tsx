@@ -22,7 +22,7 @@ export default function HomePage() {
   const [active, setActive] = useState("Home");
    const [isMenuOpen, setIsMenuOpen] = useState(false);
  const [selectedLink, setSelectedLink] = useState("Acceuil");
-  const navigation = [{ name: "Acceuil" }, { name: "À propos de nous" }, { name: "Contacte" }];
+  const navigation = [{ name: "Acceuil" },{ name: "Nos étudiants formés" },{ name: "Tarifs" },{ name: "Nous Rejoindre" }];
   useEffect(() => {
      AOS.init({
           duration: 600,
@@ -138,7 +138,6 @@ export default function HomePage() {
     <div className="flex    px-4 w-[100%] h-[100%]  flex-col md:flex-row items-center justify-center md:justify-between py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 ">
         <div data-aos="fade-down" data-aos-duration="3000" className=" md:w-1/2 flex-col  items-center justify-center h-[100%]  lg:mt-0  flex">
                 <img className="md:w-[70%] object-fill  " src="images/logo.png" alt="mockup" />
-                <p className="md:text-5 xl:text-lg  md:mb-2 ">Plus de 5 000 étudiants formés dans le monde</p>
               </div> 
                
          <div data-aos="example-anim2"
@@ -175,10 +174,9 @@ export default function HomePage() {
         <section className="pl-3 pr-3 container   w-[100%]">
         <h2 className=" md:text-3xl  text-xl mt-6 text-center tracking-tight font-extrabold text-white">Joignez-vous à des traders rentables pour garantir votre rentabilité</h2>
     <div data-aos="fade-up"
-            className="gap-16 items-center flex-col md:flex-row  py-4 px-4 mx-auto  flex  md:justify-between lg:py-16 lg:px-6">
+            className="gap-16 items-center flex-col md:flex-row  py-4 px-4 mx-auto  flex  md:justify-between lg:py-8 lg:px-6">
         <div className="md:pl-8 font-light  text-start flex items-start flex-col text-xl w-[100%] mt-4 max-w-80 mx-auto text-white sm:text-lg dark:text-gray-400 md:w-1/2">
-            <p className="mb-2">Rejoignez notre cercle de traders rentables et bénéficiez d&apos;interactions directes avec des mentors expérimentés. Leur expertise accumulée sur des années vous permettra de gagner en expérience et de maximiser vos opportunités sur le marché du trading.</p>
-            <p>Rejoignez-nous pour faire évoluer vos compétences et votre succès financier.</p>
+            <p className="mb-2">Après chaque étape de votre formation en trading avec COBALT INVEST LTD, vous aurez l&apos;opportunité de passer des examens et tests conçus pour évaluer votre progression et vos compétences.</p>
         </div>
           <div className="md:pr-8 md:w-1/2 w-full" >
             <img className=" object-cover w-full  rounded-lg" src="/images/2.png" alt="office content 1"/>
@@ -189,18 +187,18 @@ export default function HomePage() {
         {/* CTA 1 */}
         <div className="  ">
     <div  data-aos="fade-down"  data-aos-duration="1500" className="text-center  md:w-2/3 items-center flex-col justify-center flex mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8 z-20">
-        <h2 className="text-xl font-extrabold text-white sm:text-2xl">
+        <h2 className="text-2xl  font-extrabold text-white sm:text-2xl">
             <span className="block">
                 Bénéficiez de l&apos;assistance de véritable traders rentables.
 
             </span>
 
         </h2>
-        <p className="text-xl w-[100%] mt-4 max-w-80 mx-auto text-white">
+        <p className="md:text-xl text-lg  w-[100%] mt-4 max-w-80 mx-auto text-white">
             Nous croyons fermement que la plus grande maîtrise du marché du trading réside dans l&apos;expérience. En côtoyant des traders chevronnés au quotidien, vous allez non seulement acquérir des connaissances approfondies, mais aussi gagner en confiance et en compétence. Chaque transaction, chaque analyse et chaque décision seront des opportunités d&apos;apprentissage qui contribueront à votre croissance en tant que trader prospère.
         </p>
         <div className="lg:mt-0 lg:flex-shrink-0">
-            <div data-aos="fade-right"  data-aos-duration="400" className="mt-12 inline-flex rounded-md shadow">
+            <div data-aos="fade-up"  data-aos-duration="400" className="mt-12 inline-flex rounded-md shadow">
                 <button  type="button" className="py-5 text-xl font-bold px-6 w-[100%]  bg-[#7043EC] focus:ring-offset-indigo-200 text-white  transition ease-in duration-200 text-center shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg ">
                     Rejoindre COBALT INVEST LTD
                 </button>
@@ -209,22 +207,7 @@ export default function HomePage() {
     </div>
 </div>
         {/* CTA1 FIN */}
-         <div className="mt-8 w-full  ">
-    <div  data-aos="fade-up"  data-aos-duration="1500" className="text-center   items-center flex-col justify-center flex mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8 z-20">
         
-            <div className="pr-8  w-[100px]  " >
-            <img className=" object-fit w-full h-[100px] rounded-lg" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/content/office-long-2.png" alt="office content 1"/>
-        </div>
-
-        
-            <div className=" md:w-2/3 mt-4  ">
-              <p className="text-xl max-w-80 mx-auto text-slate-50">
-              Chez COBALT INVEST LTD, vous avez la possibilité de devenir un trader de chez nous afin de pouvoir gérer des fonds que nous allons mettre à votre disposition.
-            </p>
-        </div>
-        
-    </div>
-        </div>
         <div className="px-8 mt-8">
           <h2 className="text-xl font-extrabold text-white text-center sm:text-2xl">
             <span className="block">
@@ -236,26 +219,23 @@ export default function HomePage() {
         </div>
         {/* feature2 */}
           <section className="pl-3 pr-3 md:mt-4   w-[100%]">
-        <h2 className=" md:text-3xl  text-xl mt-6 text-center tracking-tight font-extrabold text-white">Rejoignez notre communauté de traders rentable</h2>
+        <h2 className=" md:text-3xl -mb-10 text-2xl mt-6 text-center tracking-tight font-extrabold text-white">Rejoignez notre communauté de traders rentable</h2>
     <div data-aos="fade-up"
-            className="gap-16 items-center flex-col md:flex-row  py-4 px-4 mx-auto  flex  md:justify-between lg:py-16 lg:px-6">
-             <div className="md:pr-8 md:w-1/2 w-full  " >
-            <img  data-aos="fade-left" data-aos-duration="1500" className=" object-contain w-full rounded-lg" src="images/p.png" alt="office content 1"/>
+            className="gap-6 items-center flex-col md:flex-row  py-4 px-4 mx-auto  flex  md:justify-between lg:py-8 lg:px-6">
+             <div className="md:pr-8 md:w-[35%]w-full  " >
+            <img  data-aos="fade-down" data-aos-duration="1500" className=" object-cover objet-center w-full rounded-lg" src="images/p.png" alt="office content 1"/>
         </div>
-        <div className="md:pl-8 font-light  text-start flex items-start flex-col text-xl w-[100%] mt-4 max-w-80 mx-auto text-white sm:text-lg dark:text-gray-400 md:w-1/2">
-            <p>En tant que membre de notre formation spéciale en trading, vous bénéficierez d&apos;une gamme d&apos;avantages conçus pour optimiser votre parcours de trading : accès à une formation complète avec un contenu pédagogique complet et structuré, couvrant tous les aspects du trading, des bases aux stratégies avancées, sessions de mentorat personnalisées avec des traders expérimentés, pour des conseils personnalisés et des retours d&apos;expérience précieux, utilisation d&apos;outils d&apos;analyse de pointe pour des analyses techniques et fondamentales approfondies, vous aidant à prendre des décisions éclairées sur le marché, intégration dans une communauté de traders partageant les mêmes intérêts, pour un environnement collaboratif et un soutien continu dans votre apprentissage, participation à des sessions pratiques pour mettre en œuvre vos connaissances, avec un suivi et des retours pour améliorer constamment vos compétences de trading, accès à des ressources exclusives telles que des analyses de marché, des webinaires spécialisés et des publications de recherche, pour rester toujours à la pointe des tendances du marché.
-Bénéficiez de l&apos;assistance de véritable traders rentables.</p>        </div>
+        <div className="md:pl-8 font-light md:text-xl  text-start flex items-start flex-col text-lg w-[100%] mt-4 max-w-80 mx-auto text-white sm:text-lg dark:text-gray-400 md:w-[65%]">
+            <p>Une formation de trading exclusive dévoile les secrets du marché et assure un suivi pour le succès des traders. Accédez à une communauté mondiale de traders rentables et bénéficiez d'évaluations personnalisées pour renforcer vos compétences.</p>        </div>
          
     </div>
 </section>
         {/* avantage */}
          <div className="  ">
-    <div  data-aos="fade-down"  data-aos-duration="1500" className="text-center   md:w-2/3 items-center flex-col justify-center flex mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8 z-20">
-        <h2 className="text-xl font-extrabold text-white sm:text-2xl">
-            <span className="block">
-                Bénéficiez de l&apos;assistance de véritable traders rentables.
+    <div  data-aos="fade-up"  data-aos-duration="1500" className="text-center   md:w-2/3 items-center flex-col justify-center flex mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8 z-20">
+        <h2 className="text-2xl font-extrabold text-white sm:text-2xl">
+                           Bénéficiez de l&apos;assistance de véritable traders rentables.
 
-            </span>
 
         </h2>
         <p className="text-xl w-[100%] text-justify mt-4 max-w-80 mx-auto text-white">
@@ -279,11 +259,11 @@ Bénéficiez de l&apos;assistance de véritable traders rentables.</p>        </
             </div>  
 <h3 className="text-xl font-bold ">Assistance leader du secteur</h3>
           </div>
-          <div data-aos="flip-right" data-aos-duration="500" className="  text-center  px-3 rounded-xl cursor-pointer">
+          <div data-aos="flip-up" data-aos-duration="500" className="  text-center  px-3 rounded-xl cursor-pointer">
 <div className="-mt-8 inline-block  ">
               <img src="https://phantomtradingfx.com/wp-content/uploads/2022/04/video-conference-150x150.png" alt="log" />
             </div>  
-<h3 className="text-xl font-bold ">CommunauteCommunauté commerciale mondiale</h3>
+<h3 className="text-xl font-bold ">Communauté commerciale mondiale</h3>
           </div>
           <div data-aos="flip-left" data-aos-duration="800" className="  text-center  px-3 rounded-xl cursor-pointer">
 <div className="-mt-8 inline-block   shadow-md">
@@ -295,7 +275,7 @@ Bénéficiez de l&apos;assistance de véritable traders rentables.</p>        </
             </div>
         {/* avantage */}
          <section className="pl-3 pr-3    w-[100%]">
-        <h2 className=" md:text-3xl  text-xl mt-6 text-center tracking-tight font-extrabold text-white">Développez vos competences en trading et obtenez du financement</h2>
+        <h2 className=" md:text-3xl  text-2xl mt-6 text-center tracking-tight font-extrabold text-white">Développez vos competences en trading et obtenez du financement</h2>
     <div data-aos="zoom-in"
             className="gap-16 items-center flex-col md:flex-row  py-4 px-4 mx-auto  flex  md:justify-between lg:py-16 lg:px-6">
         <div className="md:pl-8 font-light  text-start flex items-start flex-col text-xl w-[100%] mt-1 max-w-80 mx-auto text-white sm:text-lg dark:text-gray-400 md:w-1/2">

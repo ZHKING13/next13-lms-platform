@@ -13,7 +13,7 @@ import {
     FaMobileAlt,
 } from "react-icons/fa";
  
-function tarifPage() {
+function TarifPage() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [selectedLink, setSelectedLink] = useState("Acceuil");
     const navigation = [
@@ -681,4 +681,4 @@ function tarifPage() {
     );
 }
 
-export default tarifPage;
+export default TarifPage;

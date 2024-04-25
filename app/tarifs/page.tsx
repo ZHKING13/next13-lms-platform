@@ -1,0 +1,684 @@
+ 
+ "use client";
+
+import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
+ import { RxHamburgerMenu } from "react-icons/rx";
+import { AiOutlineClose } from "react-icons/ai";
+import {
+    FaFacebook,
+    FaInstagram,
+    FaLinkedin,
+    FaLocationArrow,
+    FaMobileAlt,
+} from "react-icons/fa";
+ 
+function tarifPage() {
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [selectedLink, setSelectedLink] = useState("Acceuil");
+    const navigation = [
+        { name: "Acceuil", lien: "/" },
+        { name: "Nos étudiants formés", lien: "#" },
+        { name: "Tarifs", lien: "/tarifs" },
+        { name: "Nous Rejoindre", lien: "#" },
+    ];
+    return (
+        <div className="bg-[#01051e] w-[100vw]  text-white">
+            <div className="fixed w-full left-0 right-0 container top-0 z-50 bg-[#010417]  ">
+                {/* <Navbar /> */}
+                <header>
+                    <nav className=" border-gray-200 px-4 lg:px-6 py-2.5 ">
+                        <div className="flex flex-wrap justify-between items-end mx-auto md:max-w-screen-xl">
+                            <a href="/" className="flex items-center">
+                                <img
+                                    src="/images/logo.png"
+                                    className="mr-3 h-8 sm:h-9"
+                                    alt="cobalt Logo"
+                                />
+                                <span className="self-center text-xl font-semibold whitespace-nowrap text-white">
+                                    COBALT INVEST LTD
+                                </span>
+                            </a>
+                            <div className="flex items-center lg:order-2">
+                                <a
+                                    href="/dashboard"
+                                    className="text-white max-lg:hidden md:mr-24 bg-[#7043EC] hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:bg-primary-600 hover:bg-white hover:text-gray-800  dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800"
+                                >
+                                    S&apos;inscrire
+                                </a>
+                                <div
+                                    className="hidden max-lg:block cursor-pointer"
+                                    onClick={() => {
+                                        setIsMenuOpen(!isMenuOpen);
+                                    }}
+                                >
+                                    {isMenuOpen && (
+                                        <div>
+                                            <nav className="fixed text-white top-0 right-0 left-0 bottom-0 lg:bottom-auto bg-[#01051e]  ">
+                                                <div
+                                                    className="hidden max-lg:block fixed right-0  px-8 py-4 cursor-pointer"
+                                                    onClick={() => {
+                                                        setIsMenuOpen(
+                                                            !isMenuOpen
+                                                        );
+                                                    }}
+                                                >
+                                                    <AiOutlineClose className="text-4xl" />
+                                                </div>
+                                                <ul className=" lg:hidden w-full flex flex-col items-center justify-center h-full ">
+                                                    {navigation.map((item) => (
+                                                        <li key={item.name}>
+                                                            <a
+                                                                href={item.lien}
+                                                                className="font-montserrat leading-normal text-lg text-slate-gray"
+                                                            >
+                                                                {item.name}
+                                                            </a>
+                                                        </li>
+                                                    ))}
+                                                </ul>
+                                            </nav>
+                                        </div>
+                                    )}
+                                    <RxHamburgerMenu className="text-4xl" />
+                                </div>
+                            </div>
+
+                            <div
+                                className="hidden justify-between items-center w-full lg:flex lg:w-auto lg:order-1"
+                                id="mobile-menu-2"
+                            >
+                                <div className="flex gap-16">
+                                    {navigation.map((item) => {
+                                        const isSelected =
+                                            item.name === selectedLink;
+                                        return (
+                                            <a
+                                                key={item.name}
+                                                href={item.lien}
+                                                className={`relative text-sm leading-6 no-underline ${
+                                                    isSelected
+                                                        ? "font-semibold text-white"
+                                                        : "text-gray-500"
+                                                }`}
+                                                onClick={() =>
+                                                    setSelectedLink(item.name)
+                                                }
+                                            >
+                                                {item.name}
+                                                {isSelected ? (
+                                                    <motion.div className="absolute -bottom-[1px] left-0 right-0 h-[1px]">
+                                                        <svg
+                                                            width="37"
+                                                            height="8"
+                                                            viewBox="0 0 37 8"
+                                                            fill="none"
+                                                        >
+                                                            <motion.path
+                                                                d="M1 5.39971C7.48565 -1.08593 6.44837 -0.12827 8.33643 6.47992C8.34809 6.52075 11.6019 2.72875 12.3422 2.33912C13.8991 1.5197 16.6594 2.96924 18.3734 2.96924C21.665 2.96924 23.1972 1.69759 26.745 2.78921C29.7551 3.71539 32.6954 3.7794 35.8368 3.7794"
+                                                                stroke="#7043EC"
+                                                                strokeWidth="2"
+                                                                strokeLinecap="round"
+                                                                strokeLinejoin="round"
+                                                                initial={{
+                                                                    strokeDasharray: 84.20591735839844,
+                                                                    strokeDashoffset: 84.20591735839844,
+                                                                }}
+                                                                animate={{
+                                                                    strokeDashoffset: 0,
+                                                                }}
+                                                                transition={{
+                                                                    duration: 1,
+                                                                }}
+                                                            />
+                                                        </svg>
+                                                    </motion.div>
+                                                ) : null}
+                                            </a>
+                                        );
+                                    })}
+                                </div>
+                            </div>
+                        </div>
+                    </nav>
+                </header>
+
+                {/* fin header */}
+            </div>
+            {/* pricing */}
+            <section className="py-6 dark:bg-gray-100 mt-6 dark:text-gray-800">
+                <div className="container p-4 mx-auto sm:p-10">
+                    <div className="mb-12 space-y-4 text-center">
+                        <h1 className="text-4xl font-semibold leading-tight">
+                            Nos pack
+                        </h1>
+                        
+                    </div>
+                    <div className="flex md:flex-row flex-col   w-full items-center justify-center  gap-6  ">
+                        <div className="flex flex-col overflow-hidden border-2 rounded-md dark:border-gray-300">
+                            <div className="flex flex-col items-center justify-center px-2 py-8 space-y-4 dark:bg-gray-100">
+                                <p className="text-2xl font-medium">Basic</p>
+                                <p className="text-4xl font-bold">
+                                    33 000 XOF
+                                    <span className="text-xl dark:text-gray-600">
+                                        /mois
+                                    </span>
+                                </p>
+                            </div>
+                            <div className="flex flex-col items-center justify-center px-2 py-8 dark:bg-gray-50">
+                                <ul className="self-stretch flex-1 space-y-2">
+                                    <li className="flex justify-center space-x-2">
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            fill="none"
+                                            viewBox="0 0 24 24"
+                                            stroke="currentColor"
+                                            className="w-6 h-6 dark:text-violet-600"
+                                        >
+                                            <path
+                                                strokeLinecap="round"
+                                                strokeLinejoin="round"
+                                                strokeWidth="2"
+                                                d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
+                                            ></path>
+                                        </svg>
+                                        <span>
+                                            Accès complet au site web avec tous
+                                            nos cours en ligne.
+                                        </span>
+                                    </li>
+                                    <li className="flex justify-center space-x-2">
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            fill="none"
+                                            viewBox="0 0 24 24"
+                                            stroke="currentColor"
+                                            className="w-6 h-6 dark:text-violet-600"
+                                        >
+                                            <path
+                                                strokeLinecap="round"
+                                                strokeLinejoin="round"
+                                                strokeWidth="2"
+                                                d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
+                                            ></path>
+                                        </svg>
+                                        <span>
+                                            Participation au Discord exclusif
+                                            avec l&apos;ensemble de notre
+                                            communauté.
+                                        </span>
+                                    </li>
+                                    <li className="flex justify-center space-x-2">
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            fill="none"
+                                            viewBox="0 0 24 24"
+                                            stroke="currentColor"
+                                            className="w-6 h-6 dark:text-violet-600"
+                                        >
+                                            <path
+                                                strokeLinecap="round"
+                                                strokeLinejoin="round"
+                                                strokeWidth="2"
+                                                d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
+                                            ></path>
+                                        </svg>
+                                        <span>
+                                            Récapitulatif hebdomadaire de nos
+                                            activités, disponible une fois par
+                                            semaine.
+                                        </span>
+                                    </li>
+                                    <li className="flex justify-center space-x-2">
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            fill="none"
+                                            viewBox="0 0 24 24"
+                                            stroke="currentColor"
+                                            className="w-6 h-6 dark:text-violet-600"
+                                        >
+                                            <path
+                                                strokeLinecap="round"
+                                                strokeLinejoin="round"
+                                                strokeWidth="2"
+                                                d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
+                                            ></path>
+                                        </svg>
+                                        <span>
+                                            Examen obligatoire pour la
+                                            certification de vos compétences.
+                                        </span>
+                                    </li>
+                                    <li className="flex justify-center space-x-2">
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            fill="none"
+                                            viewBox="0 0 24 24"
+                                            stroke="currentColor"
+                                            className="w-6 h-6 dark:text-violet-600"
+                                        >
+                                            <path
+                                                strokeLinecap="round"
+                                                strokeLinejoin="round"
+                                                strokeWidth="2"
+                                                d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
+                                            ></path>
+                                        </svg>
+                                        <span>
+                                            Partage d&apos;analyses de manière
+                                            récurrente dans notre Discord.
+                                        </span>
+                                    </li>
+                                    <li className="flex justify-center space-x-2">
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            fill="none"
+                                            viewBox="0 0 24 24"
+                                            stroke="currentColor"
+                                            className="w-6 h-6 dark:text-violet-600"
+                                        >
+                                            <path
+                                                strokeLinecap="round"
+                                                strokeLinejoin="round"
+                                                strokeWidth="2"
+                                                d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
+                                            ></path>
+                                        </svg>
+                                        <span>
+                                            Réponses à toutes vos préoccupations
+                                            et questions dans le Discord.
+                                        </span>
+                                    </li>
+                                    <li className="flex justify-center space-x-2">
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            fill="none"
+                                            viewBox="0 0 24 24"
+                                            stroke="currentColor"
+                                            className="w-6 h-6 dark:text-violet-600"
+                                        >
+                                            <path
+                                                strokeLinecap="round"
+                                                strokeLinejoin="round"
+                                                strokeWidth="2"
+                                                d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
+                                            ></path>
+                                        </svg>
+                                        <span>
+                                            Examen de fin de formation
+                                            obligatoire pour obtenir le
+                                            financement de COBALT INVEST LTD
+                                        </span>
+                                    </li>
+                                    <li className="flex justify-center space-x-2">
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            fill="none"
+                                            viewBox="0 0 24 24"
+                                            stroke="currentColor"
+                                            className="w-6 h-6 dark:text-violet-600"
+                                        >
+                                            <path
+                                                strokeLinecap="round"
+                                                strokeLinejoin="round"
+                                                strokeWidth="2"
+                                                d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
+                                            ></path>
+                                        </svg>
+                                        <span>
+                                            Opportunité de participer à nos
+                                            examens de financement pour devenir
+                                            trader chez Cobalt.
+                                        </span>
+                                    </li>
+                                </ul>
+                                <button className="px-8 py-3 mt-6 text-lg font-semibold rounded sm:mt-12 bg-violet-600 dark:text-gray-50">
+                                    S&apos;inscrire
+                                </button>
+                            </div>
+                        </div>
+
+                        <div className="flex flex-col items-start overflow-hidden border-2 rounded-md dark:border-gray-300">
+                            <div className="flex flex-col items-center justify-center px-2 py-8 space-y-4 dark:bg-gray-100">
+                                <p className="text-2xl font-medium">Premium</p>
+                                <p className="text-4xl font-bold">
+                                    100 000 XOF
+                                    <span className="text-xl dark:text-gray-600">
+                                        /mois
+                                    </span>
+                                </p>
+                            </div>
+                            <div className="flex flex-col items-center justify-center px-2 py-8 dark:bg-gray-50">
+                                <ul className="self-stretch flex-1 space-y-2">
+                                    <li className="flex justify-center space-x-2">
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            fill="none"
+                                            viewBox="0 0 24 24"
+                                            stroke="currentColor"
+                                            className="w-6 h-6 dark:text-violet-600"
+                                        >
+                                            <path
+                                                strokeLinecap="round"
+                                                strokeLinejoin="round"
+                                                strokeWidth="2"
+                                                d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
+                                            ></path>
+                                        </svg>
+                                        <span>
+                                            Accès complet au site web avec tous
+                                            nos cours en ligne.
+                                        </span>
+                                    </li>
+                                    <li className="flex justify-center space-x-2">
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            fill="none"
+                                            viewBox="0 0 24 24"
+                                            stroke="currentColor"
+                                            className="w-6 h-6 dark:text-violet-600"
+                                        >
+                                            <path
+                                                strokeLinecap="round"
+                                                strokeLinejoin="round"
+                                                strokeWidth="2"
+                                                d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
+                                            ></path>
+                                        </svg>
+                                        <span>
+                                            Participation au Discord exclusif
+                                            avec l&apos;ensemble de notre
+                                            communauté.
+                                        </span>
+                                    </li>
+                                    <li className="flex justify-center space-x-2">
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            fill="none"
+                                            viewBox="0 0 24 24"
+                                            stroke="currentColor"
+                                            className="w-6 h-6 dark:text-violet-600"
+                                        >
+                                            <path
+                                                strokeLinecap="round"
+                                                strokeLinejoin="round"
+                                                strokeWidth="2"
+                                                d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
+                                            ></path>
+                                        </svg>
+                                        <span>
+                                            Récapitulatif hebdomadaire de nos
+                                            activités, disponible une fois par
+                                            semaine.
+                                        </span>
+                                    </li>
+                                    <li className="flex justify-center space-x-2">
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            fill="none"
+                                            viewBox="0 0 24 24"
+                                            stroke="currentColor"
+                                            className="w-6 h-6 dark:text-violet-600"
+                                        >
+                                            <path
+                                                strokeLinecap="round"
+                                                strokeLinejoin="round"
+                                                strokeWidth="2"
+                                                d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
+                                            ></path>
+                                        </svg>
+                                        <span>
+                                            Accès aux cours en présentiel dans
+                                            nos bureaux ou via un appel Zoom,
+                                            une fois par semaine.
+                                        </span>
+                                    </li>
+                                    <li className="flex justify-center space-x-2">
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            fill="none"
+                                            viewBox="0 0 24 24"
+                                            stroke="currentColor"
+                                            className="w-6 h-6 dark:text-violet-600"
+                                        >
+                                            <path
+                                                strokeLinecap="round"
+                                                strokeLinejoin="round"
+                                                strokeWidth="2"
+                                                d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
+                                            ></path>
+                                        </svg>
+                                        <span>
+                                            Examen obligatoire pour la
+                                            certification de vos compétences.
+                                        </span>
+                                    </li>
+                                    <li className="flex justify-center space-x-2">
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            fill="none"
+                                            viewBox="0 0 24 24"
+                                            stroke="currentColor"
+                                            className="w-6 h-6 dark:text-violet-600"
+                                        >
+                                            <path
+                                                strokeLinecap="round"
+                                                strokeLinejoin="round"
+                                                strokeWidth="2"
+                                                d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
+                                            ></path>
+                                        </svg>
+                                        <span>
+                                            Récapitulatif hebdomadaire de nos
+                                            activités, disponible une fois par
+                                            semaine.
+                                        </span>
+                                    </li>
+                                    <li className="flex justify-center space-x-2">
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            fill="none"
+                                            viewBox="0 0 24 24"
+                                            stroke="currentColor"
+                                            className="w-6 h-6 dark:text-violet-600"
+                                        >
+                                            <path
+                                                strokeLinecap="round"
+                                                strokeLinejoin="round"
+                                                strokeWidth="2"
+                                                d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
+                                            ></path>
+                                        </svg>
+                                        <span>
+                                            Partage d&apos;analyses de manière
+                                            récurrente dans notre Discord.
+                                        </span>
+                                    </li>
+                                    <li className="flex justify-center space-x-2">
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            fill="none"
+                                            viewBox="0 0 24 24"
+                                            stroke="currentColor"
+                                            className="w-6 h-6 dark:text-violet-600"
+                                        >
+                                            <path
+                                                strokeLinecap="round"
+                                                strokeLinejoin="round"
+                                                strokeWidth="2"
+                                                d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
+                                            ></path>
+                                        </svg>
+                                        <span>
+                                            Réponses à toutes vos préoccupations
+                                            et questions dans le Discord, avec
+                                            un support personnalisé de nos
+                                            traders.
+                                        </span>
+                                    </li>
+                                    <li className="flex justify-center space-x-2">
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            fill="none"
+                                            viewBox="0 0 24 24"
+                                            stroke="currentColor"
+                                            className="w-6 h-6 dark:text-violet-600"
+                                        >
+                                            <path
+                                                strokeLinecap="round"
+                                                strokeLinejoin="round"
+                                                strokeWidth="2"
+                                                d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
+                                            ></path>
+                                        </svg>
+                                        <span>
+                                            Examen de fin de formation
+                                            obligatoire pour obtenir le
+                                            financement de COBALT INVEST LTD
+                                        </span>
+                                    </li>
+                                    <li className="flex justify-center space-x-2">
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            fill="none"
+                                            viewBox="0 0 24 24"
+                                            stroke="currentColor"
+                                            className="w-6 h-6 dark:text-violet-600"
+                                        >
+                                            <path
+                                                strokeLinecap="round"
+                                                strokeLinejoin="round"
+                                                strokeWidth="2"
+                                                d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
+                                            ></path>
+                                        </svg>
+                                        <span>
+                                    Opportunité de participer à nos
+                                            examens de financement pour devenir
+                                            trader chez Cobalt.
+                                        </span>
+                                    </li>
+                                </ul>
+                                <button className="px-8 py-3 mt-6 text-lg font-semibold rounded sm:mt-12 bg-violet-600 dark:text-gray-50">
+                                    S&apos;inscrire
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            {/* footer */}
+            <div className="rounded-t-3xl ">
+                <section className="mx-auto max-w-[1200px] dark:text-white">
+                    <div className=" grid py-5 md:grid-cols-3">
+                        <div className=" px-4 py-8 ">
+                            <h1 className="mb-3 text-justify text-xl font-bold sm:text-left sm:text-3xl">
+                                <a href="/dashboard" className="">
+                                    COBALT INVEST LTD
+                                </a>
+                            </h1>
+                            <p className="">
+                                Lorem ipsum dolor sit amet consectetur. Lorem
+                                ipsum dolor sit amet consectetur adipisicing
+                                elit. Possimus, voluptate.{" "}
+                            </p>
+                            <br />
+                            <div className="flex items-center gap-3">
+                                <FaLocationArrow />
+                                <p>Abidjan, zone 4</p>
+                            </div>
+                            <div className="mt-3 flex items-center gap-3">
+                                <FaMobileAlt />
+                                <p>+225 123456789</p>
+                            </div>
+                            {/* Social Handle */}
+                        </div>
+                        <div className="col-span-2 grid grid-cols-2 sm:grid-cols-3 md:pl-10 ">
+                            <div className="">
+                                <div className="px-4 py-8 ">
+                                    <h1 className="mb-3 text-justify text-xl font-bold sm:text-left sm:text-xl">
+                                        Liens utiles
+                                    </h1>
+                                    <ul className={`flex flex-col gap-3`}>
+                                        <li className="cursor-pointer transition-all duration-300 hover:translate-x-[2px]">
+                                            Acceuil
+                                        </li>
+                                        <li className="cursor-pointer transition-all duration-300 hover:translate-x-[2px]">
+                                            À propos
+                                        </li>
+                                        <li className="cursor-pointer transition-all duration-300 hover:translate-x-[2px]">
+                                            Contacte
+                                        </li>
+                                        <li className="cursor-pointer transition-all duration-300 hover:translate-x-[2px]">
+                                            S&apos;inscrire
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div className="">
+                                <div className="px-4 py-8 ">
+                                    <h1 className="mb-3 text-justify text-xl font-bold sm:text-left sm:text-xl">
+                                        Links
+                                    </h1>
+                                    <ul className="flex flex-col gap-3">
+                                        <li className="cursor-pointer transition-all duration-300 hover:translate-x-[2px]">
+                                            Privacy Policy
+                                        </li>
+                                        <li className="cursor-pointer transition-all duration-300 hover:translate-x-[2px]">
+                                            Services
+                                        </li>
+                                        <li className="cursor-pointer transition-all duration-300 hover:translate-x-[2px]">
+                                            About us
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div className="">
+                                <div className="px-4 py-8 ">
+                                    <h1 className="mb-3 text-justify text-xl font-bold sm:text-left sm:text-xl">
+                                        Reseau Sociaux
+                                    </h1>
+                                    <div className="flex flex-col gap-3">
+                                        <h1>Subscribe to our newsletter</h1>
+                                        <input
+                                            className="rounded-full px-3 py-1 text-black focus:border-sky-500 focus:outline-none focus:ring-2 focus:ring-sky-500 "
+                                            type="text"
+                                            placeholder="Email"
+                                        />
+                                        <div className="mt-6 flex items-center gap-3">
+                                            <a
+                                                href="#"
+                                                className="duration-200 hover:scale-105"
+                                            >
+                                                <FaInstagram className="text-3xl" />
+                                            </a>
+                                            <a
+                                                href="#"
+                                                className="duration-200 hover:scale-105"
+                                            >
+                                                <FaFacebook className="text-3xl" />
+                                            </a>
+                                            <a
+                                                href="#"
+                                                className="duration-200 hover:scale-105"
+                                            >
+                                                <FaLinkedin className="text-3xl" />
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div className="border-t-2 border-gray-300/50 py-6 text-center">
+                            @copyright 2024 COBALT INVEST LTD
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    );
+}
+
+export default tarifPage;

@@ -6,81 +6,46 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export const retourClient = [
-  { 
-    quote: "Excellent service, je suis très satisfait !",
-    name: "Jean Dupont",
-    title: "Directeur des ventes"
-  },
-  {
-    quote: "Très professionnel et réactif. Je recommande vivement !",
-    name: "Sophie Martin",
-    title: "Responsable des achats"
-  },
-  {
-    quote: "Une équipe très compétente et à l'écoute de mes besoins.",
-    name: "Pierre Lambert",
-    title: "Chef de projet"
-  },
-  {
-    quote: "Service de qualité, je suis pleinement satisfait.",
-    name: "Marie Leclerc",
-    title: "Directrice financière"
-  },
-  {
-    quote: "Des résultats au-delà de mes attentes, merci !",
-    name: "François Dubois",
-    title: "Responsable marketing"
-  },
-  {
-    quote: "Une expérience client exceptionnelle, bravo !",
-    name: "Isabelle Lefèvre",
-    title: "Directrice des ressources humaines"
-  },
-  {
-    quote: "Je recommande vivement, une équipe professionnelle et efficace.",
-    name: "Lucie Bernard",
-    title: "Responsable communication"
-  },
-  {
-    quote: "Service impeccable, je suis très satisfait de leur prestation.",
-    name: "Antoine Roux",
-    title: "Chef de service"
-  },
-  {
-    quote: "Des solutions innovantes et une équipe à l'écoute.",
-    name: "Julie Martin",
-    title: "Directrice de production"
-  },
-  {
-    quote: "Un service client exceptionnel, je suis ravi !",
-    name: "Thomas Lefevre",
-    title: "Chef de projet informatique"
-  },
-  {
-    quote: "Très professionnel, je recommande les yeux fermés.",
-    name: "Émilie Durand",
-    title: "Responsable qualité"
-  },
-  {
-    quote: "Un support client très réactif et efficace.",
-    name: "Nicolas Moreau",
-    title: "Responsable logistique"
-  },
-  {
-    quote: "Des conseils précieux et un suivi irréprochable.",
-    name: "Laure Dubois",
-    title: "Directrice des opérations"
-  },
-  {
-    quote: "Je suis pleinement satisfait de leur accompagnement.",
-    name: "Vincent Leroy",
-    title: "Responsable commercial"
-  },
-  {
-    quote: "Une équipe compétente et à l'écoute, merci !",
-    name: "Camille Martin",
-    title: "Chef de projet digital"
-  }
+    {
+        quote: "Grâce à COBALT INVEST LTD, j'ai appris à trader de manière professionnelle. Les formations sont claires, concises et m'ont vraiment aidé à améliorer mes compétences en trading.",
+        name: "SORO ANTOINE",
+    },
+    {
+        quote: "Je recommande vivement les formations de COBALT INVEST LTD. Les coachs sont très compétents et disponibles pour répondre à toutes nos questions. J'ai vraiment progressé depuis que j'ai suivi leurs cours.",
+        name: "HASSAN ZORKOT",
+    },
+    {
+        quote: "COBALT INVEST LTD m'a permis de comprendre les subtilités du trading. Les méthodes d'enseignement sont très interactives et adaptées à tous les niveaux. Je suis très satisfait des résultats que j'ai obtenus.",
+        name: "SALIOU AKOABI",
+    },
+    {
+        quote: "Les formations de COBALT INVEST LTD m'ont donné une vision claire du marché financier. J'ai pu appliquer les stratégies apprises avec succès et réaliser des profits intéressants.",
+        name: "MAHBOUBA ADAM",
+    },
+    {
+        quote: "Je suis impressionné par la qualité des cours proposés par COBALT INVEST LTD. Les outils pédagogiques sont excellents et j'ai pu rapidement mettre en pratique ce que j'ai appris.",
+        name: "MAIGA ALIASSOU",
+    },
+    {
+        quote: "COBALT INVEST LTD m'a donné les connaissances et la confiance nécessaires pour devenir un trader efficace. Les formations sont structurées de manière à ce que chacun puisse progresser à son rythme.",
+        name: "ADEDOYE SANOUSSI M.",
+    },
+    {
+        quote: "Je suis très reconnaissant envers COBALT INVEST LTD pour m'avoir initié au monde du trading. Les formateurs sont passionnés et cela se ressent dans la qualité des enseignements.",
+        name: "HUSSEIN CHEHAB",
+    },
+    {
+        quote: "Les formations de COBALT INVEST LTD sont complètes et accessibles. J'ai pu acquérir des compétences solides qui me permettent de prendre des décisions éclairées sur les marchés financiers.",
+        name: "ALAIN ASSOUAN",
+    },
+    {
+        quote: "COBALT INVEST LTD m'a aidé à développer une stratégie de trading efficace. Les sessions de coaching personnalisé m'ont permis de corriger mes erreurs et d'améliorer mes performances.",
+        name: "MAIGA HABIB",
+    },
+    {
+        quote: "Je recommande chaudement COBALT INVEST LTD à tous ceux qui souhaitent se lancer dans le trading. Les formations sont enrichissantes et le suivi après la formation est excellent.",
+        name: "KOUADIO FRANCK",
+    },
 ];
 
 

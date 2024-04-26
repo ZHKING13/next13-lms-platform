@@ -27,7 +27,7 @@ export const CoursesList = ({
     <div>
       <div className="w-full">
         {/* module */}
-        <Accordion type="single" collapsible>
+        {/* <Accordion type="single" collapsible>
           {
             items.map((item, index) => (
               <AccordionItem key={index} value={`item-${index}`}>
@@ -40,8 +40,8 @@ export const CoursesList = ({
               </AccordionItem>
             ))
           }
-        </Accordion>
-        {/* {items.map((item) => (
+        </Accordion> */}
+        {items.map((item) => (
           <CourseCard
             key={item.id}
             id={item.id}
@@ -52,7 +52,7 @@ export const CoursesList = ({
             progress={item.progress}
             category={item?.category?.name!}
           />
-        ))} */}
+        ))}
       </div>
       {items.length === 0 && (
         <div className="text-center text-sm text-muted-foreground mt-10">

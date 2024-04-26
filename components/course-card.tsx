@@ -57,11 +57,7 @@ export const CourseCard = ({
               size="sm"
               value={progress}
             />
-          ) : (
-            <p className="text-md md:text-sm font-medium text-slate-700">
-              {formatPrice(price)}
-            </p>
-          )}
+          ) : null}
         </div>
       </div>
     </Link>

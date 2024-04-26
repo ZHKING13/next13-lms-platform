@@ -13,6 +13,7 @@ import {
     DialogHeader,
     DialogTitle,
     DialogTrigger,
+    DialogClose,
 } from "@/components/ui/dialog";
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
@@ -48,8 +49,7 @@ export const CourseCard = ({
                                     fill
                                     className="object-cover "
                                     alt={title}
-                    src={imageUrl}
-                    
+                                    src={imageUrl}
                                 />
                             </div>
                             <div className="flex flex-col pt-2">
@@ -83,9 +83,15 @@ export const CourseCard = ({
                 <DialogContent className="sm:max-w-[525px] text-white p-5">
                     <DialogHeader>
                         <div
-                            className="bg-[imageUrl] w-full aspect-video bg-no-repeat md:bg-cover object-contain bg-cover bg-center"
+                            className="bg-[imageUrl] flex justify-end w-full aspect-video bg-no-repeat md:bg-cover object-contain bg-cover bg-center"
                             style={{ backgroundImage: `url(${imageUrl})` }}
-                        ></div>
+                        >
+                            <DialogClose asChild>
+                                <Button type="button" variant="secondary">
+                                    Fermer
+                                </Button>
+                            </DialogClose>
+                        </div>
                     </DialogHeader>
                     <div className="grid gap-4 py-4 text-white">
                         <div className="">

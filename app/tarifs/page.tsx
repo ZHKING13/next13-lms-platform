@@ -12,6 +12,7 @@ import {
     FaMobileAlt,
 } from "react-icons/fa";
 import { formatPrice } from "@/lib/format";
+import { Footer } from "@/components/footer";
 
 function TarifPage() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -225,18 +226,12 @@ function TarifPage() {
                                                                 : "/Année"}
                                                         </span>
                                                     </div>
-                                                    <div className="text-sm text-slate-500 mb-5">
+                                                    {/* <div className="text-sm text-slate-500 mb-5">
                                                         There are many
                                                         variations available,
                                                         but the majority have
                                                         suffered.
-                                                    </div>
-                                                    <a
-                                                        className="w-full inline-flex justify-center whitespace-nowrap rounded-lg bg-indigo-500 px-3.5 py-2.5 text-sm font-medium text-white shadow-sm shadow-indigo-950/10 hover:bg-indigo-600 focus-visible:outline-none focus-visible:ring focus-visible:ring-indigo-300 dark:focus-visible:ring-slate-600 transition-colors duration-150"
-                                                        href="#0"
-                                                    >
-                                                        Rejoindre
-                                                    </a>
+                                                    </div> */}
                                                 </div>
                                                 <div className="text-slate-200 font-medium mb-3">
                                                     Contenu du pack:
@@ -269,6 +264,12 @@ function TarifPage() {
                                                         );
                                                     })}
                                                 </ul>
+                                                <a
+                                                    className="w-full mt-6 inline-flex justify-center whitespace-nowrap rounded-lg bg-indigo-500 px-3.5 py-2.5 text-sm font-medium text-white shadow-sm shadow-indigo-950/10 hover:bg-indigo-600 focus-visible:outline-none focus-visible:ring focus-visible:ring-indigo-300 dark:focus-visible:ring-slate-600 transition-colors duration-150"
+                                                    href="#0"
+                                                >
+                                                    Rejoindre
+                                                </a>
                                             </div>
                                         </div>
                                     );
@@ -279,115 +280,7 @@ function TarifPage() {
                 </main>
             </div>
             {/* footer */}
-            <div className="rounded-t-3xl ">
-                <section className="mx-auto max-w-[1200px] dark:text-white">
-                    <div className=" grid py-5 md:grid-cols-3">
-                        <div className=" px-4 py-8 ">
-                            <h1 className="mb-3 text-justify text-xl font-bold sm:text-left sm:text-3xl">
-                                <a href="/dashboard" className="">
-                                    COBALT INVEST LTD
-                                </a>
-                            </h1>
-                            <p className="">
-                                Lorem ipsum dolor sit amet consectetur. Lorem
-                                ipsum dolor sit amet consectetur adipisicing
-                                elit. Possimus, voluptate.{" "}
-                            </p>
-                            <br />
-                            <div className="flex items-center gap-3">
-                                <FaLocationArrow />
-                                <p>Abidjan, zone 4</p>
-                            </div>
-                            <div className="mt-3 flex items-center gap-3">
-                                <FaMobileAlt />
-                                <p>+225 123456789</p>
-                            </div>
-                            {/* Social Handle */}
-                        </div>
-                        <div className="col-span-2 grid grid-cols-2 sm:grid-cols-3 md:pl-10 ">
-                            <div className="">
-                                <div className="px-4 py-8 ">
-                                    <h1 className="mb-3 text-justify text-xl font-bold sm:text-left sm:text-xl">
-                                        Liens utiles
-                                    </h1>
-                                    <ul className={`flex flex-col gap-3`}>
-                                        <li className="cursor-pointer transition-all duration-300 hover:translate-x-[2px]">
-                                            Acceuil
-                                        </li>
-                                        <li className="cursor-pointer transition-all duration-300 hover:translate-x-[2px]">
-                                            À propos
-                                        </li>
-                                        <li className="cursor-pointer transition-all duration-300 hover:translate-x-[2px]">
-                                            Contacte
-                                        </li>
-                                        <li className="cursor-pointer transition-all duration-300 hover:translate-x-[2px]">
-                                            S&apos;inscrire
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div className="">
-                                <div className="px-4 py-8 ">
-                                    <h1 className="mb-3 text-justify text-xl font-bold sm:text-left sm:text-xl">
-                                        Links
-                                    </h1>
-                                    <ul className="flex flex-col gap-3">
-                                        <li className="cursor-pointer transition-all duration-300 hover:translate-x-[2px]">
-                                            Privacy Policy
-                                        </li>
-                                        <li className="cursor-pointer transition-all duration-300 hover:translate-x-[2px]">
-                                            Services
-                                        </li>
-                                        <li className="cursor-pointer transition-all duration-300 hover:translate-x-[2px]">
-                                            About us
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div className="">
-                                <div className="px-4 py-8 ">
-                                    <h1 className="mb-3 text-justify text-xl font-bold sm:text-left sm:text-xl">
-                                        Reseau Sociaux
-                                    </h1>
-                                    <div className="flex flex-col gap-3">
-                                        <h1>Subscribe to our newsletter</h1>
-                                        <input
-                                            className="rounded-full px-3 py-1 text-black focus:border-sky-500 focus:outline-none focus:ring-2 focus:ring-sky-500 "
-                                            type="text"
-                                            placeholder="Email"
-                                        />
-                                        <div className="mt-6 flex items-center gap-3">
-                                            <a
-                                                href="#"
-                                                className="duration-200 hover:scale-105"
-                                            >
-                                                <FaInstagram className="text-3xl" />
-                                            </a>
-                                            <a
-                                                href="#"
-                                                className="duration-200 hover:scale-105"
-                                            >
-                                                <FaFacebook className="text-3xl" />
-                                            </a>
-                                            <a
-                                                href="#"
-                                                className="duration-200 hover:scale-105"
-                                            >
-                                                <FaLinkedin className="text-3xl" />
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <div className="border-t-2 border-gray-300/50 py-6 text-center">
-                            @copyright 2024 COBALT INVEST LTD
-                        </div>
-                    </div>
-                </section>
-            </div>
+           <Footer/>
         </div>
     );
 }

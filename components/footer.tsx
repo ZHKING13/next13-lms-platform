@@ -23,7 +23,7 @@ export const Footer = () => {
                         </h1>
                         <p className="">
                             Devenez membre de notre cercle privé et obtenez un
-                            accompagnement personnalisé ainsi qu' un
+                            accompagnement personnalisé ainsi qu&apos;un
                             développement de carrière au sein de COBALT INVEST
                             LTD
                         </p>

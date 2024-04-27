@@ -12,6 +12,7 @@ import {
     DialogTitle,
     DialogTrigger,
 } from "@/components/ui/dialog";
+import toast from "react-hot-toast";
 import {
     Form,
     FormControl,
@@ -65,7 +66,7 @@ const Navbar = () => {
 
   async function onSubmit(data: z.infer<typeof FormSchema>) {
       try {
-          const res = await fetch("/send", {
+          const res = await fetch("api/send", {
               method: "POST",
               headers: {
                   "Content-Type": "application/json", // Corrected Content-Type header
@@ -73,21 +74,24 @@ const Navbar = () => {
               body: JSON.stringify(data),
           });
           if (res.ok) {
-              alert("Votre formulaire a été soumis avec succès !");
+              toast.success("Votre demande a été soumis avec succès !");
+             
           } else {
               console.log(res)
-              alert(
-                  "Une erreur s'est produite lors de la soumission du formulaire."+ res
+              toast.error(
+                  "Une erreur s'est produite lors de la soumission du formulaire."
               );
+              
           }
       } catch (error) {
+          toast.error(
+              "Une erreur s'est produite lors de la soumission du formulaire."
+          );
           console.error(
               "Une erreur s'est produite lors de la soumission du formulaire :",
               error
           );
-          alert(
-              "Une erreur s'est produite lors de la soumission du formulaire."
-          );
+         
       }
   }
 

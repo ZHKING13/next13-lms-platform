@@ -42,7 +42,7 @@ const FormSchema = z.object({
         .string()
         .email({ message: "Veuillez entrer une adresse e-mail valide." })
         .nonempty({ message: "Veuillez entrer une adresse e-mail." }),
-    nom: z.string().nonempty({ message: "Veuillez entrer votre nom." }),
+    name: z.string().nonempty({ message: "Veuillez entrer votre nom." }),
     number: z.string().nonempty({ message: "Veuillez entrer un numéro." }),
     pack: z.string().nonempty({ message: "Veuillez choisir un pack." }),
 });
@@ -145,7 +145,7 @@ const Navbar = () => {
                                               >
                                                   <FormField
                                                       control={form.control}
-                                                      name="nom"
+                                                      name="name"
                                                       render={({ field }) => (
                                                           <FormItem>
                                                               <FormLabel>

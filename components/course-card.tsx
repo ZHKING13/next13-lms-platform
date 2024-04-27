@@ -107,7 +107,7 @@ export const CourseCard = ({
 
                             <div className="overflow-auto ">
                                 {item.map((chapter: any) => {
-                                    return <p>{chapter.title} </p>;
+                                    return <p key={chapter.id}>{chapter.title} </p>;
                                 })}
                                 {/* <AccordionCours coursId={coursId} item={item} /> */}
                             </div>

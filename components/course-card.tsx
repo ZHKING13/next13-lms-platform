@@ -18,6 +18,7 @@ import {
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
 import { Button } from "./ui/button";
+import { AccordionCours } from "./cours-acordion";
 interface CourseCardProps {
     id: string;
     title: string;
@@ -26,6 +27,8 @@ interface CourseCardProps {
     price: number;
     progress: number | null;
     category: string;
+    item: any;
+    coursId: any;
 }
 
 export const CourseCard = ({
@@ -36,14 +39,17 @@ export const CourseCard = ({
     price,
     progress,
     category,
+    item,
+    coursId
 }: CourseCardProps) => {
+    console.log("itemmmmmm:::::" + coursId);
     return (
         // href={`/courses/${id}`}
         <>
             <Dialog>
                 <DialogTrigger asChild>
-                    <div>
-                        <div className="group hover:shadow-sm transition overflow-hidden border rounded-lg p-3 h-full">
+                    <div className="transform hover:scale-340 transition-transform transition">
+                        <div className="group hover:shadow-sm  overflow-hidden border rounded-lg p-3 h-full">
                             <div className="relative w-full aspect-video rounded-md overflow-hidden">
                                 <Image
                                     fill
@@ -80,7 +86,7 @@ export const CourseCard = ({
                         </div>
                     </div>
                 </DialogTrigger>
-                <DialogContent className="sm:max-w-[525px] text-white p-5">
+                <DialogContent className="sm:max-w-[725px] overflow-auto max-h-[100%] scrollbar-hide text-white p-5">
                     <DialogHeader>
                         <div
                             className="bg-[imageUrl] flex justify-end w-full aspect-video bg-no-repeat md:bg-cover object-contain bg-cover bg-center"
@@ -93,23 +99,22 @@ export const CourseCard = ({
                             </DialogClose>
                         </div>
                     </DialogHeader>
-                    <div className="grid gap-4 py-4 text-white">
+                    <div className="  gap-4 py-4 text-white">
                         <div className="">
                             <div className="text-lg md:text-base font-medium group-hover:text-sky-700 transition line-clamp-2">
                                 {title}
                             </div>
-                            <p>
-                                Lorem ipsum dolor sit amet consectetur
-                                adipisicing elit. Sapiente praesentium est
-                                officia! Maxime quia esse reiciendis error
-                                autem, quisquam quae exercitationem doloremque
-                                cupiditate alias quaerat consectetur? Qui, odio
-                                nostrum? Voluptates.
-                            </p>
+
+                            <div className="overflow-auto ">
+                                {item.map((chapter: any) => {
+                                    return <p>{chapter.title} </p>;
+                                })}
+                                {/* <AccordionCours coursId={coursId} item={item} /> */}
+                            </div>
                         </div>
                     </div>
                     <DialogFooter>
-                        <Button type="submit">Save changes</Button>
+                        <Button type="submit">Quiz</Button>
                     </DialogFooter>
                 </DialogContent>
             </Dialog>

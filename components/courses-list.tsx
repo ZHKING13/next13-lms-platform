@@ -50,7 +50,9 @@ export const CoursesList = ({
                       chaptersLength={item.chapters.length}
                       price={item.price!}
                       progress={item.progress}
-                      category={item?.category?.name!}
+                  category={item?.category?.name!}
+                  coursId={item.id}
+                  item={item.chapters}
                   />
               ))}
           </div>

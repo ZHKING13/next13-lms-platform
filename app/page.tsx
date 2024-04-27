@@ -84,7 +84,7 @@ export default function HomePage() {
                 body: JSON.stringify(data),
             });
             if (res.ok) {
-                toast.success("Votre demande a été soumis avec succès !");
+                toast.success("Votre demande a été soumise avec succès !");
                 setOpen(false);
             } else {
                 console.log(res);

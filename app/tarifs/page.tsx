@@ -68,11 +68,11 @@ function TarifPage() {
                                 </div>
                             </div>
 
-                            <div className="max-w-sm mx-auto flex items-start md:flex-row flex-col gap-8 justify-center lg:max-w-none">
+                            <div className="max-w-sm mx-auto flex items-start lg:flex-row flex-col gap-8 justify-center lg:max-w-none">
                                 {/* Pricing tab 1 */}
                                 {packages.map((item) => {
                                     return (
-                                        <div key={item.nom} className="h-full md:w-1/3 w-full">
+                                        <div key={item.nom} className="h-full lg:w-1/3 w-full">
                                             <div className="relative flex flex-col h-full p-6 rounded-2xl bg-slate-900 border border-slate-200 dark:border-slate-900 shadow shadow-slate-950/5">
                                                 <div className="mb-5">
                                                     <div className="text-slate-200 text-lg font-semibold mb-1">

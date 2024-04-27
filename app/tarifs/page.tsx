@@ -1,18 +1,196 @@
 "use client";
 
 import { useState, useEffect } from "react";
-
+import {
+    Dialog,
+    DialogContent,
+    DialogDescription,
+    DialogFooter,
+    DialogHeader,
+    DialogTitle,
+    DialogTrigger,
+} from "@/components/ui/dialog";
+import toast from "react-hot-toast";
+import {
+    Form,
+    FormControl,
+    FormDescription,
+    FormField,
+    FormItem,
+    FormLabel,
+    FormMessage,
+} from "@/components/ui/form";
+import {
+    Select,
+    SelectContent,
+    SelectItem,
+    SelectTrigger,
+    SelectValue,
+} from "@/components/ui/select";
+import { Button } from "@/components/ui/button";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import { Input } from "@/components/ui/input";
 import { formatPrice } from "@/lib/format";
 import { Footer } from "@/components/footer";
 import Navbar from "@/components/Navbar";
 
+const FormSchema = z.object({
+    email: z
+        .string()
+        .email({ message: "Veuillez entrer une adresse e-mail valide." })
+        .nonempty({ message: "Veuillez entrer une adresse e-mail." }),
+    name: z.string().nonempty({ message: "Veuillez entrer votre nom." }),
+    number: z.string().nonempty({ message: "Veuillez entrer un numéro." }),
+    pack: z.string().nonempty({ message: "Veuillez choisir un pack." }),
+});
 function TarifPage() {
     const [isAnnual, setIsAnnual] = useState(false);
-   
+       const [open, setOpen] = useState(false);
+ const form = useForm<z.infer<typeof FormSchema>>({
+     resolver: zodResolver(FormSchema),
+ });
+
+ async function onSubmit(data: z.infer<typeof FormSchema>) {
+     try {
+         console.log(JSON.stringify(data));
+         const res = await fetch("api/send", {
+             method: "POST",
+             headers: {
+                 "Content-Type": "application/json", // Corrected Content-Type header
+             },
+             body: JSON.stringify(data),
+         });
+         if (res.ok) {
+             toast.success("Votre demande a été soumis avec succès !");
+             setOpen(false);
+         } else {
+             console.log(res);
+             toast.error(
+                 "Une erreur s'est produite lors de la soumission du formulaire."
+             );
+         }
+     } catch (error) {
+         toast.error(
+             "Une erreur s'est produite lors de la soumission du formulaire."
+         );
+         console.error(
+             "Une erreur s'est produite lors de la soumission du formulaire :",
+             error
+         );
+     }
+ }
     return (
         <div className="bg-[#01051e] w-[100vw]  text-white">
-            <Navbar/>
+            <Navbar />
             {/* pricing */}
+            <Dialog open={open} onOpenChange={setOpen}>
+                <DialogContent className="text-white overflow-auto max-h-[500px] sm:max-w-[400px]">
+                    <DialogHeader>
+                        <DialogTitle>Demande d&apos;inscription</DialogTitle>
+                        <DialogDescription>
+                            Merci de remplir le formulaire notre équipe support
+                            vous contactera
+                        </DialogDescription>
+                    </DialogHeader>
+                    <div className=" text-white flex items-center gap-4 py-4">
+                        <Form {...form}>
+                            <form
+                                onSubmit={form.handleSubmit(onSubmit)}
+                                className="w-full space-y-6"
+                            >
+                                <FormField
+                                    control={form.control}
+                                    name="name"
+                                    render={({ field }) => (
+                                        <FormItem>
+                                            <FormLabel>Nom et Prenom</FormLabel>
+                                            <Input
+                                                onChange={field.onChange}
+                                                defaultValue={field.value}
+                                                type="text"
+                                                placeholder="Nom et prenom"
+                                            />
+
+                                            <FormMessage />
+                                        </FormItem>
+                                    )}
+                                />
+                                <FormField
+                                    control={form.control}
+                                    name="email"
+                                    render={({ field }) => (
+                                        <FormItem>
+                                            <FormLabel>Email</FormLabel>
+                                            <Input
+                                                onChange={field.onChange}
+                                                defaultValue={field.value}
+                                                type="text"
+                                                placeholder="Email"
+                                            />
+
+                                            <FormMessage />
+                                        </FormItem>
+                                    )}
+                                />
+                                <FormField
+                                    control={form.control}
+                                    name="number"
+                                    render={({ field }) => (
+                                        <FormItem>
+                                            <FormLabel>
+                                                Numero de telephone
+                                            </FormLabel>
+                                            <Input
+                                                onChange={field.onChange}
+                                                defaultValue={field.value}
+                                                type="text"
+                                                placeholder="Numéro de telephone"
+                                            />
+
+                                            <FormMessage />
+                                        </FormItem>
+                                    )}
+                                />
+
+                                <FormField
+                                    control={form.control}
+                                    name="pack"
+                                    render={({ field }) => (
+                                        <FormItem>
+                                            <FormLabel>Pack</FormLabel>
+                                            <Select
+                                                onValueChange={field.onChange}
+                                                defaultValue={field.value}
+                                            >
+                                                <FormControl>
+                                                    <SelectTrigger>
+                                                        <SelectValue placeholder="Choisis ton pack" />
+                                                    </SelectTrigger>
+                                                </FormControl>
+                                                <SelectContent>
+                                                    <SelectItem value="Pack Elite">
+                                                        Pack Elite
+                                                    </SelectItem>
+                                                    <SelectItem value="Pack Premium">
+                                                        Pack Premium
+                                                    </SelectItem>
+                                                </SelectContent>
+                                            </Select>
+
+                                            <FormMessage />
+                                        </FormItem>
+                                    )}
+                                />
+                                <Button className="bg-[#7043EC]" type="submit">
+                                    Envoyer
+                                </Button>
+                            </form>
+                        </Form>
+                    </div>
+                </DialogContent>
+            </Dialog>
             <div className="relative font-inter antialiased">
                 <main className="relative min-h-screen flex flex-col justify-center  overflow-hidden">
                     <div className="w-full max-w-6xl mx-auto px-4 md:px-6 py-24">
@@ -72,7 +250,10 @@ function TarifPage() {
                                 {/* Pricing tab 1 */}
                                 {packages.map((item) => {
                                     return (
-                                        <div key={item.nom} className="h-full lg:w-1/3 w-full">
+                                        <div
+                                            key={item.nom}
+                                            className="h-full lg:w-1/3 w-full"
+                                        >
                                             <div className="relative flex flex-col h-full p-6 rounded-2xl bg-slate-900 border border-slate-200 dark:border-slate-900 shadow shadow-slate-950/5">
                                                 <div className="mb-5">
                                                     <div className="text-slate-200 text-lg font-semibold mb-1">
@@ -129,12 +310,18 @@ function TarifPage() {
                                                         );
                                                     })}
                                                 </ul>
-                                                <a
-                                                    className="w-full mt-6 inline-flex justify-center whitespace-nowrap rounded-lg bg-indigo-500 px-3.5 py-2.5 text-sm font-medium text-white shadow-sm shadow-indigo-950/10 hover:bg-indigo-600 focus-visible:outline-none focus-visible:ring focus-visible:ring-indigo-300 dark:focus-visible:ring-slate-600 transition-colors duration-150"
-                                                    href="#0"
+                                                <div
+                                                    onClick={() =>
+                                                        setOpen(true)
+                                                    }
                                                 >
-                                                    Rejoindre
-                                                </a>
+                                                    <a
+                                                        className="w-full mt-6 inline-flex justify-center whitespace-nowrap rounded-lg bg-indigo-500 px-3.5 py-2.5 text-sm font-medium text-white shadow-sm shadow-indigo-950/10 hover:bg-indigo-600 focus-visible:outline-none focus-visible:ring focus-visible:ring-indigo-300 dark:focus-visible:ring-slate-600 transition-colors duration-150"
+                                                        href="#0"
+                                                    >
+                                                        Rejoindre
+                                                    </a>
+                                                </div>
                                             </div>
                                         </div>
                                     );
@@ -145,7 +332,7 @@ function TarifPage() {
                 </main>
             </div>
             {/* footer */}
-           <Footer/>
+            <Footer />
         </div>
     );
 }

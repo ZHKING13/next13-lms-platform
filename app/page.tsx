@@ -1,7 +1,8 @@
 "use client";
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { Button } from "@/components/ui/button";
+
 import styles from "../lib/style";
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -21,16 +22,86 @@ import { InfiniteMovingCards } from "@/components/ui/infinit-card";
 import { retourClient } from "@/lib/utils";
 import { Footer } from "@/components/footer";
 import Navbar from "@/components/Navbar";
+import {
+    Dialog,
+    DialogContent,
+    DialogDescription,
+    DialogFooter,
+    DialogHeader,
+    DialogTitle,
+    DialogTrigger,
+} from "@/components/ui/dialog";
+import toast from "react-hot-toast";
+import {
+    Form,
+    FormControl,
+    FormDescription,
+    FormField,
+    FormItem,
+    FormLabel,
+    FormMessage,
+} from "@/components/ui/form";
+import {
+    Select,
+    SelectContent,
+    SelectItem,
+    SelectTrigger,
+    SelectValue,
+} from "@/components/ui/select";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+
+import { useRouter } from "next/router";
+const FormSchema = z.object({
+    email: z
+        .string()
+        .email({ message: "Veuillez entrer une adresse e-mail valide." })
+        .nonempty({ message: "Veuillez entrer une adresse e-mail." }),
+    name: z.string().nonempty({ message: "Veuillez entrer votre nom." }),
+    number: z.string().nonempty({ message: "Veuillez entrer un numéro." }),
+    pack: z.string().nonempty({ message: "Veuillez choisir un pack." }),
+});
+
 export default function HomePage() {
-    const [active, setActive] = useState("Home");
+    const [open, setOpen] = useState(false);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [selectedLink, setSelectedLink] = useState("Acceuil");
-    const navigation = [
-        { name: "Acceuil", lien: "/" },
-        { name: "Nos étudiants formés", lien: "#" },
-        { name: "Tarifs", lien: "/tarifs" },
-        { name: "Nous Rejoindre", lien: "#" },
-    ];
+    const form = useForm<z.infer<typeof FormSchema>>({
+        resolver: zodResolver(FormSchema),
+    });
+
+    async function onSubmit(data: z.infer<typeof FormSchema>) {
+        try {
+            console.log(JSON.stringify(data));
+            const res = await fetch("api/send", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json", // Corrected Content-Type header
+                },
+                body: JSON.stringify(data),
+            });
+            if (res.ok) {
+                toast.success("Votre demande a été soumis avec succès !");
+                setOpen(false);
+            } else {
+                console.log(res);
+                toast.error(
+                    "Une erreur s'est produite lors de la soumission du formulaire."
+                );
+            }
+        } catch (error) {
+            toast.error(
+                "Une erreur s'est produite lors de la soumission du formulaire."
+            );
+            console.error(
+                "Une erreur s'est produite lors de la soumission du formulaire :",
+                error
+            );
+        }
+    }
     useEffect(() => {
         AOS.init({
             duration: 600,
@@ -40,8 +111,114 @@ export default function HomePage() {
     }, []);
     return (
         <div className="bg-[#01051e] w-[100vw]  text-white">
-            <Navbar/>
+            <Navbar />
             {/* hero section */}
+            <Dialog open={open} onOpenChange={setOpen}>
+                <DialogContent className="text-white overflow-auto max-h-[500px] sm:max-w-[400px]">
+                    <DialogHeader>
+                        <DialogTitle>Demande d&apos;inscription</DialogTitle>
+                        <DialogDescription>
+                            Merci de remplir le formulaire notre équipe support
+                            vous contactera
+                        </DialogDescription>
+                    </DialogHeader>
+                    <div className=" text-white flex items-center gap-4 py-4">
+                        <Form {...form}>
+                            <form
+                                onSubmit={form.handleSubmit(onSubmit)}
+                                className="w-full space-y-6"
+                            >
+                                <FormField
+                                    control={form.control}
+                                    name="name"
+                                    render={({ field }) => (
+                                        <FormItem>
+                                            <FormLabel>Nom et Prenom</FormLabel>
+                                            <Input
+                                                onChange={field.onChange}
+                                                defaultValue={field.value}
+                                                type="text"
+                                                placeholder="Nom et prenom"
+                                            />
+
+                                            <FormMessage />
+                                        </FormItem>
+                                    )}
+                                />
+                                <FormField
+                                    control={form.control}
+                                    name="email"
+                                    render={({ field }) => (
+                                        <FormItem>
+                                            <FormLabel>Email</FormLabel>
+                                            <Input
+                                                onChange={field.onChange}
+                                                defaultValue={field.value}
+                                                type="text"
+                                                placeholder="Email"
+                                            />
+
+                                            <FormMessage />
+                                        </FormItem>
+                                    )}
+                                />
+                                <FormField
+                                    control={form.control}
+                                    name="number"
+                                    render={({ field }) => (
+                                        <FormItem>
+                                            <FormLabel>
+                                                Numero de telephone
+                                            </FormLabel>
+                                            <Input
+                                                onChange={field.onChange}
+                                                defaultValue={field.value}
+                                                type="text"
+                                                placeholder="Numéro de telephone"
+                                            />
+
+                                            <FormMessage />
+                                        </FormItem>
+                                    )}
+                                />
+
+                                <FormField
+                                    control={form.control}
+                                    name="pack"
+                                    render={({ field }) => (
+                                        <FormItem>
+                                            <FormLabel>Pack</FormLabel>
+                                            <Select
+                                                onValueChange={field.onChange}
+                                                defaultValue={field.value}
+                                            >
+                                                <FormControl>
+                                                    <SelectTrigger>
+                                                        <SelectValue placeholder="Choisis ton pack" />
+                                                    </SelectTrigger>
+                                                </FormControl>
+                                                <SelectContent>
+                                                    <SelectItem value="Pack Elite">
+                                                        Pack Elite
+                                                    </SelectItem>
+                                                    <SelectItem value="Pack Premium">
+                                                        Pack Premium
+                                                    </SelectItem>
+                                                </SelectContent>
+                                            </Select>
+
+                                            <FormMessage />
+                                        </FormItem>
+                                    )}
+                                />
+                                <Button className="bg-[#7043EC]" type="submit">
+                                    Envoyer
+                                </Button>
+                            </form>
+                        </Form>
+                    </div>
+                </DialogContent>
+            </Dialog>
             <div className="flex flex-col  w-full    gap-1  ">
                 <div className="md:mt-2 h-[calc(100vh - 50px)]   w-[100%] flex items-center justify-center">
                     <section className="w-full h-[100%]">
@@ -70,7 +247,7 @@ export default function HomePage() {
                                     }}
                                     className="w-30 h-30 bg-[#7043EC] absolute bottom-10 right-4 overflow-hidden rounded-full  "
                                 ></div>
-                                <h1 className="max-w-xl mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white">
+                                <h1 className="max-w-xl mb-4 text-2xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white">
                                     {" "}
                                     Devenez membre de notre cercle privé
                                 </h1>
@@ -79,10 +256,13 @@ export default function HomePage() {
                                     qu&apos;un développement de carrière au sein
                                     de COBALT INVEST LTD
                                 </p>
-                                <div className="mt-3 self-start">
+                                <div
+                                    onClick={() => setOpen(true)}
+                                    className="mt-3 self-start"
+                                >
                                     <a
-                                        href="/dashboard"
-                                        className="bg-[#7043EC] w-[70%] text-xl  text-white font-semibold py-5 px-6 rounded-lg shadow-md transition duration-200 ease-in-out transform hover:-translate-y-1"
+                                        href="#"
+                                        className="bg-[#7043EC] w-[70%] text-lg  text-white font-semibold py-5 md:px-6 px-2 rounded-lg shadow-md transition duration-200 ease-in-out transform hover:-translate-y-1"
                                     >
                                         Rejoindre COBALT INVEST LTD
                                     </a>
@@ -122,7 +302,7 @@ export default function HomePage() {
                     </div>
                 </section>
                 {/* feature section */}
-                
+
                 {/* CTA1 FIN */}
 
                 <div className="px-8 mt-8">
@@ -193,7 +373,8 @@ export default function HomePage() {
                             >
                                 <button
                                     type="button"
-                                    className="py-5 text-xl font-bold px-6 w-[100%] bg-[#7043EC] focus:ring-offset-indigo-200 text-white  transition ease-in duration-200 text-center shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg "
+                                    onClick={() => setOpen(true)}
+                                    className="py-3 text-lg font-bold px-2 md:px-6 w-[100%] bg-[#7043EC] focus:ring-offset-indigo-200 text-white  transition ease-in duration-200 text-center shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg "
                                 >
                                     Rejoindre COBALT INVEST LTD
                                 </button>
@@ -222,9 +403,9 @@ export default function HomePage() {
                                 maitriser, qu&apos;ils soient complètement
                                 nouveaux dans le trading ou qu&apos;ils soient
                                 des vétérans expérimentés des marchés. Nous
-                                avons conçu  COBLALT pour que tout le
-                                monde puisse s&apos;y plonger et apprendre à
-                                trader exactement de la même manière que nous.
+                                avons conçu COBLALT pour que tout le monde
+                                puisse s&apos;y plonger et apprendre à trader
+                                exactement de la même manière que nous.
                             </p>
                             <p>
                                 Chez COBALT INVEST LTD, personne pretend que le
@@ -305,7 +486,8 @@ export default function HomePage() {
                             >
                                 <button
                                     type="button"
-                                    className="py-5 text-xl font-bold px-6 w-[100%]  bg-[#7043EC] focus:ring-offset-indigo-200 text-white  transition ease-in duration-200 text-center shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg "
+                                    onClick={() => setOpen(true)}
+                                    className="py-3 text-lg font-bold px-2 md:px-6 w-[100%]  bg-[#7043EC] md:text-xl focus:ring-offset-indigo-200 text-white  transition ease-in duration-200 text-center shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg "
                                 >
                                     Rejoindre COBALT INVEST LTD
                                 </button>

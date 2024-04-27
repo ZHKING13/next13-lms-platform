@@ -127,7 +127,7 @@ const Navbar = () => {
                                   <DialogContent className="text-white overflow-auto max-h-[600px] sm:max-w-[425px]">
                                       <DialogHeader>
                                           <DialogTitle>
-                                              Demande d'inscription
+                                              Demande d&apos;inscription
                                           </DialogTitle>
                                           <DialogDescription>
                                               Merci de remplir le formulaire

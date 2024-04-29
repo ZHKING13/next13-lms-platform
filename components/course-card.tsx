@@ -29,6 +29,7 @@ interface CourseCardProps {
     category: string;
     item: any;
     coursId: any;
+    coursDesc?:string;
 }
 
 export const CourseCard = ({
@@ -40,7 +41,8 @@ export const CourseCard = ({
     progress,
     category,
     item,
-    coursId
+    coursId,
+    coursDesc
 }: CourseCardProps) => {
     console.log("itemmmmmm:::::" + coursId);
     return (
@@ -88,26 +90,31 @@ export const CourseCard = ({
                 </DialogTrigger>
                 <DialogContent className="sm:max-w-[725px] overflow-auto max-h-[100%] scrollbar-hide text-white p-5">
                     <DialogHeader>
-                        <div
-                            className="bg-[imageUrl] flex justify-end w-full aspect-video bg-no-repeat md:bg-cover object-contain bg-cover bg-center"
-                            style={{ backgroundImage: `url(${imageUrl})` }}
-                        >
+                        <div className="flex justify-end w-full  ">
                             <DialogClose asChild>
                                 <Button type="button" variant="secondary">
                                     Fermer
                                 </Button>
                             </DialogClose>
                         </div>
+                        <div className="text-2xl  text-center font-medium group-hover:text-sky-700 transition line-clamp-2">
+                            {title}
+                        </div>
+                        <DialogDescription>
+                            <p className="text-slay-200 text-lg">{coursDesc}</p>
+                        </DialogDescription>
                     </DialogHeader>
                     <div className="  gap-4 py-4 text-white">
                         <div className="">
-                            <div className="text-lg md:text-base font-medium group-hover:text-sky-700 transition line-clamp-2">
-                                {title}
-                            </div>
-
                             <div className="overflow-auto ">
                                 {item.map((chapter: any) => {
-                                    return <p key={chapter.id}>{chapter.title} </p>;
+                                    return (
+                                        <AccordionCours
+                                            coursId={coursId}
+                                            item={item}
+                                            img={imageUrl}
+                                        />
+                                    );
                                 })}
                                 {/* <AccordionCours coursId={coursId} item={item} /> */}
                             </div>

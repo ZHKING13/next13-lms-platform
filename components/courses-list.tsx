@@ -53,6 +53,7 @@ export const CoursesList = ({
                   category={item?.category?.name!}
                   coursId={item.id}
                   item={item.chapters}
+                  coursDesc={item?.description}
                   />
               ))}
           </div>

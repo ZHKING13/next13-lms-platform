@@ -113,6 +113,7 @@ export const CourseCard = ({
                                             coursId={coursId}
                                             item={item}
                                             img={imageUrl}
+                                            key={chapter?.id}
                                         />
                                     );
                                 })}

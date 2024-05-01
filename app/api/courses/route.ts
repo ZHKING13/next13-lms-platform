@@ -8,10 +8,13 @@ export async function POST(
   req: Request,
 ) {
   try {
-    const { userId } = auth();
-    const { title } = await req.json();
-
+    const { userId } =await auth();
+    console.log(userId)
+     
+    const data = await req.json();
+const { title } = data.body
     if (!userId || !isTeacher(userId)) {
+      console.log("not admin"+ await req.json())
       return new NextResponse("Unauthorized", { status: 401 });
     }
 
@@ -24,7 +27,7 @@ export async function POST(
 
     return NextResponse.json(course);
   } catch (error) {
-    console.log("[COURSES]", error);
+    console.log("[COURSES]", error,await req.json());
     return new NextResponse("Internal Error", { status: 500 });
   }
 }

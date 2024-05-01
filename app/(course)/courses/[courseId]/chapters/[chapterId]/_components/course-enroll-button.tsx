@@ -26,7 +26,7 @@ export const CourseEnrollButton = ({
 
       window.location.assign(response.data.url);
     } catch {
-      toast.error("Une erreur s'est produite");
+      toast.error("Une erreur s est produite");
     } finally {
       setIsLoading(false);
     }

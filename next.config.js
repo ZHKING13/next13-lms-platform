@@ -2,9 +2,13 @@
 const nextConfig = {
   images: {
     domains: [
-      "utfs.io"
+      "utfs.io",
+      
     ]
-  }
+  },
+  experimental: {
+    serverComponentsExternalPackages: ['resend'],
+  },
 }
 
 module.exports = nextConfig

@@ -24,6 +24,14 @@ module.exports = withUt({
             },
         },
         extend: {
+            scrollbarHide: {
+                /* Firefox */
+                scrollbarWidth: 'none',
+                /* Chrome, Safari et Edge */
+                '&::-webkit-scrollbar': {
+                    display: 'none',
+                },
+            },
             colors: {
                 border: "hsl(var(--border))",
                 input: "hsl(var(--input))",

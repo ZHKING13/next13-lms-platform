@@ -19,6 +19,7 @@ export const Preview = ({
       theme="bubble"
       value={value}
       readOnly
+      className="text-sm"
     />
   );
 };

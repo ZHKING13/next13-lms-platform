@@ -72,6 +72,7 @@ export default function HomePage() {
                   </a>
                 </li>
               ))}
+                          
             </ul>
           </nav>
         </div>
@@ -120,6 +121,7 @@ export default function HomePage() {
           </a>
         );
       })}
+                  
               </div>
               </div>
               
@@ -142,12 +144,12 @@ export default function HomePage() {
                
          <div data-aos="example-anim2"
      data-aos-duration="600"
-                data-aos-easing="ease-in-sine" className=" relative flex flex-col items-start justify-center md:w-1/2 md:h-[100%]  ">
+                data-aos-easing="ease-in-sine" className=" relative max-sm:flex-col flex flex-col items-start justify-center md:w-1/2 md:h-[100%]  ">
                 <div style={{
                     filter: 'blur(5px)',
                 }} className="w-30 h-30 bg-[#7043EC] absolute bottom-10 right-4 overflow-hidden rounded-full  "></div>
-            <h1 className="max-w-2xl mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white"> Devenez membre de notre cercle privé</h1>
-            <p className="max-w-2xl mb-6 font-light text-white lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">Obtenez un accompagnement personnalisé ainsi qu&apos; un développement de carrière au sein de COBALT INVEST LTD</p>
+            <h1 className="max-w-xl mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white"> Devenez membre de notre cercle privé</h1>
+            <p className="max-w-xl mb-6 font-light text-white lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">Obtenez un accompagnement personnalisé ainsi qu&apos; un développement de carrière au sein de COBALT INVEST LTD</p>
               <div className="mt-3 self-start">
                 <a href="/dashboard" className="bg-[#7043EC] w-[70%] text-xl  text-white font-semibold py-5 px-6 rounded-lg shadow-md transition duration-200 ease-in-out transform hover:-translate-y-1">
   Rejoindre COBALT INVEST LTD
@@ -160,7 +162,7 @@ export default function HomePage() {
 </section>
       </div>
         {/* fin hero section */}
-        <div className="flex flex-wrap bg-[#010417] justify-center gap-5 items-center p-3 mt-8 text-gray-500 ">
+        <div className="flex flex-wrap bg-[#792f88] justify-center gap-5 items-center p-3 mt-8 text-gray-500 ">
                 <a href="#" className="mr-5 mb-5 lg:mb-0 hover:text-gray-800 dark:hover:text-gray-400">
             <img className="h-10 w-10" src="https://www.4t.com/assets/svg/logo-black.svg" alt="4T logo" /> 
             

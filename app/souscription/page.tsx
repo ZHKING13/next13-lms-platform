@@ -18,13 +18,11 @@ export default function Home() {
           <Step stepNumber={1} />
           <Step stepNumber={2} />
           <Step stepNumber={3} />
-          <Step stepNumber={4} />
         </div>
       </section>
       {step === 1 && <PersonalInfo />}
       {step === 2 && <Plan />}
-      {step === 3 && <Addons />}
-      {step === 4 && <Summary />}
+      {step === 3 && <Summary />}
     </main>
   );
 }

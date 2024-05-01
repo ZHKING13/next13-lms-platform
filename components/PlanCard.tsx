@@ -3,6 +3,7 @@ import { Card, CardContent, CardTitle } from "./ui/card";
 import Image from "next/image";
 import useStore from "@/store/useStore";
 import { cn } from "@/lib/utils";
+import { formatPrice } from "@/lib/format";
 
 export default function PlanCard({ item, onClick }: any) {
   const { isToggled, plan } = useStore((state) => state);
@@ -11,22 +12,22 @@ export default function PlanCard({ item, onClick }: any) {
   let alt = "";
 
   switch (item?.name) {
-    case "Arcade":
+    case "Pack Elite":
       imgSrc = "/images/icon-arcade.svg";
       alt = item?.name;
       break;
     case "Advanced":
       imgSrc = "/images/icon-advanced.svg";
       alt = item?.name;
-    case "Pro":
+    case "Pack Premium":
       imgSrc = "/images/icon-pro.svg";
       alt = item?.name;
     default:
       break;
   }
 
-  const monthlyPrice = `$${item.subscription.monthly?.price}/mo`;
-  const yearlyPrice = `$${item.subscription.yearly?.price}/yr`;
+  const monthlyPrice = `${formatPrice(item.subscription.monthly?.price)}/mois`;
+  const yearlyPrice = `${formatPrice(item.subscription.yearly?.price)}/année`;
   const trails = item.subscription.yearly?.trails;
 
   return (

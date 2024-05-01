@@ -32,20 +32,20 @@ export default function Footer({
           className="text-c-neutral-cool-gray hover:text-c-primary-marine-blue"
           onClick={onHandlePreviousStep}
         >
-          Go Back
+          Retour
         </Button>
       )}
       <Button
         className={cn(
-          "bg-c-primary-marine-blue text-c-neutral-white hover:bg-c-primary-marine-blue-hover",
+          "bg-[#01051e] text-white hover:bg-c-primary-marine-blue-hover",
           {
-            "bg-c-primary-purplish-blue hover:bg-c-primary-purplish-hover":
-              step === 4,
+            "bg-[#7043EC] hover:bg-c-primary-purplish-hover":
+              step === 3,
           }
         )}
         onClick={onHandleNextStep}
       >
-        {step === 4 ? "Confirm" : "Next Step"}
+        {step === 3 ? "passer au payement" : "Suivant"}
       </Button>
     </footer>
   );

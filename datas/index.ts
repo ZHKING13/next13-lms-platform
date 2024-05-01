@@ -1,45 +1,31 @@
 export const plans = [
-  {
-    id: 1,
-    name: "Arcade",
-    subscription: {
-      monthly: {
-        price: 9,
-        type: "monthly",
-      },
-      yearly: {
-        price: 90,
-        trails: "2 months free",
-        type: "yearly",
-      },
-    },
-  },
+  
   {
     id: 2,
-    name: "Advanced",
+    name: "Pack Elite",
     subscription: {
       monthly: {
-        price: 12,
+        price: 33000,
         type: "monthly",
       },
       yearly: {
-        price: 120,
-        trails: "2 months free",
+        price: 30000,
+        trails: "2 mois gratuit",
         type: "yearly",
       },
     },
   },
   {
     id: 3,
-    name: "Pro",
+    name: "Pack Premium",
     subscription: {
       monthly: {
-        price: 15,
+        price: 100000,
         type: "monthly",
       },
       yearly: {
-        price: 150,
-        trails: "2 months free",
+        price: 1000000,
+        trails: "2 mois gratuit",
         type: "yearly",
       },
     },

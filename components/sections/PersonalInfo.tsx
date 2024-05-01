@@ -20,12 +20,12 @@ import useStore from "@/store/useStore";
 import Container from "../Container";
 
 const formSchema = z.object({
-  name: z.string().min(5, { message: "Name is required" }).max(100),
-  email: z.string().min(1, { message: "Email is required" }).email({
-    message: "Must be a valid email",
+  name: z.string().min(5, { message: "Nom et prenom requis" }).max(100),
+  email: z.string().min(1, { message: "Email requis" }).email({
+    message: "merci d'entrer une adresse email valide",
   }),
   phone: z.string().refine((val) => /^\d{10}$/.test(val), {
-    message: "Phone is required",
+    message: "votre numéro est requis",
   }),
 });
 
@@ -52,8 +52,8 @@ export default function PersonalInfo() {
   return (
     <Container onNext={form.handleSubmit(onSubmitHandler)}>
       <SectionHeader
-        title="Personal info"
-        description="Please provide your name, email address, and phone number."
+        title="Information personnels"
+        description="Merci de renseigner les informations suivantes pour continuer."
       />
       <Form {...form}>
         <form
@@ -66,7 +66,7 @@ export default function PersonalInfo() {
             render={({ field }) => (
               <FormItem>
                 <FormLabel className="text-c-primary-marine-blue flex items-center justify-between">
-                  Name
+                  Nom et prenom
                   <FormMessage>{errors.name?.message}</FormMessage>
                 </FormLabel>
                 <FormControl>
@@ -90,7 +90,7 @@ export default function PersonalInfo() {
             render={({ field }) => (
               <FormItem>
                 <FormLabel className="text-c-primary-marine-blue flex items-center justify-between">
-                  Email Address
+                 Address Email
                   <FormMessage>{errors.email?.message}</FormMessage>
                 </FormLabel>
                 <FormControl>
@@ -115,7 +115,7 @@ export default function PersonalInfo() {
             render={({ field }) => (
               <FormItem>
                 <FormLabel className="text-c-primary-marine-blue flex items-center justify-between">
-                  Phone Number
+                 Numéro de telephone
                   <FormMessage>{errors.phone?.message}</FormMessage>
                 </FormLabel>
                 <FormControl>
@@ -127,7 +127,7 @@ export default function PersonalInfo() {
                           errors.phone?.message,
                       }
                     )}
-                    placeholder="e.g. +1 234 567 890"
+                    placeholder="e.g. +225 0707070707"
                     {...field}
                   />
                 </FormControl>

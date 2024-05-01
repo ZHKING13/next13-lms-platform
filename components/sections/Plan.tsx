@@ -46,8 +46,8 @@ export default function Plan() {
     <Container onNext={onNext} onPreviousStep={onPrevious}>
       <div>
         <SectionHeader
-          title="Select your plan"
-          description="You have the option of monthly or yearly billing."
+          title="Choisis ton pack"
+          description="Tu as le choix entre un abonnement mensuel ou annuel."
         />
         <section className="flex flex-col gap-3 lg:flex-row lg:gap-4 w-full">
           {plans.map((plan) => (

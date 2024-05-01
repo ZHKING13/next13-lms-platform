@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Ubuntu } from "next/font/google";
-import "./globals.css";
 import { cn } from "@/lib/utils";
 
 const ubuntu = Ubuntu({
@@ -16,9 +15,9 @@ const ubuntu = Ubuntu({
 });
 
 export const metadata: Metadata = {
-  title: "Multi-step form",
+  title: "Inscription cobalt",
   description:
-    "Frontend Mentor Multi-step form challenge. Tech stack includes NextJS, TailwindCSS, Typescript with form validation using React-hook-form and Zod. And Zustand managing form state.",
+    "Rejoind Cobalt invest",
 };
 
 export default function RootLayout({

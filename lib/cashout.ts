@@ -20,7 +20,7 @@ const generateUniqueOrderId = (): string => {
         amount,
         state,
         return_url: "https://cobaltinvest.com/dashboard",
-        cancel_url: "https://cobaltinvest.com/dashboard",
+        cancel_url: "https://cobaltinvest.com/",
         reference: "cobalt_invest",
     };
 
@@ -48,6 +48,7 @@ const generateUniqueOrderId = (): string => {
         );
     }
 };
+
 
 // Exemple d'utilisation de la fonction
 (async () => {

@@ -47,5 +47,248 @@ export const retourClient = [
         name: "KOUADIO FRANCK",
     },
 ];
-
+export const contry = [
+    {
+        country: "Bénin",
+        abbreviation: "bn",
+        method: [
+            {
+                name: "MTN Money",
+                image: "images/mtn.png",
+            },
+            {
+                name: "Moov Money",
+                image: "images/moov.png",
+            },
+            {
+                name: "Mastercard",
+                image: "images/matercard.png",
+            },
+            {
+                name: "Visa",
+                image: "images/visa.png",
+            },
+        ],
+    },
+    {
+        country: "Burkina Faso",
+        abbreviation: "bf",
+        method: [
+            {
+                name: "MTN Money",
+                image: "images/mtn.png",
+            },
+            {
+                name: "Moov Money",
+                image: "images/moov.png",
+            },
+            {
+                name: "Mastercard",
+                image: "images/matercard.png",
+            },
+            {
+                name: "Visa",
+                image: "images/visa.png",
+            },
+        ],
+    },
+    {
+        country: "Cameroun",
+        abbreviation: "cm",
+        method: [
+            {
+                name: "MTN Money",
+                image: "images/mtn.png",
+            },
+            {
+                name: "Moov Money",
+                image: "images/moov.png",
+            },
+            {
+                name: "Mastercard",
+                image: "images/matercard.png",
+            },
+            {
+                name: "Visa",
+                image: "images/visa.png",
+            },
+        ],
+    },
+    {
+        country: "Côte d'Ivoire",
+        abbreviation: "ci",
+        method: [
+            {
+                name: "MTN Money",
+                image: "images/mtn.png",
+            },
+            {
+                name: "Moov Money",
+                image: "images/moov.png",
+            },
+            {
+                name: "Mastercard",
+                image: "images/matercard.png",
+            },
+            {
+                name: "Visa",
+                image: "images/visa.png",
+            },
+        ],
+    },
+    {
+        country: "Guinée",
+        abbreviation: "gn",
+        method: [
+            {
+                name: "MTN Money",
+                image: "images/mtn.png",
+            },
+            {
+                name: "Moov Money",
+                image: "images/moov.png",
+            },
+            {
+                name: "Mastercard",
+                image: "images/matercard.png",
+            },
+            {
+                name: "Visa",
+                image: "images/visa.png",
+            },
+        ],
+    },
+    {
+        country: "Mali",
+        abbreviation: "ml",
+        method: [
+            {
+                name: "MTN Money",
+                image: "images/mtn.png",
+            },
+            {
+                name: "Moov Money",
+                image: "images/moov.png",
+            },
+            {
+                name: "Mastercard",
+                image: "images/matercard.png",
+            },
+            {
+                name: "Visa",
+                image: "images/visa.png",
+            },
+        ],
+    },
+    {
+        country: "Maroc",
+        abbreviation: "ma",
+        method: [
+            {
+                name: "MTN Money",
+                image: "images/mtn.png",
+            },
+            {
+                name: "Moov Money",
+                image: "images/moov.png",
+            },
+            {
+                name: "Mastercard",
+                image: "images/matercard.png",
+            },
+            {
+                name: "Visa",
+                image: "images/visa.png",
+            },
+        ],
+    },
+    {
+        country: "République démocratique du Congo",
+        abbreviation: "cd",
+        method: [
+            {
+                name: "MTN Money",
+                image: "images/mtn.png",
+            },
+            {
+                name: "Moov Money",
+                image: "images/moov.png",
+            },
+            {
+                name: "Mastercard",
+                image: "images/matercard.png",
+            },
+            {
+                name: "Visa",
+                image: "images/visa.png",
+            },
+        ],
+    },
+    {
+        country: "Sénégal",
+        abbreviation: "sn",
+        method: [
+            {
+                name: "MTN Money",
+                image: "images/mtn.png",
+            },
+            {
+                name: "Moov Money",
+                image: "images/moov.png",
+            },
+            {
+                name: "Mastercard",
+                image: "images/matercard.png",
+            },
+            {
+                name: "Visa",
+                image: "images/visa.png",
+            },
+        ],
+    },
+    {
+        country: "Togo",
+        abbreviation: "tg",
+        method: [
+            {
+                name: "MTN Money",
+                image: "images/mtn.png",
+            },
+            {
+                name: "Moov Money",
+                image: "images/moov.png",
+            },
+            {
+                name: "Mastercard",
+                image: "images/matercard.png",
+            },
+            {
+                name: "Visa",
+                image: "images/visa.png",
+            },
+        ],
+    },
+    {
+        country: "Tunisie",
+        abbreviation: "tn",
+        method: [
+            {
+                name: "MTN Money",
+                image: "images/mtn.png",
+            },
+            {
+                name: "Moov Money",
+                image: "images/moov.png",
+            },
+            {
+                name: "Mastercard",
+                image: "images/matercard.png",
+            },
+            {
+                name: "Visa",
+                image: "images/visa.png",
+            },
+        ],
+    },
+];
 

@@ -1,8 +1,7 @@
 import axios from "axios";
 import { v4 as uuidv4 } from "uuid";
 
-const YOUR_ACCESS_TOKEN =
-    "bnB4S2EyNVFwZ1NacTd2c18xS3ZhQ3d6NXRzYTp5SjBHMHA0U0Nrbm5hOXBxamM1ZUl2RjVFQW9h";
+const YOUR_ACCESS_TOKEN = "71e8caef-a1ec-3be6-833b-c5b13a620bf2";
 
 const generateUniqueOrderId = (): string => {
     return `cob${uuidv4()}`;

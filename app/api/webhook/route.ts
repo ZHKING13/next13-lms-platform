@@ -6,40 +6,19 @@ import { stripe } from "@/lib/stripe";
 import { db } from "@/lib/db";
 
 export async function POST(req: Request) {
-  const body = await req.text();
-  const signature = headers().get("Stripe-Signature") as string;
-  console.log("success::::"+body)
+    const body = await req.json();
 
-  let event: Stripe.Event;
+    // Récupérer le paramètre "state" encodé de la requête
+    const encodedState = body.state;
 
-  try {
-    event = stripe.webhooks.constructEvent(
-      body,
-      signature,
-      process.env.STRIPE_WEBHOOK_SECRET!
-    )
-  } catch (error: any) {
-    return new NextResponse(`Webhook Error: ${error.message}`, { status: 400 })
-  }
+    // Décoder la chaîne encodée
+    const decodedState = decodeURIComponent(encodedState);
 
-  const session = event.data.object as Stripe.Checkout.Session;
-  const userId = session?.metadata?.userId;
-  const courseId = session?.metadata?.courseId;
+    // Utiliser une fonction de désérialisation JSON pour convertir la chaîne JSON en objet JavaScript
+    const stateObject = JSON.parse(decodedState);
 
-  if (event.type === "checkout.session.completed") {
-    if (!userId || !courseId) {
-      return new NextResponse(`Webhook Error: Missing metadata`, { status: 400 });
-    }
+    // Utiliser l'objet stateObject comme nécessaire
+    console.log("State au format JSON:", stateObject);
 
-    await db.purchase.create({
-      data: {
-        courseId: courseId,
-        userId: userId,
-      }
-    });
-  } else {
-    return new NextResponse(`Webhook Error: Unhandled event type ${event.type}`, { status: 200 })
-  }
-
-  return new NextResponse(null, { status: 200 });
+    return new NextResponse("success", { status: 200 });
 }

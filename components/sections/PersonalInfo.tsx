@@ -57,7 +57,7 @@ export default function PersonalInfo() {
       />
       <Form {...form}>
         <form
-          className="flex flex-col gap-6"
+          className="flex text-white flex-col gap-6"
           onSubmit={() => form.handleSubmit(onSubmitHandler)}
         >
           <FormField

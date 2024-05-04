@@ -16,22 +16,23 @@ export default function Step({
   const step = useStore((state) => state.step);
 
   return (
-    <section className="uppercase flex items-center gap-4">
-      <p
-        className={cn(
-          "w-[33px] h-[33px] rounded-full flex items-center justify-center text-sm font-bold text-c-neutral-white border border-c-neutral-white",
-          {
-            "bg-c-primary-light-blue text-c-primary-marine-blue border-c-primary-light-blue":
-              stepNumber === step,
-          }
-        )}
-      >
-        {stepNumber}
-      </p>
-      <div className="flex flex-col">
-        <p className="text-xs text-c-primary-pastel-blue">{smallTitle}</p>
-        <p className="text-sm text-c-neutral-white font-bold">{sectionTitle}</p>
-      </div>
-    </section>
+      <section className="uppercase flex items-center gap-4">
+          <p
+              className={cn(
+                  "w-[33px] h-[33px] rounded-full flex items-center justify-center text-sm font-bold text-c-neutral-white border border-c-neutral-white",
+                  {
+                      " bg-black text-white": stepNumber === step,
+                  }
+              )}
+          >
+              {stepNumber}
+          </p>
+          <div className="flex flex-col">
+              <p className="text-xs text-c-primary-pastel-blue">{smallTitle}</p>
+              <p className="text-sm text-c-neutral-white font-bold">
+                  {sectionTitle}
+              </p>
+          </div>
+      </section>
   );
 }

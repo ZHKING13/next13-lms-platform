@@ -46,13 +46,13 @@ export const Footer = () => {
                                 </h1>
                                 <ul className={`flex flex-col gap-3`}>
                                     <li className="cursor-pointer transition-all duration-300 hover:translate-x-[2px]">
-                                        Acceuil
+                                        Accueil
                                     </li>
                                     <li className="cursor-pointer transition-all duration-300 hover:translate-x-[2px]">
                                         À propos
                                     </li>
                                     <li className="cursor-pointer transition-all duration-300 hover:translate-x-[2px]">
-                                        Contacte
+                                        Contact
                                     </li>
                                     <li className="cursor-pointer transition-all duration-300 hover:translate-x-[2px]">
                                         S&apos;inscrire

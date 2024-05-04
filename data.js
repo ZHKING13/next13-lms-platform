@@ -13,7 +13,7 @@
         const response = await sendBizaoRequest(
             100,
             "ci",
-            "moov",
+            "orange",
             "XOF",
 
         );

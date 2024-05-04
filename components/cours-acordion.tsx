@@ -31,17 +31,17 @@ export function AccordionCours({
                             <div className="flex max-w-sm  md:max-w-[640px] justify-between bg-primary gap-5 p-2 sm:p1 flex-col md:flex-row">
                                 <div className="md:w-2/5 card d aspect-video md:h-auto w-auto h-auto">
                                     {chapter.videoUrl && (
-                                        //   <video
-                                        //       className="w-full h-full"
-                                        //       src={chapter.videoUrl}
-                                        //       onClick={handleVideoClick}
-                                        //   />
-
-                                        <img
-                                            className="object-cover aspect-video w-full md:h-40 h-15 "
-                                            alt="cours image"
-                                            src={img}
+                                        <video
+                                            className="w-full h-full"
+                                            src={chapter.videoUrl}
+                                            onClick={handleVideoClick}
                                         />
+
+                                        // <img
+                                        //     className="object-cover aspect-video w-full md:h-40 h-15 "
+                                        //     alt="cours image"
+                                        //     src={img}
+                                        // />
                                     )}
                                 </div>
 

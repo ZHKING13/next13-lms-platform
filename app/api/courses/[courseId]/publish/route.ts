@@ -8,16 +8,12 @@ export async function PATCH(
   { params }: { params: { courseId: string } }
 ) {
   try {
-    const { userId } = auth();
-
-    if (!userId) {
-      return new NextResponse("Unauthorized", { status: 401 });
-    }
+   
 
     const course = await db.course.findUnique({
       where: {
         id: params.courseId,
-        userId,
+       
       },
       include: {
         chapters: {
@@ -41,7 +37,7 @@ export async function PATCH(
     const publishedCourse = await db.course.update({
       where: {
         id: params.courseId,
-        userId,
+        
       },
       data: {
         isPublished: true,

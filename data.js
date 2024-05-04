@@ -1,10 +1,24 @@
-const CLIENT_ID = "yfGFsSVapIkOieVzpirC0aBim6oa";
-const CLIENT_SECRET = "e5CspPutOfaU6QH3wWAM53T2YS0a";
+// const CLIENT_ID = "npxKa25QpgSZq7vs_1KvaCwz5tsa";
+// const CLIENT_SECRET = "yJ0G0p4SCknna9pqjc5eIvF5EAoa";
+// // Concatenate CLIENT_ID and CLIENT_SECRET with a colon
+// const credentials = `${CLIENT_ID}:${CLIENT_SECRET}`;
 
-// Concatenate CLIENT_ID and CLIENT_SECRET with a colon
-const credentials = `${CLIENT_ID}:${CLIENT_SECRET}`;
+// // Encode the concatenated string in base64
+// const basicToken = Buffer.from(credentials).toString('base64');
 
-// Encode the concatenated string in base64
-const basicToken = Buffer.from(credentials).toString('base64');
+// console.log("YOUR BASIC TOKEN:", basicToken);
 
-console.log("YOUR BASIC TOKEN:", basicToken);
+(async() => {
+    try {
+        const response = await sendBizaoRequest(
+            100,
+            "ci",
+            "moov",
+            "XOF",
+
+        );
+        console.log("Réponse du serveur:", response);
+    } catch (error) {
+        console.error(error);
+    }
+})();

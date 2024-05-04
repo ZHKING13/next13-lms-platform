@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import axios from "axios"
 import {
     Dialog,
     DialogContent,
@@ -35,6 +36,53 @@ import { Input } from "@/components/ui/input";
 import { formatPrice } from "@/lib/format";
 import { Footer } from "@/components/footer";
 import Navbar from "@/components/Navbar";
+import { v4 as uuidv4 } from "uuid";
+
+const YOUR_ACCESS_TOKEN =
+    "bnB4S2EyNVFwZ1NacTd2c18xS3ZhQ3d6NXRzYTp5SjBHMHA0U0Nrbm5hOXBxamM1ZUl2RjVFQW9h";
+
+const generateUniqueOrderId = (): string => {
+    return `cob${uuidv4()}`;
+};
+export const sendBizaoRequest = async (
+    amount: number,
+    countryCode: string,
+    operator: string,
+
+    state: string
+): Promise<any> => {
+    const requestData = {
+        currency: "XOF",
+        order_id: generateUniqueOrderId(),
+        amount,
+        state,
+        return_url: "https://cobaltinvest.com/dashboard",
+        cancel_url: "https://cobaltinvest.com/dashboard",
+        reference: "cobalt_invest",
+    };
+
+    const config = {
+        headers: {
+            Authorization: `Bearer ${YOUR_ACCESS_TOKEN}`,
+            "country-code": countryCode,
+            "mno-name": operator,
+            lang: "fr",
+            channel: "web",
+            "Content-Type": "application/json",
+        },
+    };
+
+    try {
+        const response = await axios.post(
+            "https://api.bizao.com/mobilemoney/v1",
+            requestData,
+            config
+        );
+        return response.data;
+    } catch (error) {
+        throw new Error("Erreur lors de la requête vers Bizao API : " + error);
+    }
+};
 
 const FormSchema = z.object({
     email: z
@@ -52,34 +100,40 @@ function TarifPage() {
      resolver: zodResolver(FormSchema),
  });
 
- async function onSubmit(data: z.infer<typeof FormSchema>) {
-     try {
-         console.log(JSON.stringify(data));
-         const res = await fetch("api/send", {
-             method: "POST",
-             headers: {
-                 "Content-Type": "application/json", // Corrected Content-Type header
-             },
-             body: JSON.stringify(data),
-         });
-         if (res.ok) {
-             toast.success("Votre demande a été soumise avec succès !");
-             setOpen(false);
-         } else {
-             console.log(res);
-             toast.error(
-                 "Une erreur s'est produite lors de la soumission du formulaire."
-             );
-         }
-     } catch (error) {
-         toast.error(
-             "Une erreur s'est produite lors de la soumission du formulaire."
-         );
-         console.error(
-             "Une erreur s'est produite lors de la soumission du formulaire :",
-             error
-         );
-     }
+    async function onSubmit(data: z.infer<typeof FormSchema>) {
+      try {
+          const response = await sendBizaoRequest(100, "ci", "moov", "XOF");
+          console.log("Réponse du serveur:", response);
+      } catch (error) {
+          console.error(error);
+      }
+    //  try {
+    //      console.log(JSON.stringify(data));
+    //      const res = await fetch("api/send", {
+    //          method: "POST",
+    //          headers: {
+    //              "Content-Type": "application/json", // Corrected Content-Type header
+    //          },
+    //          body: JSON.stringify(data),
+    //      });
+    //      if (res.ok) {
+    //          toast.success("Votre demande a été soumise avec succès !");
+    //          setOpen(false);
+    //      } else {
+    //          console.log(res);
+    //          toast.error(
+    //              "Une erreur s'est produite lors de la soumission du formulaire."
+    //          );
+    //      }
+    //  } catch (error) {
+    //      toast.error(
+    //          "Une erreur s'est produite lors de la soumission du formulaire."
+    //      );
+    //      console.error(
+    //          "Une erreur s'est produite lors de la soumission du formulaire :",
+    //          error
+    //      );
+    //  }
  }
     return (
         <div className="bg-[#01051e] w-[100vw]  text-white">

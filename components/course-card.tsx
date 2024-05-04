@@ -29,7 +29,7 @@ interface CourseCardProps {
     category: string;
     item: any;
     coursId: any;
-    coursDesc?:string;
+    coursDesc?: string;
 }
 
 export const CourseCard = ({
@@ -42,7 +42,7 @@ export const CourseCard = ({
     category,
     item,
     coursId,
-    coursDesc
+    coursDesc,
 }: CourseCardProps) => {
     console.log("itemmmmmm:::::" + coursId);
     return (

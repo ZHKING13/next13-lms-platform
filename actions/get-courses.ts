@@ -24,6 +24,7 @@ type GetCourses = {
   userId: string;
   title?: string;
   categoryId?: string;
+  
 };
 
 export const getCourses = async ({

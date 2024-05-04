@@ -121,3 +121,14 @@ model StripeCustomer {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
+model User {
+  id String @id @default(uuid())
+  userId String @unique
+  stripeCustomerId String @unique
+pack String 
+recurence String
+isPremium Boolean @default(false)
+endDate DateTime
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

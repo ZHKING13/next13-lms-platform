@@ -18,11 +18,7 @@ const ChapterIdPage = async ({
 }: {
   params: { courseId: string; chapterId: string }
 }) => {
-  const { userId } = auth();
-
-  if (!userId) {
-    return redirect("/");
-  }
+  
 
   const chapter = await db.chapter.findUnique({
     where: {

@@ -256,12 +256,9 @@ export default function HomePage() {
                                     qu&apos;un développement de carrière au sein
                                     de COBALT INVEST LTD
                                 </p>
-                                <div
-                                    onClick={() => setOpen(true)}
-                                    className="mt-3 self-start"
-                                >
+                                <div className="mt-3 self-start">
                                     <a
-                                        href="#"
+                                        href="/dashboard"
                                         className="bg-[#7043EC] w-[70%] text-lg  text-white font-semibold py-5 md:px-6 px-2 rounded-lg shadow-md transition duration-200 ease-in-out transform hover:-translate-y-1"
                                     >
                                         Rejoindre COBALT INVEST LTD
@@ -371,13 +368,12 @@ export default function HomePage() {
                                 data-aos-duration="400"
                                 className="mt-12 inline-flex rounded-md shadow"
                             >
-                                <button
-                                    type="button"
-                                    onClick={() => setOpen(true)}
+                                <a
+                                    href="/dashboard"
                                     className="py-3 text-lg font-bold px-2 md:px-6 w-[100%] bg-[#7043EC] focus:ring-offset-indigo-200 text-white  transition ease-in duration-200 text-center shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg "
                                 >
                                     Rejoindre COBALT INVEST LTD
-                                </button>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -484,13 +480,12 @@ export default function HomePage() {
                                 data-aos-duration="400"
                                 className="mt-12 inline-flex rounded-md shadow"
                             >
-                                <button
-                                    type="button"
-                                    onClick={() => setOpen(true)}
+                                <a
+                                    href="/dashboard"
                                     className="py-3 text-lg font-bold px-2 md:px-6 w-[100%]  bg-[#7043EC] md:text-xl focus:ring-offset-indigo-200 text-white  transition ease-in duration-200 text-center shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg "
                                 >
                                     Rejoindre COBALT INVEST LTD
-                                </button>
+                                </a>
                             </div>
                         </div>
                     </div>

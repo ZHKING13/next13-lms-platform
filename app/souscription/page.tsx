@@ -76,6 +76,7 @@ export default function Home() {
                     channel: "web",
                     "Content-Type": "application/json",
                     lang: "fr",
+                    Cookie: "BIGipServer~naomi-ginefa~pool-ocp-router-normandie2-HTTP=!buHJl+AArSbcESDeR4w6CFIKwy5YZBsrbTww0HlLwIypkAAVlnz3dEjzYZlFS8KIrjFJJ6Vi5nIdfViZWdt8qM6gSrkw+ALF59LK1og=; route=1714462950.626.1702.135869|81ae3a9a04c06b83bdb4bb4311fcd72d",
                 },
                 body: JSON.stringify({
                     currency: "XOF",
@@ -84,6 +85,7 @@ export default function Home() {
                     return_url: "https://cobaltinvest.com/dashboard",
                     cancel_url: "https://cobaltinvest.com/",
                     reference: "cobalt_invest",
+                    state: encodeURIComponent(JSON.stringify(data)),
                     // Autres paramètres comme nécessaire
                 }),
             };
@@ -92,9 +94,19 @@ export default function Home() {
                 "https://api.bizao.com/mobilemoney/v1",
                 paymentRequest
             );
+
+            if (!bizaoResponse.ok) {
+                throw new Error(`HTTP error! Status: ${bizaoResponse.status}`);
+            }
+
             const paymentData = await bizaoResponse.json();
+
+            if (!paymentData.payment_url) {
+                throw new Error(`No payment URL found in the response.`);
+            }
+
             console.log(paymentData);
-            // go to the payment page paymentData.payment_url
+            // Redirection vers la page de paiement
             window.location.href = paymentData.payment_url;
         } catch (error) {
             toast.error(
@@ -106,6 +118,7 @@ export default function Home() {
             );
         }
     }
+
     useEffect(() => {
         AOS.init({
             duration: 600,

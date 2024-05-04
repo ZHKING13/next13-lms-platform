@@ -1,6 +1,7 @@
 import { type ClassValue, clsx } from "clsx"
 import { twMerge } from "tailwind-merge"
- 
+ const axios = require("axios");
+
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
@@ -291,4 +292,29 @@ export const contry = [
         ],
     },
 ];
+
+async function getAccessToken() {
+    const data = new URLSearchParams();
+    data.append("grant_type", "client_credentials");
+
+    try {
+        const response = await axios.post("https://api.bizao.com/token", data, {
+            headers: {
+                Authorization:
+                    "Basic TjJ4ZTd4emsyNUZaRW5TMFlnbWxEMTBhOnhwUERza0JJOUdLcGJQamtISnJBTjZRYQ==",
+                "Content-Type": "application/x-www-form-urlencoded",
+            },
+        });
+
+        return response.data.access_token;
+    } catch (error) {
+        throw new Error(
+            "Erreur lors de la requête pour obtenir l'access token : " + error
+        );
+    }
+}
+
+// Exemple d'utilisation
+
+
 

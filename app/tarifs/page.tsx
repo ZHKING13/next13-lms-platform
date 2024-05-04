@@ -320,13 +320,11 @@ function TarifPage() {
                                                     })}
                                                 </ul>
                                                 <div
-                                                    onClick={() =>
-                                                        setOpen(true)
-                                                    }
+                                                   
                                                 >
                                                     <a
                                                         className="w-full mt-6 inline-flex justify-center whitespace-nowrap rounded-lg bg-indigo-500 px-3.5 py-2.5 text-sm font-medium text-white shadow-sm shadow-indigo-950/10 hover:bg-indigo-600 focus-visible:outline-none focus-visible:ring focus-visible:ring-indigo-300 dark:focus-visible:ring-slate-600 transition-colors duration-150"
-                                                        href="#0"
+                                                        href="/dashboard"
                                                     >
                                                         Rejoindre
                                                     </a>

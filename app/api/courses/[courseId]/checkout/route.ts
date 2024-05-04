@@ -11,9 +11,9 @@ export async function POST(
   { params }: { params: { courseId: string } }
 ) {
   try {
-    const user = await currentUser();
+    const curentUser = await currentUser();
 
-    if (!user || !user.id || !user.emailAddresses?.[0]?.emailAddress) {
+    if (!curentUser || !curentUser.id || !curentUser.emailAddresses?.[0]?.emailAddress) {
       return new NextResponse("Unauthorized", { status: 401 });
     }
 
@@ -25,63 +25,57 @@ export async function POST(
     });
 
     const purchase = await db.purchase.findUnique({
-      where: {
-        userId_courseId: {
-          userId: user.id,
-          courseId: params.courseId
-        }
-      }
+        where: {
+            userId_courseId: {
+                userId: curentUser.id,
+                courseId: params.courseId,
+            },
+        },
     });
 
-    if (purchase) {
-      return new NextResponse("Already purchased", { status: 400 });
-    }
-
-    if (!course) {
-      return new NextResponse("Not found", { status: 404 });
-    }
+  
 
 
-    let stripeCustomer = await db.stripeCustomer.findUnique({
-      where: {
-        userId: user.id,
-      },
-      select: {
-        stripeCustomerId: true,
-      }
+    let stripeCustomer = await db.user.findUnique({
+        where: {
+            userId: curentUser.id,
+        },
+        select: {
+            stripeCustomerId: true,
+        },
     });
+    
 
     if (!stripeCustomer) {
       const customer = await stripe.customers.create({
-        email: user.emailAddresses[0].emailAddress,
+          email: curentUser.emailAddresses[0].emailAddress,
       });
 
       stripeCustomer = await db.stripeCustomer.create({
-        data: {
-          userId: user.id,
-          stripeCustomerId: customer.id,
-        }
+          data: {
+              userId: curentUser.id,
+              stripeCustomerId: customer.id,
+          },
       });
     }
 
     const paymentRequest = {
-      method: 'POST',
-      headers: {
-        Authorization: `Bearer YOUR_ACCESS_TOKEN`,
-        'country-code': 'CI', 
-        'mno-name': 'orange',
-        'channel': 'web', 
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        currency: "XOF",
-        order_id: generateShortOrderId(), // Assurez-vous que c'est unique
-        amount: course.price,
-        return_url: "https://yourdomain.com/payment-success",
-        cancel_url: "https://yourdomain.com/payment-cancelled",
-        // Autres paramètres comme nécessaire
-
-      })
+        method: "POST",
+        headers: {
+            Authorization: `Bearer bnB4S2EyNVFwZ1NacTd2c18xS3ZhQ3d6NXRzYTp5SjBHMHA0U0Nrbm5hOXBxamM1ZUl2RjVFQW9h`,
+            "country-code": "CI",
+            "mno-name": "orange",
+            channel: "web",
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            currency: "XOF",
+            order_id: generateShortOrderId(), // Assurez-vous que c'est unique
+            amount: 100,
+            return_url: "https://cobaltinvest.com/dashboard",
+            cancel_url: "https://yourdomain.com/",
+            // Autres paramètres comme nécessaire
+        }),
     };
 
     const bizaoResponse = await fetch('https://api.bizao.com/mobilemoney/v1', paymentRequest);

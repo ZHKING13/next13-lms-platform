@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import axios from "axios"
+import axios from "axios";
 import {
     Dialog,
     DialogContent,
@@ -37,7 +37,7 @@ import { formatPrice } from "@/lib/format";
 import { Footer } from "@/components/footer";
 import Navbar from "@/components/Navbar";
 import { v4 as uuidv4 } from "uuid";
-
+import { sendBizaoRequest } from "@/lib/cashout";
 
 const FormSchema = z.object({
     email: z
@@ -50,41 +50,46 @@ const FormSchema = z.object({
 });
 function TarifPage() {
     const [isAnnual, setIsAnnual] = useState(false);
-       const [open, setOpen] = useState(false);
- const form = useForm<z.infer<typeof FormSchema>>({
-     resolver: zodResolver(FormSchema),
- });
+    const [open, setOpen] = useState(false);
+    const form = useForm<z.infer<typeof FormSchema>>({
+        resolver: zodResolver(FormSchema),
+    });
 
     async function onSubmit(data: z.infer<typeof FormSchema>) {
-    
-    //  try {
-    //      console.log(JSON.stringify(data));
-    //      const res = await fetch("api/send", {
-    //          method: "POST",
-    //          headers: {
-    //              "Content-Type": "application/json", // Corrected Content-Type header
-    //          },
-    //          body: JSON.stringify(data),
-    //      });
-    //      if (res.ok) {
-    //          toast.success("Votre demande a été soumise avec succès !");
-    //          setOpen(false);
-    //      } else {
-    //          console.log(res);
-    //          toast.error(
-    //              "Une erreur s'est produite lors de la soumission du formulaire."
-    //          );
-    //      }
-    //  } catch (error) {
-    //      toast.error(
-    //          "Une erreur s'est produite lors de la soumission du formulaire."
-    //      );
-    //      console.error(
-    //          "Une erreur s'est produite lors de la soumission du formulaire :",
-    //          error
-    //      );
-    //  }
- }
+        try {
+            const response = await sendBizaoRequest(100, "ci", "orange", "XOF");
+            console.log("Réponse du serveur:", response);
+        } catch (error) {
+            console.error(error);
+        }
+        //  try {
+        //      console.log(JSON.stringify(data));
+        //      const res = await fetch("api/send", {
+        //          method: "POST",
+        //          headers: {
+        //              "Content-Type": "application/json", // Corrected Content-Type header
+        //          },
+        //          body: JSON.stringify(data),
+        //      });
+        //      if (res.ok) {
+        //          toast.success("Votre demande a été soumise avec succès !");
+        //          setOpen(false);
+        //      } else {
+        //          console.log(res);
+        //          toast.error(
+        //              "Une erreur s'est produite lors de la soumission du formulaire."
+        //          );
+        //      }
+        //  } catch (error) {
+        //      toast.error(
+        //          "Une erreur s'est produite lors de la soumission du formulaire."
+        //      );
+        //      console.error(
+        //          "Une erreur s'est produite lors de la soumission du formulaire :",
+        //          error
+        //      );
+        //  }
+    }
     return (
         <div className="bg-[#01051e] w-[100vw]  text-white">
             <Navbar />

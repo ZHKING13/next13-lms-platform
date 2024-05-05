@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { redirect } from "next/navigation";
 import {
     Accordion,
@@ -26,6 +26,9 @@ export function AccordionCours({
     };
 
     const videoRefs = useRef<{ [key: string]: HTMLVideoElement | null }>({});
+    const [videoDurations, setVideoDurations] = useState<{
+        [key: string]: number;
+    }>({});
     useEffect(() => {
         // Fonction pour récupérer la durée de chaque vidéo
         const getVideoDuration = (chapterId: string) => {
@@ -66,7 +69,23 @@ export function AccordionCours({
             });
         };
     }, [item]); // S'exécute chaque fois que item change
-
+const formatDuration = (durationInSeconds: number): string => {
+    if (durationInSeconds < 60) {
+        return `${durationInSeconds} secondes`;
+    } else if (durationInSeconds < 3600) {
+        const minutes = Math.floor(durationInSeconds / 60);
+        const seconds = durationInSeconds % 60;
+        return `${minutes} min ${Math.floor(seconds)} sec
+        `;
+    } else {
+        const hours = Math.floor(durationInSeconds / 3600);
+        const remainingSeconds = durationInSeconds % 3600;
+        const minutes = Math.floor(remainingSeconds / 60);
+        const seconds = remainingSeconds % 60;
+        return `${hours} h ${minutes} min
+         ${seconds} sec`;
+    }
+};
     return (
         <div className="sm:px-5 p-2 ">
             <Accordion type="single" collapsible className="w-full">
@@ -89,14 +108,56 @@ export function AccordionCours({
                                                         chapter.id
                                                     ] = el)
                                                 }
-                                                onClick={handleVideoClick}
+                                                onLoadedMetadata={() => {
+                                                    const video =
+                                                        videoRefs.current[
+                                                            chapter.id
+                                                        ];
+                                                    if (
+                                                        video &&
+                                                        video.readyState >= 2
+                                                    ) {
+                                                        console.log(
+                                                            "La vidéo est chargée. Durée de la vidéo:",
+                                                            video.duration,
+                                                            "secondes"
+                                                        );
+                                                        setVideoDurations(
+                                                            (
+                                                                prevDurations
+                                                            ) => ({
+                                                                ...prevDurations,
+                                                                [chapter.id]:
+                                                                    video.duration,
+                                                            })
+                                                        );
+                                                    } else {
+                                                        console.log(
+                                                            "La vidéo n'est pas encore chargée."
+                                                        );
+                                                    }
+                                                }}
                                             />
                                         </Link>
                                     )}
                                 </div>
 
                                 <div className="card text-white md:w-3/5 w-full p-1 md:p-3 ">
-                                    <Badge className="ml-2" variant="destructive">Léçon :{chapter.position} </Badge>
+                                    <Badge
+                                        className="ml-2"
+                                        variant="destructive"
+                                    >
+                                        Leçon :{chapter.position}{" "}
+                                    </Badge>
+                                    <Badge
+                                        className="ml-2"
+                                        variant="destructive"
+                                    >
+                                        Durée :
+                                        {formatDuration(
+                                            videoDurations[chapter?.id]
+                                        )}
+                                    </Badge>
 
                                     <h1 className="md:text-xl md:p-2 text-start text-lg ">
                                         {chapter.title}

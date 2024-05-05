@@ -82,8 +82,8 @@ export default function Home() {
                     currency: "XOF",
                     order_id: generateShortOrderId(), // Assurez-vous que c'est unique
                     amount: 10,
-                    return_url: "https://cobaltinvest.com/dashboard",
-                    cancel_url: "https://cobaltinvest.com/",
+                    return_url: "https://cobaltinvestltd.com/dashboard/search",
+                    cancel_url: "https://cobaltinvestltd.com/",
                     reference: "cobalt_invest",
                     state: encodeURIComponent(JSON.stringify(data)),
                     // Autres paramètres comme nécessaire

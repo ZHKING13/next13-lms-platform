@@ -10,6 +10,7 @@ import { Preview } from "@/components/preview";
 import { VideoPlayer } from "./_components/video-player";
 import { CourseEnrollButton } from "./_components/course-enroll-button";
 import { CourseProgressButton } from "./_components/course-progress-button";
+import Video from "./_components/Videos";
 
 const ChapterIdPage = async ({
     params,
@@ -45,14 +46,9 @@ const ChapterIdPage = async ({
 
     return (
         <div>
-            
             <div className="flex flex-col max-w-4xl mx-auto pb-20">
                 <div className="p-4">
-                    <video
-                        className="w-full max-h-[80vh] video"
-                        src={chapter?.videoUrl || ""}
-                        controls
-                    />
+                    <Video src={chapter?.videoUrl || ""} />
                     {/* <VideoPlayer
                         chapterId={params.chapterId}
                         title={chapter.title}

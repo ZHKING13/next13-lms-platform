@@ -48,7 +48,44 @@ export const CourseCard = ({
     return (
         // href={`/courses/${id}`}
         <>
-            <Dialog>
+            <Link href={`/courses/${coursId}`}>
+                <div className="transform hover:scale-340 transition-transform ">
+                    <div className="group hover:shadow-sm  overflow-hidden border rounded-lg p-3 h-full">
+                        <div className="relative w-full aspect-video rounded-md overflow-hidden">
+                            <Image
+                                fill
+                                className="object-cover "
+                                alt={title}
+                                src={imageUrl}
+                            />
+                        </div>
+                        <div className="flex flex-col pt-2">
+                            <div className="text-lg md:text-base font-medium group-hover:text-sky-700 transition line-clamp-2">
+                                {title}
+                            </div>
+
+                            {/* <div className="my-3 flex items-center gap-x-2 text-sm md:text-xs">
+            <div className="flex items-center gap-x-1 text-slate-500">
+              <IconBadge size="sm" icon={BookOpen} />
+              <span>
+                {chaptersLength} {chaptersLength === 1 ? "Chapter" : "Chapters"}
+              </span>
+            </div>
+          </div> */}
+                            {progress !== null ? (
+                                <CourseProgress
+                                    variant={
+                                        progress === 100 ? "success" : "default"
+                                    }
+                                    size="sm"
+                                    value={progress}
+                                />
+                            ) : null}
+                        </div>
+                    </div>
+                </div>
+            </Link>
+            {/* <Dialog>
                 <DialogTrigger asChild>
                     <div className="transform hover:scale-340 transition-transform ">
                         <div className="group hover:shadow-sm  overflow-hidden border rounded-lg p-3 h-full">
@@ -65,14 +102,7 @@ export const CourseCard = ({
                                     {title}
                                 </div>
 
-                                {/* <div className="my-3 flex items-center gap-x-2 text-sm md:text-xs">
-            <div className="flex items-center gap-x-1 text-slate-500">
-              <IconBadge size="sm" icon={BookOpen} />
-              <span>
-                {chaptersLength} {chaptersLength === 1 ? "Chapter" : "Chapters"}
-              </span>
-            </div>
-          </div> */}
+                         
                                 {progress !== null ? (
                                     <CourseProgress
                                         variant={
@@ -89,7 +119,6 @@ export const CourseCard = ({
                     </div>
                 </DialogTrigger>
                 <DialogContent
-                    // style={{ backgroundImage: `url(${imageUrl})` }}
                     className="sm:max-w-[725px] bg-cover bg-center bg-no-repeat  overflow-auto max-h-[100%] scrollbar-hide text-white p-5"
                 >
                     <div>
@@ -101,15 +130,7 @@ export const CourseCard = ({
                                     </Button>
                                 </DialogClose>
                             </div>
-                            {/* <div
-                            style={{
-                                backgroundImage: `${imageUrl}`,
-                            }}
-                            className="text-2xl h-10 bg-red-300 object-cover object-center bg-no-repeat  text-center font-medium group-hover:text-sky-700 transition line-clamp-2"
-                        >
-                            {title}
-                            <p className="text-slay-200 text-lg">{coursDesc}</p>
-                        </div> */}
+     
                             <DialogDescription
                                 className=" text-white bg-fill bg-center bg-no-repeat "
                                 style={{ backgroundImage: `url(${imageUrl})` }}
@@ -135,7 +156,6 @@ export const CourseCard = ({
                                             />
                                         );
                                     })}
-                                    {/* <AccordionCours coursId={coursId} item={item} /> */}
                                 </div>
                             </div>
                         </div>
@@ -144,7 +164,7 @@ export const CourseCard = ({
                         </DialogFooter>
                     </div>
                 </DialogContent>
-            </Dialog>
+            </Dialog> */}
         </>
     );
 };

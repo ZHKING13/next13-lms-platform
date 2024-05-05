@@ -1,7 +1,8 @@
 "use client";
 
 import React from "react";
-
+import { useAuth } from "@clerk/nextjs";
+import { redirect } from "next/navigation";
 import useStore from "@/store/useStore";
 
 import { useState, useEffect } from "react";
@@ -55,7 +56,7 @@ const FormSchema = z.object({
     pays: z.string().nonempty({ message: "Veuillez choisir votre pays." }),
     number: z.string().nonempty({ message: "Veuillez saisir un numéro." }),
 });
-export default function Home() {
+export default function Souscription() {
     const { step } = useStore((state) => state);
     const [open, setOpen] = useState(false);
     const [payement, setPayement] = useState([
@@ -71,7 +72,7 @@ export default function Home() {
                 method: "POST",
                 headers: {
                     Authorization: `Bearer 71e8caef-a1ec-3be6-833b-c5b13a620bf2`,
-                    "country-code": "CI",
+                    "country-code": "ci",
                     "mno-name": "orange",
                     channel: "web",
                     "Content-Type": "application/json",
@@ -118,7 +119,12 @@ export default function Home() {
             );
         }
     }
+    const user = useAuth();
+    console.log(user);
 
+// if (!userId) {
+//     return redirect("/");
+// }
     useEffect(() => {
         AOS.init({
             duration: 600,

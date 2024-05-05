@@ -63,7 +63,7 @@ export const getCourses = async ({
         }
       },
       orderBy: {
-        createdAt: "desc",
+        createdAt: "asc",
       }
     });
 

@@ -155,7 +155,7 @@ const formatDuration = (durationInSeconds: number): string => {
                                     >
                                         Durée :
                                         {formatDuration(
-                                            videoDurations[chapter?.id]
+                                            videoDurations[chapter?.id] || 0
                                         )}
                                     </Badge>
 

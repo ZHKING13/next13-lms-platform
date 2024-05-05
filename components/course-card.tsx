@@ -50,7 +50,7 @@ export const CourseCard = ({
         <>
             <Dialog>
                 <DialogTrigger asChild>
-                    <div className="transform hover:scale-340 transition-transform transition">
+                    <div className="transform hover:scale-340 transition-transform ">
                         <div className="group hover:shadow-sm  overflow-hidden border rounded-lg p-3 h-full">
                             <div className="relative w-full aspect-video rounded-md overflow-hidden">
                                 <Image
@@ -88,42 +88,61 @@ export const CourseCard = ({
                         </div>
                     </div>
                 </DialogTrigger>
-                <DialogContent className="sm:max-w-[725px] overflow-auto max-h-[100%] scrollbar-hide text-white p-5">
-                    <DialogHeader>
-                        <div className="flex justify-end w-full  ">
-                            <DialogClose asChild>
-                                <Button type="button" variant="secondary">
-                                    Fermer
-                                </Button>
-                            </DialogClose>
-                        </div>
-                        <div className="text-2xl  text-center font-medium group-hover:text-sky-700 transition line-clamp-2">
+                <DialogContent
+                    // style={{ backgroundImage: `url(${imageUrl})` }}
+                    className="sm:max-w-[725px] bg-cover bg-center bg-no-repeat  overflow-auto max-h-[100%] scrollbar-hide text-white p-5"
+                >
+                    <div>
+                        <DialogHeader>
+                            <div className="flex justify-end w-full  ">
+                                <DialogClose asChild>
+                                    <Button type="button" variant="secondary">
+                                        Fermer
+                                    </Button>
+                                </DialogClose>
+                            </div>
+                            {/* <div
+                            style={{
+                                backgroundImage: `${imageUrl}`,
+                            }}
+                            className="text-2xl h-10 bg-red-300 object-cover object-center bg-no-repeat  text-center font-medium group-hover:text-sky-700 transition line-clamp-2"
+                        >
                             {title}
-                        </div>
-                        <DialogDescription>
                             <p className="text-slay-200 text-lg">{coursDesc}</p>
-                        </DialogDescription>
-                    </DialogHeader>
-                    <div className="  gap-4 py-4 text-white">
-                        <div className="">
-                            <div className="overflow-auto ">
-                                {item.map((chapter: any) => {
-                                    return (
-                                        <AccordionCours
-                                            coursId={coursId}
-                                            item={item}
-                                            img={imageUrl}
-                                            key={chapter?.id}
-                                        />
-                                    );
-                                })}
-                                {/* <AccordionCours coursId={coursId} item={item} /> */}
+                        </div> */}
+                            <DialogDescription
+                                className=" text-white bg-fill bg-center bg-no-repeat "
+                                style={{ backgroundImage: `url(${imageUrl})` }}
+                            >
+                                <div className="bg-primary/80 p-5">
+                                    <h1 className="text-3xl text-center mb-2">
+                                        {title}
+                                    </h1>
+                                    <p className="text-lg">{coursDesc}</p>
+                                </div>
+                            </DialogDescription>
+                        </DialogHeader>
+                        <div className=" gap-4 py-4 text-white">
+                            <div className="">
+                                <div className="overflow-auto ">
+                                    {item.map((chapter: any) => {
+                                        return (
+                                            <AccordionCours
+                                                coursId={coursId}
+                                                item={item}
+                                                img={imageUrl}
+                                                key={chapter?.id}
+                                            />
+                                        );
+                                    })}
+                                    {/* <AccordionCours coursId={coursId} item={item} /> */}
+                                </div>
                             </div>
                         </div>
+                        <DialogFooter>
+                            <Button type="submit">Quiz</Button>
+                        </DialogFooter>
                     </div>
-                    <DialogFooter>
-                        <Button type="submit">Quiz</Button>
-                    </DialogFooter>
                 </DialogContent>
             </Dialog>
         </>

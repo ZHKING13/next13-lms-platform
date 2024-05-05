@@ -12,112 +12,83 @@ import { CourseEnrollButton } from "./_components/course-enroll-button";
 import { CourseProgressButton } from "./_components/course-progress-button";
 
 const ChapterIdPage = async ({
-  params
+    params,
 }: {
-  params: { courseId: string; chapterId: string }
+    params: { courseId: string; chapterId: string };
 }) => {
-  const { userId } = auth();
-  
-  if (!userId) {
-    return redirect("/");
-  } 
+    const { userId } = auth();
 
-  const {
-    chapter,
-    course,
-    muxData,
-    attachments,
-    nextChapter,
-    userProgress,
-    purchase,
-  } = await getChapter({
-    userId,
-    chapterId: params.chapterId,
-    courseId: params.courseId,
-  });
+    if (!userId) {
+        return redirect("/");
+    }
 
-  if (!chapter || !course) {
-    return redirect("/")
-  }
+    const {
+        chapter,
+        course,
+        muxData,
+        attachments,
+        nextChapter,
+        userProgress,
+        purchase,
+    } = await getChapter({
+        userId,
+        chapterId: params.chapterId,
+        courseId: params.courseId,
+    });
 
+    if (!chapter || !course) {
+        return redirect("/");
+    }
 
-  const isLocked = !chapter.isFree && !purchase;
-  const completeOnEnd = !!purchase && !userProgress?.isCompleted;
+    const isLocked = !chapter.isFree && !purchase;
+    const completeOnEnd = !!purchase && !userProgress?.isCompleted;
 
-  return ( 
-    <div>
-      {userProgress?.isCompleted && (
-        <Banner
-          variant="success"
-          label="Vous avez déjà terminé ce chapitre."
-        />
-      )}
-      {isLocked && (
-        <Banner
-          variant="warning"
-          label="Vous devez acheter ce cours pour regarder ce chapitre."
-        />
-      )}
-      <div className="flex flex-col max-w-4xl mx-auto pb-20">
-        <div className="p-4">
-          <VideoPlayer
-            chapterId={params.chapterId}
-            title={chapter.title}
-            courseId={params.courseId}
-            nextChapterId={nextChapter?.id}
-            playbackId={muxData?.playbackId!}
-            isLocked={isLocked}
-            completeOnEnd={completeOnEnd}
-          />
-        </div>
+    return (
         <div>
-          <div className="p-4 flex flex-col md:flex-row items-center justify-between">
-            <h2 className="text-2xl font-semibold mb-2">
-              {chapter.title}
-            </h2>
-            {purchase ? (
-              <CourseProgressButton
-                chapterId={params.chapterId}
-                courseId={params.courseId}
-                nextChapterId={nextChapter?.id}
-                isCompleted={!!userProgress?.isCompleted}
-              />
-            ) : (
-              <CourseEnrollButton
-                courseId={params.courseId}
-                price={course.price!}
-              />
-            )}
-          </div>
-          <Separator />
-          <div>
-            <Preview value={chapter.description!} />
-          </div>
-          {!!attachments.length && (
-            <>
-              <Separator />
-              <div className="p-4">
-                {attachments.map((attachment) => (
-                  <a 
-                    href={attachment.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    key={attachment.id}
-                    className="flex items-center p-3 w-full bg-sky-200 border text-sky-700 rounded-md hover:underline"
-                  >
-                    <File className="mr-2" />
-                    <p className="line-clamp-1">
-                      {attachment.name}
-                    </p>
-                  </a>
-                ))}
-              </div>
-            </>
-          )}
+            
+            <div className="flex flex-col max-w-4xl mx-auto pb-20">
+                <div className="p-4">
+                    <video
+                        className="w-full max-h-[80vh] video"
+                        src={chapter?.videoUrl || ""}
+                        controls
+                    />
+                    {/* <VideoPlayer
+                        chapterId={params.chapterId}
+                        title={chapter.title}
+                        courseId={params.courseId}
+                        nextChapterId={nextChapter?.id}
+                        playbackId={muxData?.playbackId!}
+                        isLocked={false}
+                        completeOnEnd={completeOnEnd}
+                    /> */}
+                </div>
+                <div>
+                    {!!attachments.length && (
+                        <>
+                            <Separator />
+                            <div className="p-4">
+                                {attachments.map((attachment) => (
+                                    <a
+                                        href={attachment.url}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        key={attachment.id}
+                                        className="flex items-center p-3 w-full bg-sky-200 border text-sky-700 rounded-md hover:underline"
+                                    >
+                                        <File className="mr-2" />
+                                        <p className="line-clamp-1">
+                                            {attachment.name}
+                                        </p>
+                                    </a>
+                                ))}
+                            </div>
+                        </>
+                    )}
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-   );
-}
- 
+    );
+};
+
 export default ChapterIdPage;

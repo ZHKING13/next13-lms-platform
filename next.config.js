@@ -1,14 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  images: {
-    domains: [
-      "utfs.io",
-      
-    ]
-  },
-  experimental: {
-    serverComponentsExternalPackages: ['resend'],
-  },
+    images: {
+        domains: ['res.cloudinary.com'],
+    },
+    experimental: {
+        serverComponentsExternalPackages: ['resend'],
+    },
 }
 
 module.exports = nextConfig

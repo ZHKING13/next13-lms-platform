@@ -100,8 +100,9 @@ export const PriceForm = ({
                 <FormItem>
                   <FormControl>
                     <Input
+                      className="text-white"
                       type="number"
-                      step="0.01"
+                      step="1000"
                       disabled={isSubmitting}
                       placeholder="Définissez un prix pour votre cours"
                       {...field}

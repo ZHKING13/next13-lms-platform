@@ -1,7 +1,7 @@
 
 "use client"
 import React, { MouseEvent, useRef } from "react";
-
+import { Video } from "reactjs-media";
 interface VideoPlayerProps {
     src: string;
 }
@@ -25,14 +25,15 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({ src }) => {
 
     return (
         <div>
-            <video
-                ref={videoRef}
-                onClick={togglePlay}
+            <Video
                 src={src}
-                onContextMenu={disableRightClick}
-                controls={false} // Pour désactiver les contrôles de lecture
+                controls={true}
+                height={500}
+                width={800}
+                poster={
+                    "https://hips.hearstapps.com/hmg-prod/images/ripley-pa-108-011822-01629-r-661067043d66f.jpg?resize=980:*"
+                }
             />
-            <button onClick={togglePlay}>Lecture/Pause</button>
         </div>
     );
 };

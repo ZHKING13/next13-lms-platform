@@ -111,11 +111,13 @@ export const ChaptersForm = ({
           >
             <FormField
               control={form.control}
+              
               name="title"
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
                     <Input
+                      className="text-white"
                       disabled={isSubmitting}
                       placeholder="ex. 'Introduction au cours'"
                       {...field}

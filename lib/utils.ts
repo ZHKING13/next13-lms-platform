@@ -48,248 +48,124 @@ export const retourClient = [
         name: "KOUADIO FRANCK",
     },
 ];
+export const MethodePayement = [
+    {
+        name: "Orange Money",
+        image: "images/orange.png",
+        id: "orange",
+    },
+    {
+        name: "Mtn Money",
+        image: "images/mtn.png",
+        id: "mtn",
+    },
+    {
+        name: "Moov Money",
+        image: "images/moov.png",
+        id: "moov",
+    },
+    {
+        name: "Wave",
+        image: "images/wave.png",
+        id: "wave",
+    },
+    {
+        name: "Free",
+        image: "images/free.png",
+        id: "free",
+    },
+    {
+        name: "M-pesa",
+        image: "images/pesa.png",
+        id: "pesa",
+    },
+    {
+        name: "Airtel",
+        image: "images/airtel.png",
+        id: "airtel",
+    },
+    {
+        name: "Afrimoney",
+        image: "images/afrimoney.png",
+        id: "afrimoney",
+    },
+    {
+        name: "Illicocash",
+        image: "images/illicocash.png",
+        id: "illicocash",
+    },
+    {
+        name: "T-money",
+        image: "images/t-money.png",
+        id: "t-money",
+    },
+    {
+        name: "Visa",
+        image: "images/visa.png",
+        id: "visa",
+    },
+    {
+        name: "Mastercard",
+        image: "images/mastercard.png",
+        id: "mastercard",
+    },
+    
+];
 export const contry = [
     {
         country: "Bénin",
         abbreviation: "bn",
-        method: [
-            {
-                name: "MTN Money",
-                image: "images/mtn.png",
-            },
-            {
-                name: "Moov Money",
-                image: "images/moov.png",
-            },
-            {
-                name: "Mastercard",
-                image: "images/matercard.png",
-            },
-            {
-                name: "Visa",
-                image: "images/visa.png",
-            },
-        ],
+        image: "images/benin.png",
     },
     {
         country: "Burkina Faso",
         abbreviation: "bf",
-        method: [
-            {
-                name: "MTN Money",
-                image: "images/mtn.png",
-            },
-            {
-                name: "Moov Money",
-                image: "images/moov.png",
-            },
-            {
-                name: "Mastercard",
-                image: "images/matercard.png",
-            },
-            {
-                name: "Visa",
-                image: "images/visa.png",
-            },
-        ],
+        image: "images/burkina.jpg",
     },
     {
         country: "Cameroun",
         abbreviation: "cm",
-        method: [
-            {
-                name: "MTN Money",
-                image: "images/mtn.png",
-            },
-            {
-                name: "Moov Money",
-                image: "images/moov.png",
-            },
-            {
-                name: "Mastercard",
-                image: "images/matercard.png",
-            },
-            {
-                name: "Visa",
-                image: "images/visa.png",
-            },
-        ],
+        image: "images/cameroon.jpg",
     },
     {
         country: "Côte d'Ivoire",
         abbreviation: "ci",
-        method: [
-            {
-                name: "MTN Money",
-                image: "images/mtn.png",
-            },
-            {
-                name: "Moov Money",
-                image: "images/moov.png",
-            },
-            {
-                name: "Mastercard",
-                image: "images/matercard.png",
-            },
-            {
-                name: "Visa",
-                image: "images/visa.png",
-            },
-        ],
+        image: "images/ci.jpg",
     },
     {
         country: "Guinée",
         abbreviation: "gn",
-        method: [
-            {
-                name: "MTN Money",
-                image: "images/mtn.png",
-            },
-            {
-                name: "Moov Money",
-                image: "images/moov.png",
-            },
-            {
-                name: "Mastercard",
-                image: "images/matercard.png",
-            },
-            {
-                name: "Visa",
-                image: "images/visa.png",
-            },
-        ],
+        image: "images/guinee.png",
     },
     {
         country: "Mali",
         abbreviation: "ml",
-        method: [
-            {
-                name: "MTN Money",
-                image: "images/mtn.png",
-            },
-            {
-                name: "Moov Money",
-                image: "images/moov.png",
-            },
-            {
-                name: "Mastercard",
-                image: "images/matercard.png",
-            },
-            {
-                name: "Visa",
-                image: "images/visa.png",
-            },
-        ],
+        image: "images/mali.png",
     },
     {
         country: "Maroc",
         abbreviation: "ma",
-        method: [
-            {
-                name: "MTN Money",
-                image: "images/mtn.png",
-            },
-            {
-                name: "Moov Money",
-                image: "images/moov.png",
-            },
-            {
-                name: "Mastercard",
-                image: "images/matercard.png",
-            },
-            {
-                name: "Visa",
-                image: "images/visa.png",
-            },
-        ],
+        image: "images/maroc.png",
     },
     {
         country: "République démocratique du Congo",
         abbreviation: "cd",
-        method: [
-            {
-                name: "MTN Money",
-                image: "images/mtn.png",
-            },
-            {
-                name: "Moov Money",
-                image: "images/moov.png",
-            },
-            {
-                name: "Mastercard",
-                image: "images/matercard.png",
-            },
-            {
-                name: "Visa",
-                image: "images/visa.png",
-            },
-        ],
+        image: "images/rdc.jpg",
     },
     {
         country: "Sénégal",
         abbreviation: "sn",
-        method: [
-            {
-                name: "MTN Money",
-                image: "images/mtn.png",
-            },
-            {
-                name: "Moov Money",
-                image: "images/moov.png",
-            },
-            {
-                name: "Mastercard",
-                image: "images/matercard.png",
-            },
-            {
-                name: "Visa",
-                image: "images/visa.png",
-            },
-        ],
+        image: "images/senegal.png",
     },
     {
         country: "Togo",
         abbreviation: "tg",
-        method: [
-            {
-                name: "MTN Money",
-                image: "images/mtn.png",
-            },
-            {
-                name: "Moov Money",
-                image: "images/moov.png",
-            },
-            {
-                name: "Mastercard",
-                image: "images/matercard.png",
-            },
-            {
-                name: "Visa",
-                image: "images/visa.png",
-            },
-        ],
+        image: "images/togo.png",
     },
     {
         country: "Tunisie",
         abbreviation: "tn",
-        method: [
-            {
-                name: "MTN Money",
-                image: "images/mtn.png",
-            },
-            {
-                name: "Moov Money",
-                image: "images/moov.png",
-            },
-            {
-                name: "Mastercard",
-                image: "images/matercard.png",
-            },
-            {
-                name: "Visa",
-                image: "images/visa.png",
-            },
-        ],
+        image: "images/tunisie.png",
     },
 ];
 

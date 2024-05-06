@@ -11,6 +11,7 @@ import { Chapter, MuxData } from "@prisma/client";
 
 import { Button } from "@/components/ui/button";
 import { FileUpload } from "@/components/file-upload";
+import Upload from "@/components/Upload";
 
 interface ChapterVideoFormProps {
   initialData: Chapter & { muxData?: MuxData | null };
@@ -45,58 +46,57 @@ export const ChapterVideoForm = ({
   }
 
   return (
-    <div className="mt-6 border bg-slate-100 rounded-md p-4">
-      <div className="font-medium flex items-center justify-between">
-        Vidéo du chapitre
-        <Button onClick={toggleEdit} variant="ghost">
-          {isEditing ? (
-            <>Annuler</>
-          ) : (!initialData.videoUrl ? (
-            <>
-              <PlusCircle className="h-4 w-4 mr-2" />
-              Ajouter une vidéo
-            </>
-          ) : (
-            <>
-              <Pencil className="h-4 w-4 mr-2" />
-              Modifier la vidéo
-            </>
-          ))}
-        </Button>
+      <div className="mt-6 border bg-slate-100 rounded-md p-4">
+          <div className="font-medium flex items-center justify-between">
+              Vidéo du chapitre
+              <Button onClick={toggleEdit} variant="ghost">
+                  {isEditing ? (
+                      <>Annuler</>
+                  ) : !initialData.videoUrl ? (
+                      <>
+                          <PlusCircle className="h-4 w-4 mr-2" />
+                          Ajouter une vidéo
+                      </>
+                  ) : (
+                      <>
+                          <Pencil className="h-4 w-4 mr-2" />
+                          Modifier la vidéo
+                      </>
+                  )}
+              </Button>
+          </div>
+          {!isEditing &&
+              (!initialData.videoUrl ? (
+                  <div className="flex items-center justify-center h-60 bg-slate-200 rounded-md">
+                      <Video className="h-10 w-10 text-slate-500" />
+                  </div>
+              ) : (
+                  <div className="relative aspect-video mt-2">
+                      <MuxPlayer
+                          playbackId={initialData?.muxData?.playbackId || ""}
+                      />
+                  </div>
+              ))}
+          {isEditing && (
+              <div>
+                  <Upload
+                      onChange={(info) => {
+                          if (info.url) {
+                              onSubmit({ videoUrl: info?.url });
+                          }
+                      }}
+                  />
+                  <div className="text-xs text-muted-foreground mt-4">
+                      Télecharger la vidéo de ce chapitre
+                  </div>
+              </div>
+          )}
+          {initialData.videoUrl && !isEditing && (
+              <div className="text-xs text-muted-foreground mt-2">
+                  Le traitement des vidéos peut prendre quelques minutes.
+                  Rafraîchissez la page si la vidéo n apparaît pas.
+              </div>
+          )}
       </div>
-      {!isEditing && (
-        !initialData.videoUrl ? (
-          <div className="flex items-center justify-center h-60 bg-slate-200 rounded-md">
-            <Video className="h-10 w-10 text-slate-500" />
-          </div>
-        ) : (
-          <div className="relative aspect-video mt-2">
-            <MuxPlayer
-              playbackId={initialData?.muxData?.playbackId || ""}
-            />
-          </div>
-        )
-      )}
-      {isEditing && (
-        <div>
-          <FileUpload
-            endpoint="chapterVideo"
-            onChange={(url) => {
-              if (url) {
-                onSubmit({ videoUrl: url });
-              }
-            }}
-          />
-          <div className="text-xs text-muted-foreground mt-4">
-           Télecharger la vidéo de ce chapitre
-          </div>
-        </div>
-      )}
-      {initialData.videoUrl && !isEditing && (
-        <div className="text-xs text-muted-foreground mt-2">
-          Le traitement des vidéos peut prendre quelques minutes. Rafraîchissez la page si la vidéo n apparaît pas.
-        </div>
-      )}
-    </div>
-  )
+  );
 }

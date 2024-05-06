@@ -98,6 +98,7 @@ export const DescriptionForm = ({
                 <FormItem>
                   <FormControl>
                     <Textarea
+                      className="text-white"
                       disabled={isSubmitting}
                       placeholder="Par exemple, 'Ce cours traite de...'"
                       {...field}

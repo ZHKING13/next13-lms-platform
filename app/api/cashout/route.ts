@@ -7,8 +7,9 @@ import { stripe } from "@/lib/stripe";
 import { generateShortOrderId } from "@/lib/format";
 
 export async function POST(req: Request) {
-    console.log("POST" + (await req.json()));
     try {
+        const body = await req.json();
+        console.log(body);
         const paymentRequest = {
             method: "POST",
             headers: {
@@ -18,15 +19,16 @@ export async function POST(req: Request) {
                 channel: "web",
                 "Content-Type": "application/json",
                 lang: "fr",
+                Cookie: "BIGipServer~naomi-ginefa~pool-ocp-router-normandie2-HTTP=!buHJl+AArSbcESDeR4w6CFIKwy5YZBsrbTww0HlLwIypkAAVlnz3dEjzYZlFS8KIrjFJJ6Vi5nIdfViZWdt8qM6gSrkw+ALF59LK1og=; route=1714462950.626.1702.135869|81ae3a9a04c06b83bdb4bb4311fcd72d",
             },
             body: JSON.stringify({
                 currency: "XOF",
-                order_id: generateShortOrderId(), // Assurez-vous que c'est unique
+                order_id: generateShortOrderId(),
                 amount: 10,
-                return_url: "https://cobaltinvest.com/dashboard",
-                cancel_url: "https://cobaltinvest.com/",
+                return_url: "https://cobaltinvestltd.com/dashboard",
+                cancel_url: "https://cobaltinvestltd.com/",
                 reference: "cobalt_invest",
-                // Autres paramètres comme nécessaire
+                state:body.state
             }),
         };
 
@@ -35,7 +37,7 @@ export async function POST(req: Request) {
             paymentRequest
         );
         const paymentData = await bizaoResponse.json();
-
+console.log(paymentData)
         return NextResponse.json({ url: paymentData.payment_url });
     } catch (error) {
         console.log("[COURSE_ID_CHECKOUT]", error);

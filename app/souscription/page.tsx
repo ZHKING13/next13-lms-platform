@@ -76,19 +76,10 @@ export default function Souscription() {
             console.log(JSON.stringify(data));
             const UserData = { userId: user.userId, ...data };
             console.log(UserData);
-            //  const addNew = db.user.create({
-            //      data: {
-            //          userId: UserData?.userId ? UserData.userId : "test",
-            //          pack:UserData.pack,
-            //          recurence: UserData.frequence,
-            //          stripeCustomerId:""
-                    
-            //      },
-            //  });
-            console.log(encodeURIComponent(JSON.stringify(UserData)));
+          
 
             const paymentData = await axios.post(
-                "https://api.bizao.com/mobilemoney/v1",
+                "api/cashout",
                 {
                     currency: "XOF",
                     order_id: generateShortOrderId(),
@@ -99,27 +90,16 @@ export default function Souscription() {
                     state: encodeURIComponent(JSON.stringify(UserData)),
                     // Autres paramètres comme nécessaire
                 },
-                {
-                    headers: {
-                        Authorization:
-                            "Bearer 71e8caef-a1ec-3be6-833b-c5b13a620bf2",
-                        "country-code": UserData.pays,
-                        "mno-name": UserData.methode,
-                        channel: "web",
-                        "Content-Type": "application/json",
-                        lang: "fr",
-                        Cookie: "BIGipServer~naomi-ginefa~pool-ocp-router-normandie2-HTTP=!buHJl+AArSbcESDeR4w6CFIKwy5YZBsrbTww0HlLwIypkAAVlnz3dEjzYZlFS8KIrjFJJ6Vi5nIdfViZWdt8qM6gSrkw+ALF59LK1og=; route=1714462950.626.1702.135869|81ae3a9a04c06b83bdb4bb4311fcd72d",
-                    },
-                }
+               
             );
 
-            if (!paymentData.data.payment_url) {
+            if (!paymentData.data.url) {
                 throw new Error(`No payment URL found in the response.`);
             }
 
             console.log(paymentData.data);
             // Redirection vers la page de paiement
-            window.location.href = paymentData.data.payment_url;
+            window.location.href = paymentData.data.url;
         } catch (error) {
             toast.error(
                 "Une erreur s'est produite lors de la soumission du formulaire."

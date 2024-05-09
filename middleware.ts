@@ -11,7 +11,7 @@ export default authMiddleware({
         "/api/send",
         "/souscription",
         "/api/courses",
-        
+        "/api/cashout",
     ],
 });
 

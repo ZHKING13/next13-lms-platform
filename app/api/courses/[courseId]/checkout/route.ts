@@ -19,17 +19,16 @@ export async function POST(
             "country-code": "CI",
             "mno-name": "orange",
             channel: "web",
-          "Content-Type": "application/json",
+            "Content-Type": "application/json",
             lang: "fr",
         },
         body: JSON.stringify({
             currency: "XOF",
-            order_id: generateShortOrderId(), // Assurez-vous que c'est unique
+            order_id: generateShortOrderId(), 
             amount: 10,
-            return_url: "https://cobaltinvest.com/dashboard",
-            cancel_url: "https://yourdomain.com/",
+            return_url: "https://cobaltinvestltd.com/dashboard",
+            cancel_url: "https://cobaltinvestltd.com/",
             reference: "cobalt_invest",
-            // Autres paramètres comme nécessaire
         }),
     };
 

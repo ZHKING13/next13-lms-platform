@@ -30,7 +30,7 @@ export default function RootLayout({
           <head>
               <link rel="icon" href="/favicon.png" sizes="any" />
           </head>
-          <body className={cn(ubuntu.className, "bg-[#01051e] ")}>
+          <body className={cn(ubuntu.className, "bg-[#01051e] mx-auto ")}>
               {children}
           </body>
       </html>

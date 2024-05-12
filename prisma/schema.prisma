@@ -125,6 +125,9 @@ model User {
   id String @id @default(uuid())
   userId String @unique
   stripeCustomerId String @unique
+  name String
+  contry String
+  phone String
 pack String 
 recurence String
 isPremium Boolean @default(false)

@@ -6,6 +6,7 @@ import { db } from "@/lib/db";
 import { stripe } from "@/lib/stripe";
 import { generateShortOrderId } from "@/lib/format";
 
+
 export async function POST(req: Request) {
     try {
         const body = await req.json();
@@ -31,8 +32,8 @@ export async function POST(req: Request) {
             method: "POST",
             headers: {
                 Authorization: `Bearer 71e8caef-a1ec-3be6-833b-c5b13a620bf2`,
-                "country-code": "CI",
-                "mno-name": "orange",
+                "country-code": body?.pays,
+                "mno-name": body?.methode,
                 channel: "web",
                 "Content-Type": "application/json",
                 lang: "fr",
@@ -55,7 +56,7 @@ export async function POST(req: Request) {
         );
         const paymentData = await bizaoResponse.json();
 console.log(paymentData)
-        return NextResponse.json({ url: paymentData.payment_url });
+        return NextResponse.json({ url: paymentData.payment_url,message: paymentData});
     } catch (error) {
         console.log("[COURSE_ID_CHECKOUT]", error);
         return new NextResponse("Internal Error", { status: 500 });

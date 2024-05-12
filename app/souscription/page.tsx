@@ -128,21 +128,23 @@ export default function Souscription() {
         <main className="bg-[#01051e]  text-white">
             <Navbar />
 
-            <div className=" mt-7 md:mt-0 text-white mx-auto  gap-4 py-4">
+            <div className=" mt-11 md:mt-0 text-white mx-auto  gap-4 py-4">
                 
 
-                <main>
-                    <section className="relative h-[172px] w-full bg-no-repeat bg-cover lg:hidden">
+                <main className="flex items-center justify-center flex-col">
+                    <section className="relative flex items-center justify-center w-full bg-no-repeat bg-cover lg:hidden">
                         <div className="flex justify-center pt-[17px] pb-[14px]">
                             <Step stepNumber={1} />
                             <Step stepNumber={2} />
+                            <Step stepNumber={3} />
                         </div>
                     </section>
                     {step === 1 && <PersonalInfo />}
                     {step === 2 && <Plan />}
+                    {step === 3 && <Addons />}
                 </main>
             </div>
-            {/* <Footer /> */}
+            <Footer />
         </main>
     );
 }

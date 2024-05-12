@@ -26,11 +26,11 @@ export default function Filter() {
   return (
     <div className="bg-c-neutral-alabaster flex items-center mt-6 lg:mt-8 gap-6 rounded-md py-3 justify-center">
       <p className={cn("text-sm", { "text-c-neutral-cool-gray": isToggled })}>
-        Monthly
+        Mensuel
       </p>
       <Switch onClick={() => handleClick(isToggled)} checked={isToggled} />
       <p className={cn("text-sm", { "text-c-neutral-cool-gray": !isToggled })}>
-        Yearly
+        Annuel
       </p>
     </div>
   );

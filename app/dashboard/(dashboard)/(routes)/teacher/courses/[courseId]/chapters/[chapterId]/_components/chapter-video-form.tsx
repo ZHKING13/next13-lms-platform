@@ -14,89 +14,93 @@ import { FileUpload } from "@/components/file-upload";
 import Upload from "@/components/Upload";
 
 interface ChapterVideoFormProps {
-  initialData: Chapter & { muxData?: MuxData | null };
-  courseId: string;
-  chapterId: string;
-};
+    initialData: Chapter & { muxData?: MuxData | null };
+    courseId: string;
+    chapterId: string;
+}
 
 const formSchema = z.object({
-  videoUrl: z.string().min(1),
+    videoUrl: z.string().min(1),
 });
 
 export const ChapterVideoForm = ({
-  initialData,
-  courseId,
-  chapterId,
+    initialData,
+    courseId,
+    chapterId,
 }: ChapterVideoFormProps) => {
-  const [isEditing, setIsEditing] = useState(false);
+    const [isEditing, setIsEditing] = useState(false);
 
-  const toggleEdit = () => setIsEditing((current) => !current);
+    const toggleEdit = () => setIsEditing((current) => !current);
 
-  const router = useRouter();
+    const router = useRouter();
 
-  const onSubmit = async (values: z.infer<typeof formSchema>) => {
-    try {
-      await axios.patch(`/api/courses/${courseId}/chapters/${chapterId}`, values);
-      toast.success("Chapitre mis à jour");
-      toggleEdit();
-      router.refresh();
-    } catch {
-      toast.error("Un problème est survenu");
-    }
-  }
+    const onSubmit = async (values: z.infer<typeof formSchema>) => {
+        try {
+            await axios.patch(
+                `/api/courses/${courseId}/chapters/${chapterId}`,
+                values
+            );
+            toast.success("Chapitre mis à jour");
+            toggleEdit();
+            router.refresh();
+        } catch {
+            toast.error("Un problème est survenu");
+        }
+    };
 
-  return (
-      <div className="mt-6 border bg-slate-100 rounded-md p-4">
-          <div className="font-medium flex items-center justify-between">
-              Vidéo du chapitre
-              <Button onClick={toggleEdit} variant="ghost">
-                  {isEditing ? (
-                      <>Annuler</>
-                  ) : !initialData.videoUrl ? (
-                      <>
-                          <PlusCircle className="h-4 w-4 mr-2" />
-                          Ajouter une vidéo
-                      </>
-                  ) : (
-                      <>
-                          <Pencil className="h-4 w-4 mr-2" />
-                          Modifier la vidéo
-                      </>
-                  )}
-              </Button>
-          </div>
-          {!isEditing &&
-              (!initialData.videoUrl ? (
-                  <div className="flex items-center justify-center h-60 bg-slate-200 rounded-md">
-                      <Video className="h-10 w-10 text-slate-500" />
-                  </div>
-              ) : (
-                  <div className="relative aspect-video mt-2">
-                      <MuxPlayer
-                          playbackId={initialData?.muxData?.playbackId || ""}
-                      />
-                  </div>
-              ))}
-          {isEditing && (
-              <div>
-                  <Upload
-                      onChange={(info) => {
-                          if (info.url) {
-                              onSubmit({ videoUrl: info?.url });
-                          }
-                      }}
-                  />
-                  <div className="text-xs text-muted-foreground mt-4">
-                      Télecharger la vidéo de ce chapitre
-                  </div>
-              </div>
-          )}
-          {initialData.videoUrl && !isEditing && (
-              <div className="text-xs text-muted-foreground mt-2">
-                  Le traitement des vidéos peut prendre quelques minutes.
-                  Rafraîchissez la page si la vidéo n apparaît pas.
-              </div>
-          )}
-      </div>
-  );
-}
+    return (
+        <div className="mt-6 border bg-slate-100 rounded-md p-4">
+            <div className="font-medium flex items-center justify-between">
+                Vidéo du chapitre
+                <Button onClick={toggleEdit} variant="ghost">
+                    {isEditing ? (
+                        <>Annuler</>
+                    ) : !initialData.videoUrl ? (
+                        <>
+                            <PlusCircle className="h-4 w-4 mr-2" />
+                            Ajouter une vidéo
+                        </>
+                    ) : (
+                        <>
+                            <Pencil className="h-4 w-4 mr-2" />
+                            Modifier la vidéo
+                        </>
+                    )}
+                </Button>
+            </div>
+            {!isEditing &&
+                (!initialData.videoUrl ? (
+                    <div className="flex items-center justify-center h-60 bg-slate-200 rounded-md">
+                        <Video className="h-10 w-10 text-slate-500" />
+                    </div>
+                ) : (
+                    <div className="relative aspect-video mt-2">
+                        <MuxPlayer
+                            playbackId={initialData?.muxData?.playbackId || ""}
+                        />
+                    </div>
+                ))}
+            {isEditing && (
+                <div>
+                    <FileUpload
+                        endpoint="chapterVideo"
+                        onChange={(url) => {
+                            if (url) {
+                                onSubmit({ videoUrl: url });
+                            }
+                        }}
+                    />
+                    <div className="text-xs text-muted-foreground mt-4">
+                        Télecharger la vidéo de ce chapitre
+                    </div>
+                </div>
+            )}
+            {initialData.videoUrl && !isEditing && (
+                <div className="text-xs text-muted-foreground mt-2">
+                    Le traitement des vidéos peut prendre quelques minutes.
+                    Rafraîchissez la page si la vidéo n apparaît pas.
+                </div>
+            )}
+        </div>
+    );
+};

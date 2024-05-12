@@ -104,7 +104,7 @@ export default function Plan() {
       <div>
         <SectionHeader
           title="Choisis ton pack"
-          description="Tu as le choix entre un abonnement mensuel ou annuel."
+          description="Vous avez le choix entre un abonnement mensuel ou annuel."
         />
         <section className="flex flex-col gap-3 lg:flex-row lg:gap-4 w-full">
           {plans.map((plan) => (

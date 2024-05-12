@@ -52,7 +52,7 @@ export default function PersonalInfo() {
     return (
         <Container onNext={form.handleSubmit(onSubmitHandler)}>
             <SectionHeader
-                title="Information personnels"
+                title="Information personnel"
                 description="Merci de renseigner les informations suivantes pour continuer."
             />
             <Form {...form}>

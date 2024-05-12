@@ -47,7 +47,7 @@ export async function POST(req: Request) {
             body: JSON.stringify({
                 currency: "XOF",
                 order_id: generateShortOrderId(),
-                amount: body.amount,
+                amount: 500,
                 return_url: "https://cobaltinvestltd.com/dashboard",
                 cancel_url: "https://cobaltinvestltd.com/",
                 reference: "cobalt_invest",

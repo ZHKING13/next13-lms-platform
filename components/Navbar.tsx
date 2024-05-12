@@ -55,9 +55,9 @@ const Navbar = () => {
     const [selectedLink, setSelectedLink] = useState("Acceuil");
     const navigation = [
         { name: "Acceuil", lien: "/" },
-        { name: "Nos étudiants formés", lien: "#" },
+        // { name: "Nos étudiants formés", lien: "#" },
         { name: "Tarifs", lien: "/tarifs" },
-        { name: "Nous Rejoindre", lien: "#" },
+        { name: "Nous Rejoindre", lien: "/tarifs" },
     ];
 
     const form = useForm<z.infer<typeof FormSchema>>({

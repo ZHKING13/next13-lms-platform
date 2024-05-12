@@ -70,7 +70,12 @@ export default function Plan() {
   }, [selectedPlan]);
 
   const onNext = () => {
-    if (!selectedPlan?.id || !plan.name) return;
+    if (!selectedPlan?.id || !plan.name) {
+       toast.error(
+           "Veuillez selectionner un pack"
+       );
+       return
+    }
     // onSubmit()
     increaseStep(step);
     

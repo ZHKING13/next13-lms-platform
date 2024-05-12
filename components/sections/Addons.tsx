@@ -65,7 +65,7 @@ export default function Addons() {
             const paymentData = await axios.post("api/cashout", {
                 currency: "XOF",
                 order_id: generateShortOrderId(),
-                amount: 10,
+                amount: plan.price,
                 return_url: "https://cobaltinvestltd.com/dashboard/search",
                 cancel_url: "https://cobaltinvestltd.com/",
                 reference: "cobalt_invest",
@@ -79,11 +79,13 @@ export default function Addons() {
             console.log(paymentData.data);
 
             if (!paymentData.data.url) {
-                 toast.error(
-                     paymentData?.data?.message?.requestError?.serviceException
-                         ?.text + " " + paymentData?.data?.message?.requestError?.serviceException
-                         ?.variables
-                 );
+                toast.error(
+                    paymentData?.data?.message?.requestError?.serviceException
+                        ?.text +
+                        " " +
+                        paymentData?.data?.message?.requestError
+                            ?.serviceException?.variables
+                );
                 throw new Error(`No payment URL found in the response.`);
             }
 
@@ -109,7 +111,7 @@ export default function Addons() {
             onPreviousStep={onPrevious}
         >
             <SectionHeader
-                title="Payement"
+                title="Paiement"
                 description="merci de renseigner les champs ci-desous"
             />
             <section className="mt-[22px] flex flex-col gap-4">

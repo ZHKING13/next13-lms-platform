@@ -113,112 +113,7 @@ export default function HomePage() {
         <div className="bg-[#01051e] w-[100vw]  text-white">
             <Navbar />
             {/* hero section */}
-            <Dialog open={open} onOpenChange={setOpen}>
-                <DialogContent className="text-white overflow-auto max-h-[500px] sm:max-w-[400px]">
-                    <DialogHeader>
-                        <DialogTitle>Demande d&apos;inscription</DialogTitle>
-                        <DialogDescription>
-                            Merci de remplir le formulaire notre équipe support
-                            vous contactera
-                        </DialogDescription>
-                    </DialogHeader>
-                    <div className=" text-white flex items-center gap-4 py-4">
-                        <Form {...form}>
-                            <form
-                                onSubmit={form.handleSubmit(onSubmit)}
-                                className="w-full space-y-6"
-                            >
-                                <FormField
-                                    control={form.control}
-                                    name="name"
-                                    render={({ field }) => (
-                                        <FormItem>
-                                            <FormLabel>Nom et Prenom</FormLabel>
-                                            <Input
-                                                onChange={field.onChange}
-                                                defaultValue={field.value}
-                                                type="text"
-                                                placeholder="Nom et prenom"
-                                            />
 
-                                            <FormMessage />
-                                        </FormItem>
-                                    )}
-                                />
-                                <FormField
-                                    control={form.control}
-                                    name="email"
-                                    render={({ field }) => (
-                                        <FormItem>
-                                            <FormLabel>Email</FormLabel>
-                                            <Input
-                                                onChange={field.onChange}
-                                                defaultValue={field.value}
-                                                type="text"
-                                                placeholder="Email"
-                                            />
-
-                                            <FormMessage />
-                                        </FormItem>
-                                    )}
-                                />
-                                <FormField
-                                    control={form.control}
-                                    name="number"
-                                    render={({ field }) => (
-                                        <FormItem>
-                                            <FormLabel>
-                                                Numero de telephone
-                                            </FormLabel>
-                                            <Input
-                                                onChange={field.onChange}
-                                                defaultValue={field.value}
-                                                type="text"
-                                                placeholder="Numéro de telephone"
-                                            />
-
-                                            <FormMessage />
-                                        </FormItem>
-                                    )}
-                                />
-
-                                <FormField
-                                    control={form.control}
-                                    name="pack"
-                                    render={({ field }) => (
-                                        <FormItem>
-                                            <FormLabel>Pack</FormLabel>
-                                            <Select
-                                                onValueChange={field.onChange}
-                                                defaultValue={field.value}
-                                            >
-                                                <FormControl>
-                                                    <SelectTrigger>
-                                                        <SelectValue placeholder="Choisis ton pack" />
-                                                    </SelectTrigger>
-                                                </FormControl>
-                                                <SelectContent>
-                                                    <SelectItem value="Pack Elite">
-                                                        Pack Elite
-                                                    </SelectItem>
-                                                    <SelectItem value="Pack Premium">
-                                                        Pack Premium
-                                                    </SelectItem>
-                                                </SelectContent>
-                                            </Select>
-
-                                            <FormMessage />
-                                        </FormItem>
-                                    )}
-                                />
-                                <Button className="bg-[#7043EC]" type="submit">
-                                    Envoyer
-                                </Button>
-                            </form>
-                        </Form>
-                    </div>
-                </DialogContent>
-            </Dialog>
             <div className="flex flex-col  w-full    gap-1  ">
                 <div className="md:mt-2 h-[calc(100vh - 50px)]   w-[100%] flex items-center justify-center">
                     <section className="w-full h-[100%]">
@@ -258,7 +153,7 @@ export default function HomePage() {
                                 </p>
                                 <div className="mt-3 self-start">
                                     <a
-                                        href="/dashboard"
+                                        href="/tarifs"
                                         className="bg-[#7043EC] w-[70%] text-lg  text-white font-semibold py-5 md:px-6 px-2 rounded-lg shadow-md transition duration-200 ease-in-out transform hover:-translate-y-1"
                                     >
                                         Rejoindre COBALT INVEST LTD
@@ -369,7 +264,7 @@ export default function HomePage() {
                                 className="mt-12 inline-flex rounded-md shadow"
                             >
                                 <a
-                                    href="/dashboard"
+                                    href="/tarifs"
                                     className="py-3 text-lg font-bold px-2 md:px-6 w-[100%] bg-[#7043EC] focus:ring-offset-indigo-200 text-white  transition ease-in duration-200 text-center shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg "
                                 >
                                     Rejoindre COBALT INVEST LTD
@@ -481,7 +376,7 @@ export default function HomePage() {
                                 className="mt-12 inline-flex rounded-md shadow"
                             >
                                 <a
-                                    href="/dashboard"
+                                    href="/tarifs"
                                     className="py-3 text-lg font-bold px-2 md:px-6 w-[100%]  bg-[#7043EC] md:text-xl focus:ring-offset-indigo-200 text-white  transition ease-in duration-200 text-center shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg "
                                 >
                                     Rejoindre COBALT INVEST LTD

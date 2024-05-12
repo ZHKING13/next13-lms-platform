@@ -5,7 +5,7 @@ import { NextResponse } from "next/server";
 import { db } from "@/lib/db";
 import { stripe } from "@/lib/stripe";
 import { generateShortOrderId } from "@/lib/format";
-
+import { getToken } from "@/lib/token";
 
 export async function POST(req: Request) {
     try {
@@ -15,8 +15,12 @@ export async function POST(req: Request) {
             where: {
                 userId: body?.userId,
             },
-        })
-        console.log(existinguser);
+        });
+        const url =
+            (await body?.methode) === "mastercard" || body?.methode === "visa"
+                ? "https://api.bizao.com/debitCard/v2"
+                : "https://api.bizao.com/mobilemoney/v1";
+        console.log(url);
         if (!existinguser) {
             await db.user.create({
                 data: {
@@ -25,13 +29,14 @@ export async function POST(req: Request) {
                     recurence: body.frequence,
                     stripeCustomerId: "",
                     endDate: new Date(),
-                }
+                },
             });
         }
+        const token = await getToken()
         const paymentRequest = {
             method: "POST",
             headers: {
-                Authorization: `Bearer 71e8caef-a1ec-3be6-833b-c5b13a620bf2`,
+                Authorization: `Bearer ${token}`,
                 "country-code": body?.pays,
                 "mno-name": body?.methode,
                 channel: "web",
@@ -42,21 +47,24 @@ export async function POST(req: Request) {
             body: JSON.stringify({
                 currency: "XOF",
                 order_id: generateShortOrderId(),
-                amount: 10,
+                amount: body.amount,
                 return_url: "https://cobaltinvestltd.com/dashboard",
                 cancel_url: "https://cobaltinvestltd.com/",
                 reference: "cobalt_invest",
-                state:body.state
+                state: body.state,
             }),
         };
 
         const bizaoResponse = await fetch(
-            "https://api.bizao.com/mobilemoney/v1",
+            url,
             paymentRequest
         );
         const paymentData = await bizaoResponse.json();
-console.log(paymentData)
-        return NextResponse.json({ url: paymentData.payment_url,message: paymentData});
+        console.log(paymentData);
+        return NextResponse.json({
+            url: paymentData.payment_url,
+            message: paymentData,
+        });
     } catch (error) {
         console.log("[COURSE_ID_CHECKOUT]", error);
         return new NextResponse("Internal Error", { status: 500 });

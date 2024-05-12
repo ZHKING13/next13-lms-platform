@@ -37,14 +37,11 @@ export default function Footer({
           <Button
               className={cn(
                   "bg-[#7043EC] text-white hover:bg-c-primary-marine-blue-hover",
-                  {
-                      "bg-[#7043EC] hover:bg-c-primary-purplish-hover":
-                          step === 2,
-                  }
+                 
               )}
               onClick={onHandleNextStep}
           >
-              {step === 2 ? "Passer au paiement" : "Suivant"}
+              {step === 3 ? "Passer au paiement" : "Suivant"}
           </Button>
       </footer>
   );

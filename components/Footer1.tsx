@@ -20,7 +20,7 @@ export default function Footer({
   return (
     <footer
       className={cn(
-        "p-4 bg-c-neutral-white flex items-center justify-between",
+        "p-4 bg-c-neutral-white flex items-center  justify-between",
         className
       )}
     >
@@ -40,12 +40,12 @@ export default function Footer({
           "bg-[#01051e] text-white hover:bg-c-primary-marine-blue-hover",
           {
             "bg-[#7043EC] hover:bg-c-primary-purplish-hover":
-              step === 3,
+              step === 2,
           }
         )}
         onClick={onHandleNextStep}
       >
-        {step === 3 ? "passer au payement" : "Suivant"}
+        {step === 2 ? "Passer au paiement" : "Suivant"}
       </Button>
     </footer>
   );

@@ -24,7 +24,7 @@ const formSchema = z.object({
   email: z.string().min(1, { message: "Email requis" }).email({
     message: "merci d'entrer une adresse email valide",
   }),
-  phone: z.string().refine((val) => /^\d{10}$/.test(val), {
+  phone: z.string().refine((val) => /^\d{8}$/.test(val), {
     message: "votre numéro est requis",
   }),
 });

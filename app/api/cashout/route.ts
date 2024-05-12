@@ -1,5 +1,5 @@
 import Stripe from "stripe";
-import { currentUser } from "@clerk/nextjs";
+import { auth, currentUser } from "@clerk/nextjs";
 import { NextResponse } from "next/server";
 
 import { db } from "@/lib/db";
@@ -10,6 +10,23 @@ export async function POST(req: Request) {
     try {
         const body = await req.json();
         console.log(body);
+        const existinguser = await db.user.findUnique({
+            where: {
+                userId: body?.userId,
+            },
+        })
+        console.log(existinguser);
+        if (!existinguser) {
+            await db.user.create({
+                data: {
+                    userId: body.userId,
+                    pack: body.pack,
+                    recurence: body.frequence,
+                    stripeCustomerId: "",
+                    endDate: new Date(),
+                }
+            });
+        }
         const paymentRequest = {
             method: "POST",
             headers: {

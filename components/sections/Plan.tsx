@@ -21,7 +21,8 @@ export default function Plan() {
 
   const onNext = () => {
     if (!selectedPlan?.id || !plan.name) return;
-    increaseStep(step);
+    // increaseStep(step);
+    console.log(plan)
   };
 
   const onPrevious = () => {

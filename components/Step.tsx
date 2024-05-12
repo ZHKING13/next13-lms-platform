@@ -21,7 +21,7 @@ export default function Step({
               className={cn(
                   "w-[33px] h-[33px] rounded-full flex items-center justify-center text-sm font-bold text-c-neutral-white border border-c-neutral-white",
                   {
-                      " bg-black text-white": stepNumber === step,
+                      " bg-white text-black": stepNumber === step,
                   }
               )}
           >

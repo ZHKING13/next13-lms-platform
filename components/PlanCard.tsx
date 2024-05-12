@@ -13,14 +13,12 @@ export default function PlanCard({ item, onClick }: any) {
 
   switch (item?.name) {
     case "Pack Elite":
-      imgSrc = "/images/icon-arcade.svg";
+      imgSrc = "/images/basic.png";
       alt = item?.name;
       break;
-    case "Advanced":
-      imgSrc = "/images/icon-advanced.svg";
-      alt = item?.name;
+    
     case "Pack Premium":
-      imgSrc = "/images/icon-pro.svg";
+      imgSrc = "/images/diamant.png";
       alt = item?.name;
     default:
       break;
@@ -35,7 +33,7 @@ export default function PlanCard({ item, onClick }: any) {
       className={cn(
         "w-full cursor-pointer hover:border hover:border-c-primary-purplish-blue",
         {
-          "border border-c-primary-purplish-blue bg-c-neutral-alabaster":
+          "border border-c-primary-purplish-blue text-white bg-c-neutral-alabaster":
             plan && plan?.id === item.id,
         }
       )}
@@ -52,9 +50,7 @@ export default function PlanCard({ item, onClick }: any) {
           <p className="text-sm text-c-neutral-cool-gray">
             {isToggled ? yearlyPrice : monthlyPrice}
           </p>
-          {isToggled && (
-            <p className="text-xs text-c-primary-marine-blue">{trails}</p>
-          )}
+         
         </div>
       </CardContent>
     </Card>

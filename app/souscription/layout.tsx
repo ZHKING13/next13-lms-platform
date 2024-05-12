@@ -26,13 +26,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <head>
-        <link rel="icon" href="/favicon.png" sizes="any" />
-      </head>
-      <body className={cn(ubuntu.className, "bg-c-neutral-magnolia")}>
-        {children}
-      </body>
-    </html>
+      <html lang="en">
+          <head>
+              <link rel="icon" href="/favicon.png" sizes="any" />
+          </head>
+          <body className={cn(ubuntu.className, "bg-[#01051e] ")}>
+              {children}
+          </body>
+      </html>
   );
 }

@@ -4,7 +4,11 @@ import React from "react";
 import { useAuth } from "@clerk/nextjs";
 import { redirect } from "next/navigation";
 import useStore from "@/store/useStore";
-
+import Step from "@/components/Step";
+import PersonalInfo from "@/components/sections/PersonalInfo";
+import Plan from "@/components/sections/Plan";
+import Addons from "@/components/sections/Addons";
+import Summary from "@/components/sections/Summary";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import {
@@ -70,28 +74,27 @@ export default function Souscription() {
     });
     const user = useAuth();
     console.log(user);
+    if (!user.isSignedIn) {
+        redirect("/dashboard");
+    }
     async function onSubmit(data: z.infer<typeof FormSchema>) {
         try {
-           
             console.log(JSON.stringify(data));
             const UserData = { userId: user.userId, ...data };
             console.log(UserData);
-          
-
-            const paymentData = await axios.post(
-                "api/cashout",
-                {
-                    currency: "XOF",
-                    order_id: generateShortOrderId(),
-                    amount: 10,
-                    return_url: "https://cobaltinvestltd.com/dashboard/search",
-                    cancel_url: "https://cobaltinvestltd.com/",
-                    reference: "cobalt_invest",
-                    state: encodeURIComponent(JSON.stringify(UserData)),
-                    // Autres paramètres comme nécessaire
-                },
-               
-            );
+            
+            const paymentData = await axios.post("api/cashout", {
+                currency: "XOF",
+                order_id: generateShortOrderId(),
+                amount: 10,
+                return_url: "https://cobaltinvestltd.com/dashboard/search",
+                cancel_url: "https://cobaltinvestltd.com/",
+                reference: "cobalt_invest",
+                state: encodeURIComponent(JSON.stringify(UserData)),
+                ...data,
+                userId:user.userId,
+                // Autres paramètres comme nécessaire
+            });
 
             if (!paymentData.data.url) {
                 throw new Error(`No payment URL found in the response.`);
@@ -125,246 +128,21 @@ export default function Souscription() {
         <main className="bg-[#01051e]  text-white">
             <Navbar />
 
-            <div className=" mt-10 text-white mx-auto  gap-4 py-4">
-                <h1 className="text-5xl mt-10 text-white mb-3 text-center">
-                    Inscription
-                </h1>
+            <div className=" mt-7 md:mt-0 text-white mx-auto  gap-4 py-4">
+                
 
-                <div className="flex m-auto gap-4">
-                    <div
-                        data-aos="fade-down"
-                        data-aos-duration="3000"
-                        className=" md:w-[50%] flex-col hidden  items-center justify-center h-[100%]  lg:mt-0  md:flex"
-                    >
-                        <img
-                            className="md:w-[70%] object-cover  "
-                            src="images/logo.png"
-                            alt="mockup"
-                        />
-                    </div>
-                    <div className=" md:w-[40%] w-[80%] m-auto flex items-center justify-center">
-                        <Form {...form}>
-                            <form
-                                onSubmit={form.handleSubmit(onSubmit)}
-                                className="w-full space-y-1 flex flex-col"
-                            >
-                                <FormField
-                                    control={form.control}
-                                    name="name"
-                                    render={({ field }) => (
-                                        <FormItem>
-                                            <FormLabel>Nom et Prenom</FormLabel>
-                                            <Input
-                                                onChange={field.onChange}
-                                                defaultValue={field.value}
-                                                type="text"
-                                                placeholder="Nom et prenom"
-                                            />
-
-                                            <FormMessage />
-                                        </FormItem>
-                                    )}
-                                />
-                                <FormField
-                                    control={form.control}
-                                    name="pays"
-                                    render={({ field }) => (
-                                        <FormItem>
-                                            <FormLabel>Pays</FormLabel>
-                                            <Select
-                                                onValueChange={(newValue) => {
-                                                    field.onChange(newValue);
-                                                    console.log(field);
-                                                }}
-                                                defaultValue={field.value}
-                                            >
-                                                <FormControl>
-                                                    <SelectTrigger>
-                                                        <SelectValue placeholder="Pays de residence" />
-                                                    </SelectTrigger>
-                                                </FormControl>
-                                                <SelectContent>
-                                                    {contry.map((item) => {
-                                                        return (
-                                                            <SelectItem
-                                                                key={
-                                                                    item.country
-                                                                }
-                                                                value={
-                                                                    item.abbreviation
-                                                                }
-                                                            >
-                                                                <div className="flex gap-4">
-                                                                    <img
-                                                                        className="h-6 w-5"
-                                                                        src={
-                                                                            item.image
-                                                                        }
-                                                                        alt="contry flag"
-                                                                    />
-                                                                    <span>
-                                                                        {
-                                                                            item.country
-                                                                        }
-                                                                    </span>
-                                                                </div>
-                                                            </SelectItem>
-                                                        );
-                                                    })}
-                                                </SelectContent>
-                                            </Select>
-
-                                            <FormMessage />
-                                        </FormItem>
-                                    )}
-                                />
-
-                                <FormField
-                                    control={form.control}
-                                    name="number"
-                                    render={({ field }) => (
-                                        <FormItem>
-                                            <FormLabel>
-                                                Numero de telephone
-                                            </FormLabel>
-                                            <Input
-                                                onChange={field.onChange}
-                                                defaultValue={field.value}
-                                                type="text"
-                                                placeholder="Numéro de telephone"
-                                            />
-
-                                            <FormMessage />
-                                        </FormItem>
-                                    )}
-                                />
-
-                                <FormField
-                                    control={form.control}
-                                    name="pack"
-                                    render={({ field }) => (
-                                        <FormItem>
-                                            <FormLabel>Pack</FormLabel>
-                                            <Select
-                                                onValueChange={field.onChange}
-                                                defaultValue={field.value}
-                                            >
-                                                <FormControl>
-                                                    <SelectTrigger>
-                                                        <SelectValue placeholder="Choisis ton pack" />
-                                                    </SelectTrigger>
-                                                </FormControl>
-                                                <SelectContent>
-                                                    <SelectItem value="Pack Elite">
-                                                        Pack Elite
-                                                    </SelectItem>
-                                                    <SelectItem value="Pack Premium">
-                                                        Pack Premium
-                                                    </SelectItem>
-                                                </SelectContent>
-                                            </Select>
-
-                                            <FormMessage />
-                                        </FormItem>
-                                    )}
-                                />
-                                <FormField
-                                    control={form.control}
-                                    name="frequence"
-                                    render={({ field }) => (
-                                        <FormItem>
-                                            <FormLabel>
-                                                Type d abonnement
-                                            </FormLabel>
-                                            <Select
-                                                onValueChange={field.onChange}
-                                                defaultValue={field.value}
-                                            >
-                                                <FormControl>
-                                                    <SelectTrigger>
-                                                        <SelectValue placeholder="Choisis ton type d'abonnement" />
-                                                    </SelectTrigger>
-                                                </FormControl>
-                                                <SelectContent>
-                                                    <SelectItem value="month">
-                                                        Mensuel
-                                                    </SelectItem>
-                                                    <SelectItem value="year">
-                                                        Annuel
-                                                    </SelectItem>
-                                                </SelectContent>
-                                            </Select>
-
-                                            <FormMessage />
-                                        </FormItem>
-                                    )}
-                                />
-                                <FormField
-                                    control={form.control}
-                                    name="methode"
-                                    render={({ field }) => (
-                                        <FormItem>
-                                            <FormLabel>
-                                                Methode de payement
-                                            </FormLabel>
-                                            <Select
-                                                onValueChange={(newValue) => {
-                                                    field.onChange(newValue);
-                                                    console.log(field);
-                                                }}
-                                                defaultValue={field.value}
-                                            >
-                                                <FormControl>
-                                                    <SelectTrigger>
-                                                        <SelectValue placeholder="Moyen de payement" />
-                                                    </SelectTrigger>
-                                                </FormControl>
-                                                <SelectContent>
-                                                    {MethodePayement.map(
-                                                        (item) => {
-                                                            return (
-                                                                <SelectItem
-                                                                    key={
-                                                                        item.name
-                                                                    }
-                                                                    value={
-                                                                        item.id
-                                                                    }
-                                                                >
-                                                                    <div className="flex gap-4">
-                                                                        <img
-                                                                            className="h-6 w-5"
-                                                                            src={
-                                                                                item.image
-                                                                            }
-                                                                            alt="payement logo"
-                                                                        />
-                                                                        <span>
-                                                                            {
-                                                                                item.name
-                                                                            }
-                                                                        </span>
-                                                                    </div>
-                                                                </SelectItem>
-                                                            );
-                                                        }
-                                                    )}
-                                                </SelectContent>
-                                            </Select>
-
-                                            <FormMessage />
-                                        </FormItem>
-                                    )}
-                                />
-                                <Button className="bg-[#7043EC]" type="submit">
-                                    Passer au payement
-                                </Button>
-                            </form>
-                        </Form>
-                    </div>
-                </div>
+                <main>
+                    <section className="relative h-[172px] w-full bg-no-repeat bg-cover lg:hidden">
+                        <div className="flex justify-center pt-[17px] pb-[14px]">
+                            <Step stepNumber={1} />
+                            <Step stepNumber={2} />
+                        </div>
+                    </section>
+                    {step === 1 && <PersonalInfo />}
+                    {step === 2 && <Plan />}
+                </main>
             </div>
-            <Footer />
+            {/* <Footer /> */}
         </main>
     );
 }

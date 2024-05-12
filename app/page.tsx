@@ -291,15 +291,15 @@ export default function HomePage() {
                                 un rêve irréaliste au lieu de cela, nous
                                 fournissons les outils et les stratégies pour
                                 que les traders de tout niveaux puissent les
-                                maitriser, qu&apos;ils soient complètement
+                                maîtriser, qu&apos;ils soient complètement
                                 nouveaux dans le trading ou qu&apos;ils soient
                                 des vétérans expérimentés des marchés. Nous
-                                avons conçu COBLALT pour que tout le monde
+                                avons conçu COBALT pour que tout le monde
                                 puisse s&apos;y plonger et apprendre à trader
                                 exactement de la même manière que nous.
                             </p>
                             <p>
-                                Chez COBALT INVEST LTD, personne pretend que le
+                                Chez COBALT INVEST LTD, personne ne pretend que le
                                 trading est un parcours facile, mais en suivant
                                 notre cadre, nous avons aidé des milliers de
                                 traders à trouver des financés.

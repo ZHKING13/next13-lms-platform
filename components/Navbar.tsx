@@ -54,7 +54,7 @@ const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [selectedLink, setSelectedLink] = useState("Acceuil");
     const navigation = [
-        { name: "Acceuil", lien: "/" },
+        { name: "Accueil", lien: "/" },
         // { name: "Nos étudiants formés", lien: "#" },
         { name: "Tarifs", lien: "/tarifs" },
         { name: "Nous Rejoindre", lien: "/tarifs" },

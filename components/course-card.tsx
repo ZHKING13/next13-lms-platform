@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import Image from "next/image";
 import Link from "next/link";
 import { BookOpen } from "lucide-react";
@@ -56,67 +56,67 @@ export const CourseCard = ({
     coursDesc,
 }: CourseCardProps) => {
     console.log("itemmmmmm:::::" + coursId);
-      const videoRefs = useRef<{ [key: string]: HTMLVideoElement | null }>({});
-      const [videoDurations, setVideoDurations] = useState<{
-          [key: string]: number;
-      }>({});
-      useEffect(() => {
-          // Fonction pour récupérer la durée de chaque vidéo
-          const getVideoDuration = (chapterId: string) => {
-              const video = videoRefs.current[chapterId];
-              // Assurez-vous que la vidéo est chargée avant d'obtenir la durée
-              if (video && video.readyState >= 2) {
-                  console.log(
-                      "La vidéo est chargée. Durée de la vidéo:",
-                      video.duration,
-                      "secondes"
-                  );
-              } else {
-                  console.log("La vidéo n'est pas encore chargée.");
-              }
-          };
+    const videoRefs = useRef<{ [key: string]: HTMLVideoElement | null }>({});
+    const [videoDurations, setVideoDurations] = useState<{
+        [key: string]: number;
+    }>({});
+    useEffect(() => {
+        // Fonction pour récupérer la durée de chaque vidéo
+        const getVideoDuration = (chapterId: string) => {
+            const video = videoRefs.current[chapterId];
+            // Assurez-vous que la vidéo est chargée avant d'obtenir la durée
+            if (video && video.readyState >= 2) {
+                console.log(
+                    "La vidéo est chargée. Durée de la vidéo:",
+                    video.duration,
+                    "secondes"
+                );
+            } else {
+                console.log("La vidéo n'est pas encore chargée.");
+            }
+        };
 
-          // Ajouter des écouteurs pour détecter le chargement des métadonnées de chaque vidéo
-          Object.keys(videoRefs.current).forEach((chapterId) => {
-              const video = videoRefs.current[chapterId];
-              if (video) {
-                  // Vérifier si video existe
-                  video.addEventListener("loadedmetadata", () => {
-                      getVideoDuration(chapterId);
-                  });
-              }
-          });
+        // Ajouter des écouteurs pour détecter le chargement des métadonnées de chaque vidéo
+        Object.keys(videoRefs.current).forEach((chapterId) => {
+            const video = videoRefs.current[chapterId];
+            if (video) {
+                // Vérifier si video existe
+                video.addEventListener("loadedmetadata", () => {
+                    getVideoDuration(chapterId);
+                });
+            }
+        });
 
-          // Nettoyer les écouteurs lorsque le composant est démonté
-          return () => {
-              Object.keys(videoRefs.current).forEach((chapterId) => {
-                  const video = videoRefs.current[chapterId];
-                  if (video) {
-                      // Vérifier si video existe
-                      video.removeEventListener("loadedmetadata", () => {
-                          getVideoDuration(chapterId);
-                      });
-                  }
-              });
-          };
-      }, [item]); // S'exécute chaque fois que item change
-      const formatDuration = (durationInSeconds: number): string => {
-          if (durationInSeconds < 60) {
-              return `${durationInSeconds} secondes`;
-          } else if (durationInSeconds < 3600) {
-              const minutes = Math.floor(durationInSeconds / 60);
-              const seconds = durationInSeconds % 60;
-              return `${minutes} min ${Math.floor(seconds)} sec
+        // Nettoyer les écouteurs lorsque le composant est démonté
+        return () => {
+            Object.keys(videoRefs.current).forEach((chapterId) => {
+                const video = videoRefs.current[chapterId];
+                if (video) {
+                    // Vérifier si video existe
+                    video.removeEventListener("loadedmetadata", () => {
+                        getVideoDuration(chapterId);
+                    });
+                }
+            });
+        };
+    }, [item]); // S'exécute chaque fois que item change
+    const formatDuration = (durationInSeconds: number): string => {
+        if (durationInSeconds < 60) {
+            return `${durationInSeconds} secondes`;
+        } else if (durationInSeconds < 3600) {
+            const minutes = Math.floor(durationInSeconds / 60);
+            const seconds = durationInSeconds % 60;
+            return `${minutes} min ${Math.floor(seconds)} sec
         `;
-          } else {
-              const hours = Math.floor(durationInSeconds / 3600);
-              const remainingSeconds = durationInSeconds % 3600;
-              const minutes = Math.floor(remainingSeconds / 60);
-              const seconds = remainingSeconds % 60;
-              return `${hours} h ${minutes} min
+        } else {
+            const hours = Math.floor(durationInSeconds / 3600);
+            const remainingSeconds = durationInSeconds % 3600;
+            const minutes = Math.floor(remainingSeconds / 60);
+            const seconds = remainingSeconds % 60;
+            return `${hours} h ${minutes} min
          ${seconds} sec`;
-          }
-      };
+        }
+    };
     return (
         // href={`/courses/${id}`}
         <>
@@ -207,7 +207,7 @@ export const CourseCard = ({
                                                 (a: any, b: any) =>
                                                     a.position - b.position
                                             ) // Trie les éléments par ordre croissant de position
-                                            .map((chapter: any) => (
+                                            .map((chapter: any, index: any) => (
                                                 <AccordionItem
                                                     key={chapter.id}
                                                     value={chapter.id}
@@ -221,7 +221,7 @@ export const CourseCard = ({
                                                                 {chapter.videoUrl && (
                                                                     <Link
                                                                         className="w-full"
-                                                                        href={`/courses/${coursId}/${chapter.id}`}
+                                                                        href={`/courses/${coursId}/chapters/${chapter.id}`}
                                                                     >
                                                                         <video
                                                                             className=" w-ful h-full"
@@ -280,10 +280,7 @@ export const CourseCard = ({
                                                                         chapter.position
                                                                     }{" "}
                                                                 </Badge>
-                                                                <Badge
-                                                                    className="ml-2 p-2 bg-[#7043EC]"
-                                                                    
-                                                                >
+                                                                <Badge className="ml-2 p-2 bg-[#7043EC]">
                                                                     Durée :{" "}
                                                                     {formatDuration(
                                                                         videoDurations[
@@ -293,7 +290,6 @@ export const CourseCard = ({
                                                                     )}
                                                                 </Badge>
 
-                                                                
                                                                 <Preview
                                                                     value={
                                                                         chapter.description

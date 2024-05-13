@@ -36,7 +36,7 @@ export async function POST(req: Request) {
         const headers = {
             Authorization: `Bearer ${token}`,
             "country-code": body?.pays,
-            "mno-name": body?.methode.toUpperCase(),
+            "mno-name": body?.methode,
             channel: "web",
             "Content-Type": "application/json",
             lang: "fr",

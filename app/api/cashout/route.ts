@@ -37,7 +37,7 @@ export async function POST(req: Request) {
                 Authorization: `Bearer ${token}`,
                 "country-code": body?.pays,
                 "mno-name": body?.methode,
-                channel: "web",
+                channel: "tpe",
                 "Content-Type": "application/json",
                 lang: "fr",
                 Cookie: "BIGipServer~naomi-ginefa~pool-ocp-router-normandie2-HTTP=!buHJl+AArSbcESDeR4w6CFIKwy5YZBsrbTww0HlLwIypkAAVlnz3dEjzYZlFS8KIrjFJJ6Vi5nIdfViZWdt8qM6gSrkw+ALF59LK1og=; route=1714462950.626.1702.135869|81ae3a9a04c06b83bdb4bb4311fcd72d",

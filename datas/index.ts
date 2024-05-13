@@ -9,7 +9,7 @@ export const plans = [
         type: "monthly",
       },
       yearly: {
-        price: 300000,
+        price: 350000,
         trails: "2 mois gratuit",
         type: "yearly",
       },

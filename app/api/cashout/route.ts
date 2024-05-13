@@ -33,9 +33,7 @@ export async function POST(req: Request) {
             });
         }
         const token = await getToken()
-        const paymentRequest = {
-            method: "POST",
-            headers: {
+        const headers= {
                 Authorization: `Bearer ${token}`,
                 "country-code": body?.pays,
                 "mno-name": body?.methode,
@@ -43,16 +41,22 @@ export async function POST(req: Request) {
                 "Content-Type": "application/json",
                 lang: "fr",
                 Cookie: "BIGipServer~naomi-ginefa~pool-ocp-router-normandie2-HTTP=!buHJl+AArSbcESDeR4w6CFIKwy5YZBsrbTww0HlLwIypkAAVlnz3dEjzYZlFS8KIrjFJJ6Vi5nIdfViZWdt8qM6gSrkw+ALF59LK1og=; route=1714462950.626.1702.135869|81ae3a9a04c06b83bdb4bb4311fcd72d",
-            },
-            body: JSON.stringify({
-                currency: "XOF",
-                order_id: generateShortOrderId(),
-                amount: body.amount,
-                return_url: "https://cobaltinvestltd.com/dashboard",
-                cancel_url: "https://cobaltinvestltd.com/",
-                reference: "cobalt_invest",
-                state: body.state,
-            }),
+        }
+        const bodyData = {
+            currency: "XOF",
+            order_id: generateShortOrderId(),
+            amount: 100,
+            return_url: "https://cobaltinvestltd.com/dashboard",
+            cancel_url: "https://cobaltinvestltd.com/",
+            reference: "cobalt_invest",
+            state: body.state,
+        };
+        console.log("HEADERRR BIZAO::",headers);
+        console.log("BODY BIZAO::",bodyData);
+        const paymentRequest = {
+            method: "POST",
+            headers,
+            body: JSON.stringify(bodyData),
         };
 
         const bizaoResponse = await fetch(

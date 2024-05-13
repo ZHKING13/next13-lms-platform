@@ -27,7 +27,7 @@ export async function POST(req: Request) {
                     userId: body.userId,
                     pack: body.pack,
                     recurence: body.frequence,
-                    stripeCustomerId: "",
+                    stripeCustomerId: body.name,
                     endDate: new Date(),
                 },
             });
@@ -47,7 +47,7 @@ export async function POST(req: Request) {
             body: JSON.stringify({
                 currency: "XOF",
                 order_id: generateShortOrderId(),
-                amount: 500,
+                amount: body.amount,
                 return_url: "https://cobaltinvestltd.com/dashboard",
                 cancel_url: "https://cobaltinvestltd.com/",
                 reference: "cobalt_invest",

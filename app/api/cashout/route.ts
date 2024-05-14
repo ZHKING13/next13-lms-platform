@@ -51,8 +51,8 @@ export async function POST(req: Request) {
             reference: "cobalt_invest",
             state: body.state,
         };
-        console.log("HEADERRR BIZAO::",headers);
-        console.log("BODY BIZAO::",bodyData);
+        console.log("HEADERRR BIZAO::", JSON.stringify(headers));
+        console.log("BODY BIZAO::",JSON.stringify(bodyData));
         const paymentRequest = {
             method: "POST",
             headers,

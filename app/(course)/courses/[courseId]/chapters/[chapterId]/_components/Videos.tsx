@@ -31,7 +31,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({ src }) => {
                 height={500}
                 width={800}
                 poster={
-                    "https://hips.hearstapps.com/hmg-prod/images/ripley-pa-108-011822-01629-r-661067043d66f.jpg?resize=980:*"
+                    ""
                 }
             />
         </div>

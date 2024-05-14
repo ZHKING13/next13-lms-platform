@@ -6,11 +6,13 @@ import { getChapter } from "@/actions/get-chapter";
 import { Banner } from "@/components/banner";
 import { Separator } from "@/components/ui/separator";
 import { Preview } from "@/components/preview";
-
+import { ArrowLeft, Eye, LayoutDashboard } from "lucide-react";
 import { VideoPlayer } from "./_components/video-player";
 import { CourseEnrollButton } from "./_components/course-enroll-button";
 import { CourseProgressButton } from "./_components/course-progress-button";
 import Video from "./_components/Videos";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
 
 const ChapterIdPage = async ({
     params,
@@ -47,6 +49,13 @@ const ChapterIdPage = async ({
     return (
         <div>
             <div className="flex  flex-col max-w-4xl mx-auto pb-20">
+                <Link
+                    href={`/dashboard`}
+                    className="flex items-center mt-2 rounded-xl p-3 bg-primary text-white w-[100px] ml-4 text-sm hover:opacity-75 transition mb-6"
+                >
+                    <ArrowLeft className="h-4 w-4 mr-2" />
+                    Retour
+                </Link>
                 <div className="p-4">
                     <Video src={chapter?.videoUrl || ""} />
                     {/* <VideoPlayer
@@ -60,6 +69,17 @@ const ChapterIdPage = async ({
                     /> */}
                 </div>
                 <div>
+                    {/* <div className="p-4 flex flex-col md:flex-row items-center justify-between">
+                        <h2 className="text-2xl font-semibold mb-2">
+                            {chapter.title}
+                        </h2>
+                        <CourseProgressButton
+                            chapterId={params.chapterId}
+                            courseId={params.courseId}
+                            nextChapterId={nextChapter?.id}
+                            isCompleted={!!userProgress?.isCompleted}
+                        />
+                    </div> */}
                     {!!attachments.length && (
                         <>
                             <Separator />

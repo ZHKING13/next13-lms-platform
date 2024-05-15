@@ -46,7 +46,7 @@ export const ImageForm = ({
   }
 
   return (
-      <div className="mt-6 border bg-slate-100 rounded-md p-4">
+      <div className="mt-6 border bg-[#01051e] rounded-md p-4">
           <div className="font-medium flex items-center justify-between">
               Image du cours
               <Button onClick={toggleEdit} variant="ghost">
@@ -74,7 +74,6 @@ export const ImageForm = ({
                   <div className="relative aspect-video mt-2">
                       <img
                           alt="Image du cours"
-                          
                           className="object-cover rounded-md"
                           src={initialData.imageUrl}
                       />

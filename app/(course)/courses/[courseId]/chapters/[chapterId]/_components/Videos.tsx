@@ -1,5 +1,4 @@
-
-"use client"
+"use client";
 import React, { MouseEvent, useRef } from "react";
 import { Video } from "reactjs-media";
 interface VideoPlayerProps {
@@ -28,9 +27,9 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({ src }) => {
             <Video
                 src={src}
                 controls={true}
-                height={500}
+                height={400}
                 width={800}
-                poster={"/tet.jpg"}
+                poster={"/b.jpeg?resize=400*"}
             />
         </div>
     );

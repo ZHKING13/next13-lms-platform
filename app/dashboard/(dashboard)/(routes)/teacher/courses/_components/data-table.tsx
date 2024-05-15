@@ -54,7 +54,7 @@ export function DataTable<TData, TValue>({
   })
 
   return (
-      <div>
+      <div className="h-full">
           <div className="flex items-center py-4 justify-between">
               <Input
                   placeholder="Filtrer les cours..."

@@ -64,68 +64,71 @@ export const ChapterAccessForm = ({
   }
 
   return (
-    <div className="mt-6 border bg-slate-100 rounded-md p-4">
-      <div className="font-medium flex items-center justify-between">
-        Accès au chapitre
-        <Button onClick={toggleEdit} variant="ghost">
-          {isEditing ? (
-            <>Annuler</>
-          ) : (
-            <>
-              <Pencil className="h-4 w-4 mr-2" />
-              Modifier l accès
-            </>
-          )}
-        </Button>
-      </div>
-      {!isEditing && (
-        <p className={cn(
-          "text-sm mt-2",
-          !initialData.isFree && "text-slate-500 italic"
-        )}>
-          {initialData.isFree ? (
-            <>Ce chapitre est accessible gratuitement.</>
-          ) : (
-            <>Ce chapitre n est pas accessible gratuitement.</>
-          )}
-        </p>
-      )}
-      {isEditing && (
-        <Form {...form}>
-          <form
-            onSubmit={form.handleSubmit(onSubmit)}
-            className="space-y-4 mt-4"
-          >
-            <FormField
-              control={form.control}
-              name="isFree"
-              render={({ field }) => (
-                <FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-md border p-4">
-                  <FormControl>
-                    <Checkbox
-                      checked={field.value}
-                      onCheckedChange={field.onChange}
-                    />
-                  </FormControl>
-                  <div className="space-y-1 leading-none">
-                    <FormDescription>
-                      Cochez cette case si vous souhaitez rendre ce chapitre gratuit.
-                    </FormDescription>
-                  </div>
-                </FormItem>
-              )}
-            />
-            <div className="flex items-center gap-x-2">
-              <Button
-                disabled={!isValid || isSubmitting}
-                type="submit"
-              >
-                Enregistrer
+      <div className="mt-6 border bg-[#01051e] rounded-md p-4">
+          <div className="font-medium flex items-center justify-between">
+              Accès au chapitre
+              <Button onClick={toggleEdit} variant="ghost">
+                  {isEditing ? (
+                      <>Annuler</>
+                  ) : (
+                      <>
+                          <Pencil className="h-4 w-4 mr-2" />
+                          Modifier l accès
+                      </>
+                  )}
               </Button>
-            </div>
-          </form>
-        </Form>
-      )}
-    </div>
-  )
+          </div>
+          {!isEditing && (
+              <p
+                  className={cn(
+                      "text-sm mt-2",
+                      !initialData.isFree && "text-slate-500 italic"
+                  )}
+              >
+                  {initialData.isFree ? (
+                      <>Ce chapitre est accessible gratuitement.</>
+                  ) : (
+                      <>Ce chapitre n est pas accessible gratuitement.</>
+                  )}
+              </p>
+          )}
+          {isEditing && (
+              <Form {...form}>
+                  <form
+                      onSubmit={form.handleSubmit(onSubmit)}
+                      className="space-y-4 mt-4"
+                  >
+                      <FormField
+                          control={form.control}
+                          name="isFree"
+                          render={({ field }) => (
+                              <FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-md border p-4">
+                                  <FormControl>
+                                      <Checkbox
+                                          checked={field.value}
+                                          onCheckedChange={field.onChange}
+                                      />
+                                  </FormControl>
+                                  <div className="space-y-1 leading-none">
+                                      <FormDescription>
+                                          Cochez cette case si vous souhaitez
+                                          rendre ce chapitre gratuit.
+                                      </FormDescription>
+                                  </div>
+                              </FormItem>
+                          )}
+                      />
+                      <div className="flex items-center gap-x-2">
+                          <Button
+                              disabled={!isValid || isSubmitting}
+                              type="submit"
+                          >
+                              Enregistrer
+                          </Button>
+                      </div>
+                  </form>
+              </Form>
+          )}
+      </div>
+  );
 }

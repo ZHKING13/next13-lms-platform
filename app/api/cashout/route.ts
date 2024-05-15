@@ -40,7 +40,7 @@ export async function POST(req: Request) {
             channel: "web",
             "Content-Type": "application/json",
             lang: "fr",
-            Cookie: "BIGipServer~naomi-ginefa~pool-ocp-router-normandie2-HTTP=!buHJl+AArSbcESDeR4w6CFIKwy5YZBsrbTww0HlLwIypkAAVlnz3dEjzYZlFS8KIrjFJJ6Vi5nIdfViZWdt8qM6gSrkw+ALF59LK1og=; route=1714462950.626.1702.135869|81ae3a9a04c06b83bdb4bb4311fcd72d",
+            Cookie: "8d387f86a05a3fda48986e2ed42ee33c=5e3fbbc2022dae4513858bb460d36136;route=1715590240.663.1667.719701|81ae3a9a04c06b83bdb4bb4311fcd72droute=1714462950.626.1702.135869|81ae3a9a04c06b83bdb4bb4311fcd72d",
         };
         const bodyData = {
             currency: "XOF",

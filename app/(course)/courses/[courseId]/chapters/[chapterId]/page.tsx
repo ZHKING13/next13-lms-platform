@@ -42,13 +42,13 @@ const ChapterIdPage = async ({
     if (!chapter || !course) {
         return redirect("/");
     }
-
+console.log(attachments)
     const isLocked = !chapter.isFree && !purchase;
     const completeOnEnd = !!purchase && !userProgress?.isCompleted;
 
     return (
         <div>
-            <div className="flex  flex-col max-w-4xl mx-auto pb-20">
+            <div className="flex  flex-col w-full h-full mx-auto ">
                 <Link
                     href={`/dashboard`}
                     className="flex items-center mt-2 rounded-xl p-3 bg-primary text-white w-[100px] ml-4 text-sm hover:opacity-75 transition mb-6"
@@ -56,7 +56,7 @@ const ChapterIdPage = async ({
                     <ArrowLeft className="h-4 w-4 mr-2" />
                     Retour
                 </Link>
-                <div className="p-4">
+                <div className="px-4">
                     <Video src={chapter?.videoUrl || ""} />
                     {/* <VideoPlayer
                         chapterId={params.chapterId}

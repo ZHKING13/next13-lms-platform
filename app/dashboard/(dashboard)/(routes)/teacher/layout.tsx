@@ -13,7 +13,7 @@ const TeacherLayout = ({
     return redirect("/");
   }
 
-  return <>{children}</>
+  return <div className="bg-[#01051e]">{children}</div>;
 }
  
 export default TeacherLayout;

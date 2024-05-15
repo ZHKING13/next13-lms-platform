@@ -50,7 +50,8 @@ export default function Addons() {
     };
     const user = useAuth();
     async function onSubmit(data: z.infer<typeof FormSchema>) {
-        try {
+        //online-pay.bizao.com/#/Cobalt_Invest
+        https: try {
             //  console.log(JSON.stringify(data));
             const UserData = {
                 userId: user.userId,

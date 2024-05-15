@@ -48,7 +48,7 @@ export async function POST(req: Request) {
             amount: 100,
             return_url: "https://cobaltinvestltd.com/dashboard",
             cancel_url: "https://cobaltinvestltd.com/",
-            reference: "cobalt_invest",
+            reference: "Cobalt_Invest",
             state: body.state,
         };
         console.log("HEADERRR BIZAO::", JSON.stringify(headers));

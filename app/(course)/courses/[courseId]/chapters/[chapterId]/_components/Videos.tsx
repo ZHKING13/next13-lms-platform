@@ -30,9 +30,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({ src }) => {
                 controls={true}
                 height={500}
                 width={800}
-                poster={
-                    ""
-                }
+                poster={"/tet.jpg"}
             />
         </div>
     );

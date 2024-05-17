@@ -28,9 +28,7 @@ export default function RootLayout({
 }) {
   return (
       <html lang="en">
-          <Head>
-              <script src="https://www.paiementpro.net/webservice/onlinepayment/js/paiementpro.v1.0.2.js"></script>
-          </Head>
+          
           <head>
               <link rel="icon" href="/favicon.png" sizes="any" />
           </head>

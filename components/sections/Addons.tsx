@@ -65,7 +65,7 @@ async function initializePayment(
         paiementPro.description = description;
         returnContext;
         paiementPro.notificationURL =
-            "https://miniature-space-doodle-qxwqwjp69wxc4pr4-3000.app.github.dev/api/webhook";
+            "https://cobaltinvestltd.com/api/webhook";
         paiementPro.returnURL = "https://cobaltinvestltd.com/dashboard";
 
         await paiementPro.getUrlPayment();

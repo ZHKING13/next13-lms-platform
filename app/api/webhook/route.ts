@@ -15,7 +15,7 @@ function calculerDate(frequence: string): Date {
 
     return aujourdhui;
 }
-export async function POST(req: NextApiRequest) {
+export async function POST(req: Request) {
     const body = req;
     const requestUrl = req.url;
     if (!requestUrl) {

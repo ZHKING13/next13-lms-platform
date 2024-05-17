@@ -14,6 +14,8 @@ import { z } from "zod";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { generateShortOrderId } from "@/lib/format";
+import Script from "next/script";
+
 import {
     Form,
     FormControl,
@@ -162,7 +164,18 @@ const [selectContry, setSelectContry] = useState("")
         //    form.handleSubmit(onSubmit)();
     };
     useEffect(() => {
-       loadPaiementProScript();
+        const loadScript = async () => {
+            try {
+                await loadPaiementProScript();
+            } catch (error) {
+                console.error(
+                    "Erreur lors du chargement du script de paiement:",
+                    error
+                );
+            }
+        };
+
+        loadScript();
     }, []);
     return (
         <Container

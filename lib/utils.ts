@@ -50,54 +50,61 @@ export const retourClient = [
 ];
 export const MethodePayement = [
     {
-        name: "Orange Money",
+        name: "Orange Money CI",
         image: "images/orange.png",
-        id: "orange",
+        id: "OMCIV2",
     },
     {
-        name: "Mtn Money",
+        name: "Orange Money BF",
+        image: "images/orange.png",
+        id: "OMBF",
+    },
+    {
+        name: "Orange Money Mali",
+        image: "images/orange.png",
+        id: "OMML",
+    },
+    {
+        name: "ORANGE Senegal",
+        image: "images/orange.png",
+        id: "OMSN",
+    },
+    {
+        name: "Mtn Money CI",
         image: "images/mtn.png",
-        id: "mtn",
+        id: "MOMOCI",
     },
     {
-        name: "Moov Money",
+        name: "MTN Money BENIN",
+        image: "images/mtn.png",
+        id: "MOMOBJ",
+    },
+    {
+        name: "Moov Money CI",
         image: "images/moov.png",
-        id: "moov",
+        id: "FLOOZ",
     },
     {
-        name: "Wave",
+        name: "Moov Money BENIN",
+        image: "images/moov.png",
+        id: "FLOOZBJ",
+    },
+    {
+        name: "Wave CI",
         image: "images/wave.png",
-        id: "wave",
+        id: "WAVECI",
     },
+
     {
-        name: "Free",
-        image: "images/free.png",
-        id: "free",
-    },
-    {
-        name: "M-pesa",
-        image: "images/pesa.png",
-        id: "pesa",
-    },
-    {
-        name: "Airtel",
+        name: "AITEL NIGER",
         image: "images/airtel.png",
-        id: "airtel",
+        id: "AIRTELNG",
     },
+
     {
-        name: "Afrimoney",
-        image: "images/afrimoney.png",
-        id: "afrimoney",
-    },
-    {
-        name: "Illicocash",
-        image: "images/illicocash.png",
-        id: "illicocash",
-    },
-    {
-        name: "T-money",
-        image: "images/t-money.png",
-        id: "t-money",
+        name: "PAYPAL",
+        image: "images/pp.png",
+        id: "PAYPAL",
     },
     {
         name: "Visa",
@@ -107,9 +114,8 @@ export const MethodePayement = [
     {
         name: "Mastercard",
         image: "images/mastercard.png",
-        id: "mastercard",
+        id: "CARD",
     },
-    
 ];
 export const contry = [
     {
@@ -122,11 +128,7 @@ export const contry = [
         abbreviation: "bf",
         image: "images/burkina.jpg",
     },
-    {
-        country: "Cameroun",
-        abbreviation: "cm",
-        image: "images/cameroon.jpg",
-    },
+   
     {
         country: "Côte d'Ivoire",
         abbreviation: "ci",
@@ -142,30 +144,23 @@ export const contry = [
         abbreviation: "ml",
         image: "images/mali.png",
     },
-    {
-        country: "Maroc",
-        abbreviation: "ma",
-        image: "images/maroc.png",
-    },
-    {
-        country: "République démocratique du Congo",
-        abbreviation: "cd",
-        image: "images/rdc.jpg",
-    },
+    
+    
     {
         country: "Sénégal",
         abbreviation: "sn",
         image: "images/senegal.png",
     },
+    
     {
-        country: "Togo",
-        abbreviation: "tg",
-        image: "images/togo.png",
+        country: "Niger",
+        abbreviation: "ng",
+        image: "images/ng.png",
     },
     {
-        country: "Tunisie",
-        abbreviation: "tn",
-        image: "images/tunisie.png",
+        country: "Autre ",
+        abbreviation: "others",
+        image: "images/glob.jpg",
     },
 ];
 

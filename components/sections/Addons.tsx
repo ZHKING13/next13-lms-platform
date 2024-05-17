@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+"use client";
+import React, { useState, useEffect } from "react";
 import SectionHeader from "../SectionHeader";
 import Container from "../Container";
 import AddonCard from "../AddonCard";
@@ -36,12 +37,64 @@ const FormSchema = z.object({
         .string()
         .nonempty({ message: "Veuillez choisir votre methode de payement." }),
 });
+function loadPaiementProScript(): Promise<void> {
+    return new Promise<void>((resolve, reject) => {
+        const script = document.createElement("script");
+        script.src =
+            "https://www.paiementpro.net/webservice/onlinepayment/js/paiementpro.v1.0.2.js";
+        script.onload = () => resolve();
+        script.onerror = reject;
+        document.head.appendChild(script);
+    });
+}
+
+// Dans votre composant, attendez que le script soit chargé avant d'initialiser la classe PaiementPro
+async function initializePayment(
+    amount: number,
+    referenceNumber: string,
+    customerEmail: string,
+    customerFirstName: string,
+    customerLastname: string,
+    customerPhoneNumber: string,
+    description: string,
+    channel: string,
+    returnContext:any,
+): Promise<string> {
+    try {
+        let paiementPro = new PaiementPro("PP-F3196");
+        paiementPro.amount = amount;
+        paiementPro.channel = channel;
+        paiementPro.referenceNumber = referenceNumber;
+        paiementPro.customerEmail = customerEmail;
+        paiementPro.customerFirstName = customerFirstName;
+        paiementPro.customerLastname = customerLastname;
+        paiementPro.customerPhoneNumber = customerPhoneNumber;
+        paiementPro.description = description;
+        returnContext;
+        paiementPro.notificationURL =
+            "https://miniature-space-doodle-qxwqwjp69wxc4pr4-3000.app.github.dev/api/webhook";
+        paiementPro.returnURL = "https://cobaltinvestltd.com/dashboard";
+
+        await paiementPro.getUrlPayment();
+
+        if (paiementPro.success) {
+            return paiementPro.url;
+        } else {
+            throw new Error("Erreur lors de l'initialisation du paiement");
+        }
+    } catch (error) {
+        throw new Error(
+            "Une erreur s'est produite lors de l'initialisation du paiement : " +
+                error
+        );
+    }
+}
 export default function Addons() {
     const { step, increaseStep, decreaseStep, personalInfo, plan } = useStore(
         (state) => state
     );
     const [open, setOpen] = useState(false);
-
+const [selectContry, setSelectContry] = useState("")
     const form = useForm<z.infer<typeof FormSchema>>({
         resolver: zodResolver(FormSchema),
     });
@@ -50,9 +103,8 @@ export default function Addons() {
     };
     const user = useAuth();
     async function onSubmit(data: z.infer<typeof FormSchema>) {
-        //online-pay.bizao.com/#/Cobalt_Invest
-        https: try {
-            //  console.log(JSON.stringify(data));
+        try {
+            const stripeCustomerId= await generateShortOrderId()
             const UserData = {
                 userId: user.userId,
                 ...personalInfo,
@@ -60,38 +112,41 @@ export default function Addons() {
                 frequence: plan.type,
                 pays: data.pays,
                 methode: data.methode,
+                stripeCustomerId,
             };
             console.log(UserData);
-
-            const paymentData = await axios.post("api/cashout", {
-                currency: "XOF",
-                order_id: generateShortOrderId(),
-                amount: plan.price,
-                return_url: "https://cobaltinvestltd.com/dashboard/search",
-                cancel_url: "https://cobaltinvestltd.com/",
-                reference: "cobalt_invest",
-                state: encodeURIComponent(JSON.stringify(UserData)),
+            const rest = await axios.post("api/cashout", {
                 ...UserData,
-                userId: user.userId,
-                pays: data.pays,
-                methode: data.methode,
-                // Autres paramètres comme nécessaire
             });
-            console.log(paymentData.data);
-
-            if (!paymentData.data.url) {
+            if (rest.data.code !== 200) {
                 toast.error(
-                    paymentData?.data?.message?.requestError?.serviceException
-                        ?.text +
-                        " " +
-                        paymentData?.data?.message?.requestError
-                            ?.serviceException?.variables
+                    "Une erreur s'est produite merci de réesayer"
                 );
-                throw new Error(`No payment URL found in the response.`);
+                return
             }
-
-            // Redirection vers la page de paiement
-            window.location.href = paymentData.data.url;
+            const amount = 100; 
+            const referenceNumber = stripeCustomerId; 
+            const customerEmail = personalInfo.email; 
+            const customerFirstName = personalInfo.name; 
+            const customerLastname = personalInfo.name; 
+            const customerPhoneNumber = personalInfo.phone; 
+            const description = plan.name;
+            const channel = data.methode == "visa" ? "CARD" : data.methode
+            const returnContext = encodeURIComponent(JSON.stringify(UserData));
+            const paymentUrl = await initializePayment(
+                amount,
+                referenceNumber,
+                customerEmail,
+                customerFirstName,
+                customerLastname,
+                customerPhoneNumber,
+                description,
+                channel,
+                returnContext
+            );
+            window.location.href = paymentUrl;
+        
+           
         } catch (error) {
             toast.error(
                 "Une erreur s'est produite lors de la soumission du formulaire."
@@ -106,6 +161,9 @@ export default function Addons() {
         // increaseStep(step);
         //    form.handleSubmit(onSubmit)();
     };
+    useEffect(() => {
+       loadPaiementProScript();
+    }, []);
     return (
         <Container
             onNext={form.handleSubmit(onSubmit)}
@@ -115,6 +173,7 @@ export default function Addons() {
                 title="Paiement"
                 description="merci de renseigner les champs ci-desous"
             />
+            
             <section className="mt-[22px] flex flex-col gap-4">
                 <Form {...form}>
                     <form
@@ -140,10 +199,10 @@ export default function Addons() {
                                             </SelectTrigger>
                                         </FormControl>
                                         <SelectContent>
-                                            {contry.map((item) => {
+                                            {contry.map((item,index) => {
                                                 return (
                                                     <SelectItem
-                                                        key={item.country}
+                                                        key={index}
                                                         value={
                                                             item.abbreviation
                                                         }

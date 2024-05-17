@@ -1,7 +1,7 @@
 import Stripe from "stripe";
 import { headers } from "next/headers";
 import { NextResponse } from "next/server";
-
+import { NextApiRequest, NextApiResponse } from "next";
 import { stripe } from "@/lib/stripe";
 import { db } from "@/lib/db";
 function calculerDate(frequence: string): Date {
@@ -15,31 +15,41 @@ function calculerDate(frequence: string): Date {
 
     return aujourdhui;
 }
-export async function POST(req: Request) {
-    const body = await req.json();
+export async function POST(req: NextApiRequest) {
+    const body = req;
+    const requestUrl = req.url;
+    if (!requestUrl) {
+        console.error("L'URL de la requête est indéfinie.");
+        return new NextResponse("Une erreur s'est produite", { status: 400 });
+    }
+    const url = new URL(requestUrl);
 
-    const encodedState = body.state;
-    const decodedState = decodeURIComponent(encodedState);
-    const stateObject = JSON.parse(decodedState);
-    console.log("State au format JSON:", stateObject);
- const existinguser = await db.user.findUnique({
-     where: {
-         userId: stateObject?.userId,
-     },
- });
+    // Récupérer les paramètres de recherche (query params) de l'URL
+    const params = new URLSearchParams(url.search);
+
+    // Récupérer la valeur du paramètre 'referenceNumber'
+    const referenceNumber = params.get("referenceNumber");
+    if (!referenceNumber) {
+        return;
+    }
+    console.log(referenceNumber);
+
+    console.log("State au format JSON:", requestUrl);
+    const existinguser = await db.user.findUnique({
+        where: {
+            stripeCustomerId: referenceNumber,
+        },
+    });
     console.log(existinguser);
-    const lastDate = await calculerDate(stateObject?.frequence);
-    console.log(lastDate);
     if (existinguser) {
-       await db.user.update({
-           where: {
-               userId: stateObject?.userId,
-           },
-           data: {
-               endDate: lastDate,
-               isPremium: true,
-           },
-       });
-   }
+        await db.user.update({
+            where: {
+                stripeCustomerId: referenceNumber,
+            },
+            data: {
+                isPremium: true,
+            },
+        });
+    }
     return new NextResponse("success", { status: 200 });
 }

@@ -65,7 +65,7 @@ export default async function Dashboard() {
       //   />
       // </div>
       <>
-          <div className="p-6 space-y-4">
+          <div className="p-6 bg-[#01051e] space-y-4">
               <CoursesList items={courses} />
           </div>
       </>

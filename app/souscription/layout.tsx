@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Ubuntu } from "next/font/google";
 import { cn } from "@/lib/utils";
+import Head from "next/head";
 
 const ubuntu = Ubuntu({
   subsets: [
@@ -27,6 +28,9 @@ export default function RootLayout({
 }) {
   return (
       <html lang="en">
+          <Head>
+              <script src="https://www.paiementpro.net/webservice/onlinepayment/js/paiementpro.v1.0.2.js"></script>
+          </Head>
           <head>
               <link rel="icon" href="/favicon.png" sizes="any" />
           </head>

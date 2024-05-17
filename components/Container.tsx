@@ -4,7 +4,7 @@ import React from "react";
 import Footer from "./Footer1";
 import useStore from "@/store/useStore";
 import Sidebar from "@/app/souscription/Sidebar";
-
+import Head from "next/head";
 type TContainer = {
     children: React.ReactNode;
     className?: string;
@@ -18,9 +18,12 @@ export default function Container({
     onNext,
     onPreviousStep,
 }: TContainer) {
-const { step, decreaseStep, plan, selectedAddOns, isSubmitted, onSubmit } =
-    useStore((state) => state);    return (
+    const { step, decreaseStep, plan, selectedAddOns, isSubmitted, onSubmit } =
+    
+        useStore((state) => state);
+return (
         <>
+           
             <section
                 className={cn(
                     "w-80 flex items-center md:mt-5 justify-center md:w-1/2",

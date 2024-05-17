@@ -39,16 +39,7 @@ const FormSchema = z.object({
         .string()
         .nonempty({ message: "Veuillez choisir votre methode de payement." }),
 });
-function loadPaiementProScript(): Promise<void> {
-    return new Promise<void>((resolve, reject) => {
-        const script = document.createElement("script");
-        script.src =
-            "https://www.paiementpro.net/webservice/onlinepayment/js/paiementpro.v1.0.2.js";
-        script.onload = () => resolve();
-        script.onerror = reject;
-        document.head.appendChild(script);
-    });
-}
+
 
 // Dans votre composant, attendez que le script soit chargé avant d'initialiser la classe PaiementPro
 async function initializePayment(
@@ -164,18 +155,9 @@ const [selectContry, setSelectContry] = useState("")
         //    form.handleSubmit(onSubmit)();
     };
     useEffect(() => {
-        const loadScript = async () => {
-            try {
-                await loadPaiementProScript();
-            } catch (error) {
-                console.error(
-                    "Erreur lors du chargement du script de paiement:",
-                    error
-                );
-            }
-        };
+    
 
-        loadScript();
+        
     }, []);
     return (
         <Container
@@ -186,7 +168,15 @@ const [selectContry, setSelectContry] = useState("")
                 title="Paiement"
                 description="merci de renseigner les champs ci-desous"
             />
-            
+            <Script
+                src="https://www.paiementpro.net/webservice/onlinepayment/js/paiementpro.v1.0.2.js"
+                strategy="lazyOnload"
+                onLoad={() =>
+                    console.log(
+                        `script loaded correctly, window.FB has been populated`
+                    )
+                }
+            />
             <section className="mt-[22px] flex flex-col gap-4">
                 <Form {...form}>
                     <form
@@ -212,7 +202,7 @@ const [selectContry, setSelectContry] = useState("")
                                             </SelectTrigger>
                                         </FormControl>
                                         <SelectContent>
-                                            {contry.map((item,index) => {
+                                            {contry.map((item, index) => {
                                                 return (
                                                     <SelectItem
                                                         key={index}

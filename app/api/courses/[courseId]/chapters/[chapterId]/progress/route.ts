@@ -8,8 +8,7 @@ export async function PUT(
   { params }: { params: { courseId: string; chapterId: string } }
 ) {
   try {
-    const { userId } = auth();
-    const { isCompleted } = await req.json();
+    const { isCompleted,userId } = await req.json();
 
     if (!userId) {
       return new NextResponse("Unauthorized", { status: 401 });

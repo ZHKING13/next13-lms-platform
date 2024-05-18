@@ -8,6 +8,10 @@ body,
     font-family: "Montserrat", 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
+.video-container video {
+    filter: contrast(1.5);
+}
+
 [data-aos="example-anim2"] {
     transform: scale(0);
     transition-property: transform;

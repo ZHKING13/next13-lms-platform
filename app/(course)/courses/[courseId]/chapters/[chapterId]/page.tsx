@@ -69,7 +69,7 @@ console.log(attachments)
                     /> */}
                 </div>
                 <div>
-                    {/* <div className="p-4 flex flex-col md:flex-row items-center justify-between">
+                    <div className="p-4 flex flex-col md:flex-row items-center justify-between">
                         <h2 className="text-2xl font-semibold mb-2">
                             {chapter.title}
                         </h2>
@@ -78,8 +78,9 @@ console.log(attachments)
                             courseId={params.courseId}
                             nextChapterId={nextChapter?.id}
                             isCompleted={!!userProgress?.isCompleted}
+                            userId={userId}
                         />
-                    </div> */}
+                    </div>
                     {!!attachments.length && (
                         <>
                             <Separator />

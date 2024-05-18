@@ -1,8 +1,9 @@
 "use client";
-import React, { MouseEvent, useRef } from "react";
+import React, { MouseEvent, useRef,useEffect } from "react";
 import { Video } from "reactjs-media";
 interface VideoPlayerProps {
     src: string;
+
 }
 
 const VideoPlayer: React.FC<VideoPlayerProps> = ({ src }) => {
@@ -21,9 +22,9 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({ src }) => {
             }
         }
     };
-
+ 
     return (
-        <div>
+        <div className="video-container">
             <Video
                 src={src}
                 controls={true}

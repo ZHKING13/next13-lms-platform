@@ -40,7 +40,6 @@ const FormSchema = z.object({
         .nonempty({ message: "Veuillez choisir votre methode de payement." }),
 });
 
-
 // Dans votre composant, attendez que le script soit chargé avant d'initialiser la classe PaiementPro
 async function initializePayment(
     amount: number,
@@ -51,7 +50,7 @@ async function initializePayment(
     customerPhoneNumber: string,
     description: string,
     channel: string,
-    returnContext:any,
+    returnContext: any
 ): Promise<string> {
     try {
         let paiementPro = new PaiementPro("PP-F3196");
@@ -63,9 +62,8 @@ async function initializePayment(
         paiementPro.customerLastname = customerLastname;
         paiementPro.customerPhoneNumber = customerPhoneNumber;
         paiementPro.description = description;
-        returnContext;
-        paiementPro.notificationURL =
-            "https://cobaltinvestltd.com/api/webhook";
+        paiementPro.returnContext = returnContext;
+        paiementPro.notificationURL = "https://cobaltinvestltd.com/api/webhook";
         paiementPro.returnURL = "https://cobaltinvestltd.com/dashboard";
 
         await paiementPro.getUrlPayment();
@@ -87,7 +85,7 @@ export default function Addons() {
         (state) => state
     );
     const [open, setOpen] = useState(false);
-const [selectContry, setSelectContry] = useState("")
+    const [selectContry, setSelectContry] = useState("");
     const form = useForm<z.infer<typeof FormSchema>>({
         resolver: zodResolver(FormSchema),
     });
@@ -97,7 +95,7 @@ const [selectContry, setSelectContry] = useState("")
     const user = useAuth();
     async function onSubmit(data: z.infer<typeof FormSchema>) {
         try {
-            const stripeCustomerId= await generateShortOrderId()
+            const stripeCustomerId = await generateShortOrderId();
             const UserData = {
                 userId: user.userId,
                 ...personalInfo,
@@ -112,19 +110,17 @@ const [selectContry, setSelectContry] = useState("")
                 ...UserData,
             });
             if (rest.data.code !== 200) {
-                toast.error(
-                    "Une erreur s'est produite merci de réesayer"
-                );
-                return
+                toast.error("Une erreur s'est produite merci de réesayer");
+                return;
             }
-            const amount = 100; 
-            const referenceNumber = stripeCustomerId; 
-            const customerEmail = personalInfo.email; 
-            const customerFirstName = personalInfo.name; 
-            const customerLastname = personalInfo.name; 
-            const customerPhoneNumber = personalInfo.phone; 
+            const amount = 100;
+            const referenceNumber = stripeCustomerId;
+            const customerEmail = personalInfo.email;
+            const customerFirstName = personalInfo.name;
+            const customerLastname = personalInfo.name;
+            const customerPhoneNumber = personalInfo.phone;
             const description = plan.name;
-            const channel = data.methode == "visa" ? "CARD" : data.methode
+            const channel = data.methode == "visa" ? "CARD" : data.methode;
             const returnContext = encodeURIComponent(JSON.stringify(UserData));
             const paymentUrl = await initializePayment(
                 amount,
@@ -138,8 +134,6 @@ const [selectContry, setSelectContry] = useState("")
                 returnContext
             );
             window.location.href = paymentUrl;
-        
-           
         } catch (error) {
             toast.error(
                 "Une erreur s'est produite lors de la soumission du formulaire."
@@ -154,11 +148,7 @@ const [selectContry, setSelectContry] = useState("")
         // increaseStep(step);
         //    form.handleSubmit(onSubmit)();
     };
-    useEffect(() => {
-    
-
-        
-    }, []);
+    useEffect(() => {}, []);
     return (
         <Container
             onNext={form.handleSubmit(onSubmit)}

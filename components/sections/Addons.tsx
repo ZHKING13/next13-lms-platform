@@ -81,7 +81,7 @@ async function initializePayment(
     }
 }
 export default function Addons() {
-    const { step, increaseStep, decreaseStep, personalInfo, plan } = useStore(
+    const { step, increaseStep, decreaseStep, personalInfo, plan,setLoading } = useStore(
         (state) => state
     );
     const [open, setOpen] = useState(false);
@@ -95,6 +95,7 @@ export default function Addons() {
     const user = useAuth();
     async function onSubmit(data: z.infer<typeof FormSchema>) {
         try {
+            setLoading(true);
             const stripeCustomerId = await generateShortOrderId();
             const UserData = {
                 userId: user.userId,

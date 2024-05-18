@@ -47,6 +47,7 @@
         "lucide-react": "^0.276.0",
         "next": "13.4.12",
         "next-cloudinary": "^6.5.1",
+        "next-video": "^1.0.6",
         "postcss": "8.4.29",
         "query-string": "^8.1.0",
         "react": "^18.3.1",

@@ -20,18 +20,11 @@ export default async function Dashboard({
     params: { slug: string };
     searchParams?: { [key: string]: string | undefined };
 }) {
-    const { userId } = await auth();
-    console.log("userId", userId);
-    if (!userId) {
-        return redirect("/");
-    }
-    // verifier s'il y a des paramètres de recherche
-    // suprimer tout les utilisateur
     if (searchParams) {
         console.log(searchParams);
         const referenceNumber = searchParams?.referenceNumber;
         console.log(referenceNumber);
-        
+
         if (
             referenceNumber &&
             referenceNumber !== "" &&
@@ -55,10 +48,16 @@ export default async function Dashboard({
             }
         }
     }
-console.log("get user in db");
+    const { userId } = await auth();
+    console.log("userId", userId);
+    if (!userId) {
+        return redirect("/");
+    }
+
+    console.log("get user in db");
     const curentUser = await getUser(userId);
     console.log("curent user", curentUser);
-    
+
     if (!curentUser?.isPremium || curentUser == null) {
         return redirect("/souscription");
     }

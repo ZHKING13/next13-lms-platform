@@ -114,7 +114,7 @@ export default function Addons() {
                 toast.error("Une erreur s'est produite merci de réesayer");
                 return;
             }
-            const amount = 100;
+            const amount = plan.price;
             const referenceNumber = stripeCustomerId;
             const customerEmail = personalInfo.email;
             const customerFirstName = personalInfo.name;

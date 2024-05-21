@@ -15,8 +15,9 @@ function calculerDate(frequence: string): Date {
 
     return aujourdhui;
 }
-export async function POST(req: Request) {
-    const body = req;
+export async function GET(req: Request) {
+    const body = req.json();
+    console.log("body requet payement succes",body);
     const requestUrl = req.url;
     if (!requestUrl) {
         console.error("L'URL de la requête est indéfinie.");

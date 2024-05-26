@@ -56,39 +56,13 @@ function TarifPage() {
     });
 
     async function onSubmit(data: z.infer<typeof FormSchema>) {
-        try {
-            const response = await sendBizaoRequest(100, "ci", "orange", "XOF");
-            console.log("Réponse du serveur:", response);
-        } catch (error) {
-            console.error(error);
-        }
-        //  try {
-        //      console.log(JSON.stringify(data));
-        //      const res = await fetch("api/send", {
-        //          method: "POST",
-        //          headers: {
-        //              "Content-Type": "application/json", // Corrected Content-Type header
-        //          },
-        //          body: JSON.stringify(data),
-        //      });
-        //      if (res.ok) {
-        //          toast.success("Votre demande a été soumise avec succès !");
-        //          setOpen(false);
-        //      } else {
-        //          console.log(res);
-        //          toast.error(
-        //              "Une erreur s'est produite lors de la soumission du formulaire."
-        //          );
-        //      }
-        //  } catch (error) {
-        //      toast.error(
-        //          "Une erreur s'est produite lors de la soumission du formulaire."
-        //      );
-        //      console.error(
-        //          "Une erreur s'est produite lors de la soumission du formulaire :",
-        //          error
-        //      );
-        //  }
+        // try {
+        //     const response = await sendBizaoRequest(100, "ci", "orange", "XOF");
+        //     console.log("Réponse du serveur:", response);
+        // } catch (error) {
+        //     console.error(error);
+        // }
+       
     }
     return (
         <div className="bg-[#01051e] w-[100vw]  text-white">

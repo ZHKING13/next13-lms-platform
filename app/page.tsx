@@ -55,6 +55,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
 import { useRouter } from "next/router";
+import PromotionModal from "@/components/Promo";
 const FormSchema = z.object({
     email: z
         .string()
@@ -67,12 +68,14 @@ const FormSchema = z.object({
 
 export default function HomePage() {
     const [open, setOpen] = useState(false);
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [showPromo, setShowPromo] = useState(false);
     const [selectedLink, setSelectedLink] = useState("Acceuil");
     const form = useForm<z.infer<typeof FormSchema>>({
         resolver: zodResolver(FormSchema),
     });
-
+ const closeModal = () => {
+        setShowPromo(false);
+    };
     async function onSubmit(data: z.infer<typeof FormSchema>) {
         try {
             console.log(JSON.stringify(data));
@@ -103,6 +106,15 @@ export default function HomePage() {
         }
     }
     useEffect(() => {
+        const timer = setTimeout(() => {
+            setShowPromo(true);
+        }, 3000); 
+
+        return () => clearTimeout(timer);
+    }, []); 
+
+   
+    useEffect(() => {
         AOS.init({
             duration: 600,
             easing: "ease-in-out-back",
@@ -113,7 +125,7 @@ export default function HomePage() {
         <div className="bg-[#01051e] w-[100vw]  text-white">
             <Navbar />
             {/* hero section */}
-
+{showPromo && <PromotionModal onClose={closeModal} />}
             <div className="flex flex-col  w-full    gap-1  ">
                 <div className="md:mt-2 h-[calc(100vh - 50px)]   w-[100%] flex items-center justify-center">
                     <section className="w-full h-[100%]">

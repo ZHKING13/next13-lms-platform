@@ -51,7 +51,7 @@ const PromoForm: React.FC<PromoFormProps> = ({ onClose }) => {
                 },
                 body: JSON.stringify(body),
             });
-            alert(res)
+            
             if (res.ok) {
                 toast.success("Votre demande a été soumise avec succès !");
                 onClose();

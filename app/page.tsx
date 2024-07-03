@@ -56,6 +56,7 @@ import { Label } from "@/components/ui/label";
 
 import { useRouter } from "next/router";
 import PromotionModal from "@/components/Promo";
+import PromoForm from "@/components/PromoForm";
 const FormSchema = z.object({
     email: z
         .string()
@@ -69,12 +70,14 @@ const FormSchema = z.object({
 export default function HomePage() {
     const [open, setOpen] = useState(false);
     const [showPromo, setShowPromo] = useState(false);
+    const [showPromoForm, setShowPromoForm] = useState(false);
     const [selectedLink, setSelectedLink] = useState("Acceuil");
     const form = useForm<z.infer<typeof FormSchema>>({
         resolver: zodResolver(FormSchema),
     });
  const closeModal = () => {
         setShowPromo(false);
+        setShowPromoForm(true);
     };
     async function onSubmit(data: z.infer<typeof FormSchema>) {
         try {
@@ -86,8 +89,11 @@ export default function HomePage() {
                 },
                 body: JSON.stringify(data),
             });
+            alert(res)
             if (res.ok) {
                 toast.success("Votre demande a été soumise avec succès !");
+                        alert("test");
+
                 setOpen(false);
             } else {
                 console.log(res);
@@ -108,7 +114,7 @@ export default function HomePage() {
     useEffect(() => {
         const timer = setTimeout(() => {
             setShowPromo(true);
-        }, 3000); 
+        }, 2000); 
 
         return () => clearTimeout(timer);
     }, []); 
@@ -116,7 +122,7 @@ export default function HomePage() {
    
     useEffect(() => {
         AOS.init({
-            duration: 600,
+            duration: 200,
             easing: "ease-in-out-back",
             once: false,
         });
@@ -125,14 +131,15 @@ export default function HomePage() {
         <div className="bg-[#01051e] w-[100vw]  text-white">
             <Navbar />
             {/* hero section */}
-{showPromo && <PromotionModal onClose={closeModal} />}
+            {showPromo && <PromotionModal onClose={closeModal} />}
+            {showPromoForm && <PromoForm onClose={()=>setShowPromoForm(false)} />}
             <div className="flex flex-col  w-full    gap-1  ">
                 <div className="md:mt-2 h-[calc(100vh - 50px)]   w-[100%] flex items-center justify-center">
                     <section className="w-full h-[100%]">
                         <div className="flex    px-4 w-[100%] h-[100%]  flex-col md:flex-row items-center justify-center md:justify-between py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 ">
                             <div
                                 data-aos="fade-down"
-                                data-aos-duration="3000"
+                                data-aos-duration="2000"
                                 className=" md:w-1/2 flex-col  items-center justify-center h-[100%]  lg:mt-0  flex"
                             >
                                 <img
@@ -144,7 +151,7 @@ export default function HomePage() {
 
                             <div
                                 data-aos="example-anim2"
-                                data-aos-duration="600"
+                                data-aos-duration="400"
                                 data-aos-easing="ease-in-sine"
                                 className=" relative flex flex-col items-start justify-center md:w-1/2 md:h-[100%]  "
                             >
@@ -306,15 +313,15 @@ export default function HomePage() {
                                 maîtriser, qu&apos;ils soient complètement
                                 nouveaux dans le trading ou qu&apos;ils soient
                                 des vétérans expérimentés des marchés. Nous
-                                avons conçu COBALT pour que tout le monde
-                                puisse s&apos;y plonger et apprendre à trader
+                                avons conçu COBALT pour que tout le monde puisse
+                                s&apos;y plonger et apprendre à trader
                                 exactement de la même manière que nous.
                             </p>
                             <p>
-                                Chez COBALT INVEST LTD, personne ne pretend que le
-                                trading est un parcours facile, mais en suivant
-                                notre cadre, nous avons aidé des milliers de
-                                traders à trouver des financés.
+                                Chez COBALT INVEST LTD, personne ne pretend que
+                                le trading est un parcours facile, mais en
+                                suivant notre cadre, nous avons aidé des
+                                milliers de traders à trouver des financés.
                             </p>
                         </div>
                         <div className="md:pr-8 md:w-1/2 w-full  ">

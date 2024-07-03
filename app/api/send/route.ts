@@ -18,7 +18,7 @@ console.log('body::::::'+ req)
                 email,
                 name,
                 number,
-                pack,
+                
             }) as React.ReactElement,
         });
 

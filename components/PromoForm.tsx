@@ -1,12 +1,10 @@
-// components/NewsletterModal.tsx
-
+// components/PromoForm.tsx
+'use client'
 import { useState } from "react";
 import { z, ZodError } from "zod";
+import toast from "react-hot-toast";
 
 const schema = z.object({
-    firstName: z
-        .string()
-        .min(2, { message: "Le prénom doit comporter au moins 2 caractères" }),
     lastName: z
         .string()
         .min(2, { message: "Le nom doit comporter au moins 2 caractères" }),
@@ -21,12 +19,11 @@ const schema = z.object({
 
 type FormValues = z.infer<typeof schema>;
 
-interface NewsletterModalProps {
+interface PromoFormProps {
     onClose: () => void;
 }
 
-const NewsletterModal: React.FC<NewsletterModalProps> = ({ onClose }) => {
-    const [firstName, setFirstName] = useState("");
+const PromoForm: React.FC<PromoFormProps> = ({ onClose }) => {
     const [lastName, setLastName] = useState("");
     const [phoneNumber, setPhoneNumber] = useState("");
     const [email, setEmail] = useState("");
@@ -36,12 +33,34 @@ const NewsletterModal: React.FC<NewsletterModalProps> = ({ onClose }) => {
         e.preventDefault();
         try {
             const values: FormValues = schema.parse({
-                firstName,
+                
                 lastName,
                 phoneNumber,
                 email,
             });
-            console.log(values); // Utilisez les valeurs validées ici (par exemple, les envoyer à un backend)
+            console.log(values);
+            const body = {
+                email: values.email,
+                name: values.lastName,
+                number: values.phoneNumber
+            }
+            const res = await fetch("api/send", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json", // Corrected Content-Type header
+                },
+                body: JSON.stringify(body),
+            });
+            alert(res)
+            if (res.ok) {
+                toast.success("Votre demande a été soumise avec succès !");
+                onClose();
+            } else {
+                console.log(res);
+                toast.error(
+                    "Une erreur s'est produite lors de la soumission du formulaire."
+                );
+            }
             onClose(); // Ferme le modal après soumission réussie
         } catch (error) {
             if (error instanceof ZodError) {
@@ -59,7 +78,7 @@ const NewsletterModal: React.FC<NewsletterModalProps> = ({ onClose }) => {
 
     return (
         <div className="fixed inset-0 p-4 flex flex-wrap justify-center items-center w-full h-full z-[1000] before:fixed before:inset-0 before:w-full before:h-full before:bg-[rgba(0,0,0,0.5)] overflow-auto font-[sans-serif]">
-            <div className="w-full max-w-lg bg-white shadow-lg rounded-md p-8 relative">
+            <div className="w-full max-w-lg bg-primary text-white shadow-lg rounded-md p-8 relative">
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="w-3.5 cursor-pointer shrink-0 fill-gray-800 hover:fill-red-500 float-right"
@@ -76,36 +95,19 @@ const NewsletterModal: React.FC<NewsletterModalProps> = ({ onClose }) => {
                     ></path>
                 </svg>
                 <div className="my-8 text-center">
-                    <h4 className="text-2xl text-gray-800 font-bold">
-                        Subscribe to our Newsletter
+                    <h4 className="text-2xl  font-bold">
+                        Veuillez remplir le formulaire suivant afin que nous
+                        puissions vous contacter
                     </h4>
-                    <p className="text-sm text-gray-500 mt-2">
-                        Join thousands getting emails in their inbox.
-                    </p>
+                    
                     <form onSubmit={handleSubmit}>
                         <div className="mb-4">
                             <input
                                 type="text"
-                                placeholder="Prénom"
-                                value={firstName}
-                                onChange={(e) => setFirstName(e.target.value)}
-                                className={`px-4 py-2.5 mt-2 bg-[#f0f1f2] text-gray-800 w-full text-sm focus:bg-transparent outline-blue-600 rounded-md ${
-                                    formErrors.firstName ? "border-red-500" : ""
-                                }`}
-                            />
-                            {formErrors.firstName && (
-                                <p className="text-red-500 text-xs mt-1">
-                                    {formErrors.firstName}
-                                </p>
-                            )}
-                        </div>
-                        <div className="mb-4">
-                            <input
-                                type="text"
-                                placeholder="Nom"
+                                placeholder="Nom et Prenom"
                                 value={lastName}
                                 onChange={(e) => setLastName(e.target.value)}
-                                className={`px-4 py-2.5 mt-2 bg-[#f0f1f2] text-gray-800 w-full text-sm focus:bg-transparent outline-blue-600 rounded-md ${
+                                className={`px-4 py-2.5 mt-2 bg-transparent  border border-white  w-full text-sm focus:bg-transparent outline-blue-600 rounded-md ${
                                     formErrors.lastName ? "border-red-500" : ""
                                 }`}
                             />
@@ -117,11 +119,11 @@ const NewsletterModal: React.FC<NewsletterModalProps> = ({ onClose }) => {
                         </div>
                         <div className="mb-4">
                             <input
-                                type="text"
-                                placeholder="Numéro de téléphone"
+                                type="number"
+                                placeholder="Numéro de téléphone (whatsapp)"
                                 value={phoneNumber}
                                 onChange={(e) => setPhoneNumber(e.target.value)}
-                                className={`px-4 py-2.5 mt-2 bg-[#f0f1f2] text-gray-800 w-full text-sm focus:bg-transparent outline-blue-600 rounded-md ${
+                                className={`px-4 py-2.5 mt-2  bg-transparent border border-white  w-full text-sm focus:bg-transparent outline-blue-600 rounded-md ${
                                     formErrors.phoneNumber
                                         ? "border-red-500"
                                         : ""
@@ -139,7 +141,7 @@ const NewsletterModal: React.FC<NewsletterModalProps> = ({ onClose }) => {
                                 placeholder="Email"
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
-                                className={`px-4 py-2.5 mt-2 bg-[#f0f1f2] text-gray-800 w-full text-sm focus:bg-transparent outline-blue-600 rounded-md ${
+                                className={`px-4 py-2.5 mt-2  bg-transparent border border-white  w-full text-sm focus:bg-transparent outline-blue-600 rounded-md ${
                                     formErrors.email ? "border-red-500" : ""
                                 }`}
                             />
@@ -151,9 +153,9 @@ const NewsletterModal: React.FC<NewsletterModalProps> = ({ onClose }) => {
                         </div>
                         <button
                             type="submit"
-                            className="px-5 py-2.5 w-full rounded-md text-white text-sm outline-none bg-blue-600 hover:bg-blue-700"
+                            className="px-5 py-2.5 w-full rounded-md text-white text-sm outline-none bg-[#7043EC]"
                         >
-                            Yeah, thanks!
+                            Envoyer
                         </button>
                     </form>
                 </div>
@@ -162,4 +164,5 @@ const NewsletterModal: React.FC<NewsletterModalProps> = ({ onClose }) => {
     );
 };
 
-export default NewsletterModal;
+export default PromoForm;
+

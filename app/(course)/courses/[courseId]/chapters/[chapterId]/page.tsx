@@ -1,6 +1,6 @@
 import { auth } from "@clerk/nextjs";
 import { redirect } from "next/navigation";
-import { File } from "lucide-react";
+import { ArrowRight, File } from "lucide-react";
 
 import { getChapter } from "@/actions/get-chapter";
 import { Banner } from "@/components/banner";
@@ -42,7 +42,7 @@ const ChapterIdPage = async ({
     if (!chapter || !course) {
         return redirect("/");
     }
-console.log(attachments)
+console.log(nextChapter);
     const isLocked = !chapter.isFree && !purchase;
     const completeOnEnd = !!purchase && !userProgress?.isCompleted;
 
@@ -81,6 +81,24 @@ console.log(attachments)
                             userId={userId}
                         />
                     </div> */}
+                    {/* bouton pour cours suivants */}
+                    <div className="flex justify-around">
+                        {/* <Link
+                            href={`/dashboard`}
+                            className="flex items-center mt-2 rounded-xl p-3 bg-primary text-white w-[100px] ml-4 text-sm hover:opacity-75 transition mb-6"
+                        >
+                            <ArrowRight className="h-4 w-4 mr-2" />
+                            Precedent
+                        </Link> */}
+                        <div></div>
+                        <Link
+                            href={`/courses/${params.courseId}/chapters/${nextChapter?.id}`}
+                            className="flex items-center mt-2 rounded-xl p-3 bg-primary text-white w-[100px] ml-4 text-sm hover:opacity-75 transition mb-6"
+                        >
+                            <ArrowRight className="h-4 w-4 mr-2" />
+                            Suivant
+                        </Link>
+                    </div>
                     {!!attachments.length && (
                         <>
                             <Separator />

@@ -77,8 +77,11 @@ export default function HomePage() {
     });
  const closeModal = () => {
         setShowPromo(false);
-        setShowPromoForm(true);
     };
+    const onValidate = () => {
+         setShowPromo(false);
+         setShowPromoForm(true);
+    }
     async function onSubmit(data: z.infer<typeof FormSchema>) {
         try {
             console.log(JSON.stringify(data));
@@ -131,8 +134,12 @@ export default function HomePage() {
         <div className="bg-[#01051e] w-[100vw]  text-white">
             <Navbar />
             {/* hero section */}
-            {showPromo && <PromotionModal onClose={closeModal} />}
-            {showPromoForm && <PromoForm onClose={()=>setShowPromoForm(false)} />}
+            {showPromo && (
+                <PromotionModal onValidate={onValidate} onClose={closeModal} />
+            )}
+            {showPromoForm && (
+                <PromoForm onClose={() => setShowPromoForm(false)} />
+            )}
             <div className="flex flex-col  w-full    gap-1  ">
                 <div className="md:mt-2 h-[calc(100vh - 50px)]   w-[100%] flex items-center justify-center">
                     <section className="w-full h-[100%]">

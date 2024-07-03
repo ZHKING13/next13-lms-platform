@@ -5,6 +5,7 @@ import { Button } from "./ui/button";
 
 interface PromotionModalProps {
     onClose: () => void;
+    onValidate: () => void;
 }
 const avantages: string[] = [
     "Sessions de formations",
@@ -13,7 +14,10 @@ const avantages: string[] = [
     "Séances en présentiel",
     "100 apprenants attendus",
 ];
-const PromotionModal: React.FC<PromotionModalProps> = ({ onClose }) => {
+const PromotionModal: React.FC<PromotionModalProps> = ({
+    onClose,
+    onValidate,
+}) => {
     return (
         <div className="fixed inset-0 z-50 flex items-center  justify-center">
             <div className="bg-primary p-1 max-h-2/3 rounded-lg shadow-lg max-w-md md:w-1/2">
@@ -59,33 +63,31 @@ const PromotionModal: React.FC<PromotionModalProps> = ({ onClose }) => {
                             :
                         </h1>
                         <div className="text-left pl-10 mb-4  ">
-                            {
-                                avantages.map((item,id) => {
-                                    return (
-                                        <div key={id} className="flex items-center">
-                                            <svg
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                width="20"
-                                                className="fill-green-500 shrink-0"
-                                                viewBox="0 0 24 24"
-                                            >
-                                                <path
-                                                    d="M9.707 19.121a.997.997 0 0 1-1.414 0l-5.646-5.647a1.5 1.5 0 0 1 0-2.121l.707-.707a1.5 1.5 0 0 1 2.121 0L9 14.171l9.525-9.525a1.5 1.5 0 0 1 2.121 0l.707.707a1.5 1.5 0 0 1 0 2.121z"
-                                                    data-original="#000000"
-                                                ></path>
-                                            </svg>
-                                            <h6 className="text-base font-semibold ml-4">
-                                             {item}
-                                            </h6>
-                                        </div>
-                                    );
-                                })
-                           }
+                            {avantages.map((item, id) => {
+                                return (
+                                    <div key={id} className="flex items-center">
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            width="20"
+                                            className="fill-green-500 shrink-0"
+                                            viewBox="0 0 24 24"
+                                        >
+                                            <path
+                                                d="M9.707 19.121a.997.997 0 0 1-1.414 0l-5.646-5.647a1.5 1.5 0 0 1 0-2.121l.707-.707a1.5 1.5 0 0 1 2.121 0L9 14.171l9.525-9.525a1.5 1.5 0 0 1 2.121 0l.707.707a1.5 1.5 0 0 1 0 2.121z"
+                                                data-original="#000000"
+                                            ></path>
+                                        </svg>
+                                        <h6 className="text-base font-semibold ml-4">
+                                            {item}
+                                        </h6>
+                                    </div>
+                                );
+                            })}
                         </div>
                     </div>
                     <Button
                         className="bg-[#7043EC] w-[90%]  mb-2 hover:bg-white hover:text-[#7043EC]"
-                        onClick={onClose}
+                        onClick={onValidate}
                     >
                         En savoir plus
                     </Button>

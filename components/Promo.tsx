@@ -51,17 +51,9 @@ const PromotionModal: React.FC<PromotionModalProps> = ({
                     <p className="text-white  text-md mb-2">
                         Nous offrons une formation intensive en présentiel, vous
                         permettant d&apos;adopter notre stratégie de trading.
-                        Soyez prêts à trader avec nous dès le troisième mois et
-                        à développer votre carrière avec nous.
                     </p>
                     <div>
-                        <h1 className=" text-white italic text-left pl-6 text-xl mb-2 font-bold">
-                            Développer votre{" "}
-                            <span className="text-[#7043EC]">
-                                carrière de trading avec nous
-                            </span>{" "}
-                            :
-                        </h1>
+                        
                         <div className="text-left pl-10 mb-4  ">
                             {avantages.map((item, id) => {
                                 return (

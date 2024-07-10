@@ -199,7 +199,7 @@ export default function HomePage() {
                     </h2>
                     <div
                         data-aos="fade-up"
-                        className="gap-16 items-center flex-col md:flex-row  py-4 px-4 mx-auto  flex  md:justify-between lg:py-8 lg:px-6"
+                        className="gap-8 items-center flex-col md:flex-row  py-4 px-4 mx-auto  flex  md:justify-between lg:py-8 lg:px-6"
                     >
                         <div className="md:pl-8 font-light  text-start flex items-start flex-col text-xl w-[100%] mt-4 max-w-80 mx-auto text-white sm:text-lg dark:text-gray-400 md:w-1/2">
                             <p className="mb-2">
@@ -212,8 +212,8 @@ export default function HomePage() {
                         </div>
                         <div className="md:pr-8 md:w-1/2 w-full">
                             <img
-                                className=" object-cover w-full  rounded-lg"
-                                src="/ft.png"
+                                className=" object-contain bg-cover h-[250px] w-full  rounded-lg"
+                                src="/lilo.jpeg"
                                 alt="office content 1"
                             />
                         </div>
@@ -333,22 +333,19 @@ export default function HomePage() {
                         </div>
                         <div className="md:pr-8 md:w-1/2 w-full  ">
                             <img
-                                className=" object-cover w-full  rounded-lg"
-                                src="/tf.png"
+                                className=" object-contain bg-cover h-80 w-full  rounded-lg"
+                                src="/fi.jpeg"
                                 alt="office content 1"
                             />
                         </div>
                     </div>
                 </section>
                 {/* fin avantage */}
-                <section className="pl-3 pr-3    w-[100%]">
+                <section data-aos="zoom-up" className="pl-3 pr-3    w-[100%]">
                     <h2 className=" md:text-3xl  text-xl mt-6 text-center tracking-tight font-extrabold text-white">
                         Devenez rentable et réussissez les defis de financements
                     </h2>
-                    <div
-                        data-aos="zoom-up"
-                        className="gap-16 items-center flex-col md:flex-row  py-4 px-4 mx-auto  flex  md:justify-between lg:py-16 lg:px-6"
-                    >
+                    <div className="gap-16  items-center flex-col md:flex-row  py-4 px-4 mx-auto  flex  md:justify-between lg:py-10 lg:px-6">
                         <div className="md:pl-8 font-light  text-start flex items-start flex-col text-xl w-[100%] mt-1 max-w-80 mx-auto text-white sm:text-lg dark:text-gray-400 md:w-1/2">
                             <p className="mb-2">
                                 Que vous négociez maintenant un compte démo ou
@@ -365,10 +362,10 @@ export default function HomePage() {
                                 aider à la conserver et à la faire évoluer!
                             </p>
                         </div>
-                        <div className="pr-8 md:w-1/2 w-full  ">
+                        <div className="pr-8 md:w-1/2 w-full h-full  ">
                             <img
-                                className=" object-cover w-full  rounded-lg"
-                                src="/ft.png"
+                                className=" object-cover w-full h-80 rounded-lg"
+                                src="/3.jpeg"
                                 alt="office content 1"
                             />
                         </div>

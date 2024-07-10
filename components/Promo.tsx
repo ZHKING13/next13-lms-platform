@@ -12,7 +12,7 @@ const avantages: string[] = [
     "Coaching personnalisé",
     "Trading en direct assisté",
     "Séances en présentiel",
-    "100 apprenants attendus",
+    "100 places disponibles",
 ];
 const PromotionModal: React.FC<PromotionModalProps> = ({
     onClose,
@@ -49,11 +49,15 @@ const PromotionModal: React.FC<PromotionModalProps> = ({
                         <span className="text-[#7043EC]">COBALT ACADEMY </span>
                     </h1>
                     <p className="text-white  text-md mb-2">
-                        Nous offrons une formation intensive en présentiel, vous
-                        permettant d&apos;adopter notre stratégie de trading.
+                        Nous vous offrons une formation intensive en présentiel
+                        dès le{" "}
+                        <span className="text-[#7043EC] font-bold">
+                            27 juillet 2024.{" "}
+                        </span>{" "}
+                        Soyez prêt à trader avec nous dès le troisième mois et à
+                        développer votre carrière avec nous.
                     </p>
                     <div>
-                        
                         <div className="text-left pl-10 mb-4  ">
                             {avantages.map((item, id) => {
                                 return (

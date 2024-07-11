@@ -52,7 +52,7 @@ const PromotionModal: React.FC<PromotionModalProps> = ({
                         Nous vous offrons une formation intensive en présentiel
                         dès le{" "}
                         <span className="text-[#7043EC] font-bold">
-                            27 juillet 2024.{" "}
+                            03 Août 2024.{" "}
                         </span>{" "}
                         Soyez prêt à trader avec nous dès le troisième mois et à
                         développer votre carrière avec nous.
@@ -85,7 +85,7 @@ const PromotionModal: React.FC<PromotionModalProps> = ({
                         className="bg-[#7043EC] w-[90%]  mb-2 hover:bg-white hover:text-[#7043EC]"
                         onClick={onValidate}
                     >
-                        En savoir plus
+                        Je participe
                     </Button>
                 </div>
             </div>

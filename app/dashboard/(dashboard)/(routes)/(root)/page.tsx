@@ -23,8 +23,11 @@ export default async function Dashboard({
     if (searchParams) {
         console.log(searchParams);
         const referenceNumber = searchParams?.referenceNumber;
+        const responsecode = searchParams?.responsecode;
         console.log(referenceNumber);
-
+        if (responsecode == "-1") {
+            return redirect("/souscription");
+        }
         if (
             referenceNumber &&
             referenceNumber !== "" &&
@@ -57,7 +60,9 @@ export default async function Dashboard({
     console.log("get user in db");
     const curentUser = await getUser(userId);
     console.log("curent user", curentUser);
-
+    if (!curentUser) {
+        return redirect("/souscription");
+    }
     if (!curentUser?.isPremium || curentUser == null) {
         return redirect("/souscription");
     }

@@ -19,7 +19,7 @@ const PromotionModal: React.FC<PromotionModalProps> = ({
     onValidate,
 }) => {
     return (
-        <div className="fixed inset-0 z-50 flex items-center  justify-center">
+        <div className="fixed inset-0 z-50 flex items-center backdrop-blur-lg  justify-center">
             <div className="bg-primary p-1 max-h-2/3 rounded-lg shadow-lg max-w-md md:w-1/2">
                 <div className="flex justify-end">
                     <button

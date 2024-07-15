@@ -77,7 +77,7 @@ const PromoForm: React.FC<PromoFormProps> = ({ onClose }) => {
     };
 
     return (
-        <div className="fixed inset-0 p-4 flex flex-wrap justify-center items-center w-full h-full z-[1000] before:fixed before:inset-0 before:w-full before:h-full before:bg-[rgba(0,0,0,0.5)] overflow-auto font-[sans-serif]">
+        <div className="fixed inset-0 p-4 flex flex-wrap backdrop-blur-lg justify-center items-center w-full h-full z-[1000] before:fixed before:inset-0 before:w-full before:h-full before:bg-[rgba(0,0,0,0.5)] overflow-auto font-[sans-serif]">
             <div className="w-full max-w-lg bg-primary text-white shadow-lg rounded-md p-8 relative">
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -99,7 +99,7 @@ const PromoForm: React.FC<PromoFormProps> = ({ onClose }) => {
                         Veuillez remplir le formulaire suivant afin que nous
                         puissions vous contacter
                     </h4>
-                    
+
                     <form onSubmit={handleSubmit}>
                         <div className="mb-4">
                             <input

@@ -626,31 +626,27 @@ const Academy = () => {
 
                         <div className="w-full px-4 lg:w-1/2 xl:w-5/12">
                             <div className="mt-10 lg:mt-0">
-                                <span className="block text-[#7043EC] mb-4 text-lg font-semibold">
-                                    pourquoi nous choisir
-                                </span>
                                 <h2 className="mb-5 text-3xl font-bold text-dark dark:text-white sm:text-[40px]/[48px]">
-                                    Make your customers happy by giving
-                                    services.
+                                    Rejoignez COBALT ACADEMY
                                 </h2>
                                 <p className="mb-5 text-base text-body-color dark:text-dark-6">
-                                    It is a long established fact that a reader
-                                    will be distracted by the readable content
-                                    of a page when looking at its layout. The
-                                    point of using Lorem Ipsum is that it has a
-                                    more-or-less.
+                                    Rejoignez notre programme de formation
+                                    intensive en présentiel pour dynamiser votre
+                                    carrière en trading et réaliser des trades
+                                    en temps réel avec nous ! Que 100 places
+                                    disponibles !
                                 </p>
-                                <p className="mb-8 text-base text-body-color dark:text-dark-6">
+                                {/* <p className="mb-8 text-base text-body-color dark:text-dark-6">
                                     A domain name is one of the first steps to
                                     establishing your brand. Secure a consistent
                                     brand image with a domain name that matches
                                     your business.
-                                </p>
+                                </p> */}
                                 <a
                                     href="javascript:void(0)"
                                     className="inline-flex items-center justify-center py-3 text-base font-medium text-center text-white border border-transparent rounded-md px-7 bg-[#7043EC] hover:bg-opacity-90"
                                 >
-                                    Rejoindre Cobalte
+                                    Rejoindre COBALT ACADEMY
                                 </a>
                             </div>
                         </div>
@@ -659,26 +655,23 @@ const Academy = () => {
 
                 <div className="container">
                     <h2 className="my-5 text-3xl text-center font-bold text-dark dark:text-white sm:text-[40px]/[48px]">
-                        Rejoinds nos certifiers
+                        Rejoignez-nous et obtenez votre certification en
+                        trading.
                     </h2>
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                        
-                        {
-                            certif.map((item) => {
-                                return (
-                                    <div key={item.id} className="grid gap-4">
-                                        <div className="transform hover:z-50 hover:scale-150  duration-300">
-                                            <img
-                                                className=" h-auto max-w-full rounded-lg"
-                                                src={item.link}
-                                                alt=""
-                                            />
-                                        </div>
+                        {certif.map((item) => {
+                            return (
+                                <div key={item.id} className="grid gap-4">
+                                    <div className="transform hover:z-50 hover:scale-150  duration-300">
+                                        <img
+                                            className=" h-auto max-w-full rounded-lg"
+                                            src={item.link}
+                                            alt=""
+                                        />
                                     </div>
-                                );
-                            })
-                        }
-                        
+                                </div>
+                            );
+                        })}
                     </div>
                 </div>
 

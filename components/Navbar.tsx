@@ -58,6 +58,7 @@ const Navbar = () => {
         // { name: "Nos étudiants formés", lien: "#" },
         { name: "Tarifs", lien: "/tarifs" },
         { name: "Nous Rejoindre", lien: "/tarifs" },
+        { name: "Cobalt Academy", lien: "/academy" },
     ];
 
     const form = useForm<z.infer<typeof FormSchema>>({

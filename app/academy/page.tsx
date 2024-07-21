@@ -666,7 +666,7 @@ const Academy = () => {
                         {
                             certif.map((item) => {
                                 return (
-                                    <div className="grid gap-4">
+                                    <div key={item.id} className="grid gap-4">
                                         <div className="transform hover:z-50 hover:scale-150  duration-300">
                                             <img
                                                 className=" h-auto max-w-full rounded-lg"

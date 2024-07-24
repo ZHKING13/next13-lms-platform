@@ -57,6 +57,7 @@ import { Label } from "@/components/ui/label";
 import { useRouter } from "next/router";
 import PromotionModal from "@/components/Promo";
 import PromoForm from "@/components/PromoForm";
+import { Trade } from "@/components/Trade";
 const FormSchema = z.object({
     email: z
         .string()
@@ -407,6 +408,7 @@ export default function HomePage() {
                             </div>
                         </div>
                     </div>
+                    <Trade />
                 </div>
 
                 {/* footer */}

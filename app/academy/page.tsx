@@ -29,14 +29,14 @@ const Academy = () => {
                                 <div className="w-full px-3 sm:px-4 xl:w-1/2">
                                     <div className="py-3 sm:py-4">
                                         <img
-                                            src="/lilo.jpeg"
+                                            src="/ac3.jpeg"
                                             alt=""
                                             className="w-full rounded-2xl"
                                         />
                                     </div>
                                     <div className="py-3 sm:py-4">
                                         <img
-                                            src="/fi.jpeg"
+                                            src="/ac1.jpeg"
                                             alt=""
                                             className="w-full rounded-2xl"
                                         />
@@ -45,7 +45,7 @@ const Academy = () => {
                                 <div className="w-full px-3 sm:px-4 xl:w-1/2">
                                     <div className="relative z-10 my-4">
                                         <img
-                                            src="/3.jpeg"
+                                            src="/ac2.jpeg"
                                             alt=""
                                             className="w-full rounded-2xl"
                                         />

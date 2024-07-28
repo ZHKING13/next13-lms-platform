@@ -1,7 +1,8 @@
 "use client"
 import { Footer } from "@/components/footer";
 import Navbar from "@/components/Navbar";
-import React from "react";
+import PromoForm from "@/components/PromoForm";
+import React, { useState } from "react";
 const certif = [
     { id: 1, link: "/certif/1.jpg" },
     { id: 2, link: "/certif/2.jpg" },
@@ -18,10 +19,15 @@ const certif = [
 ];
 
 const Academy = () => {
+        const [showPromoForm, setShowPromoForm] = useState(false);
+
     return (
         <>
             <section className="overflow-clip pt-14 pb-12 lg:pt-[60px] lg:pb-[40px] bg-[#01051e] w-[100vw]  text-white dark:bg-dark">
                 <Navbar />
+                {showPromoForm && (
+                    <PromoForm onClose={() => setShowPromoForm(false)} />
+                )}
                 <div className="container mx-auto">
                     <div className="flex flex-wrap items-center justify-between -mx-4">
                         <div className="w-full px-4 lg:w-6/12">
@@ -45,7 +51,7 @@ const Academy = () => {
                                 <div className="w-full px-3 sm:px-4 xl:w-1/2">
                                     <div className="relative z-10 my-4">
                                         <img
-                                            src="/ac2.jpeg"
+                                            src="/ac4.jpeg"
                                             alt=""
                                             className="w-full rounded-2xl"
                                         />
@@ -643,6 +649,7 @@ const Academy = () => {
                                     your business.
                                 </p> */}
                                 <a
+                                    onClick={()=>setShowPromoForm(true)}
                                     href="javascript:void(0)"
                                     className="inline-flex items-center justify-center py-3 text-base font-medium text-center text-white border border-transparent rounded-md px-7 bg-[#7043EC] hover:bg-opacity-90"
                                 >

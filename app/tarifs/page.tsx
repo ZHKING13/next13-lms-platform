@@ -62,7 +62,6 @@ function TarifPage() {
         // } catch (error) {
         //     console.error(error);
         // }
-       
     }
     return (
         <div className="bg-[#01051e] w-[100vw]  text-white">
@@ -249,17 +248,16 @@ function TarifPage() {
                                                                 : item.annuel}
                                                         </span>
 
-                                                        <span className="text-slate-500 font-medium">
-                                                            {!isAnnual
-                                                                ? "/Mois"
-                                                                : "/Année"}
-                                                        </span>
+                                                        {item.unique ? null : (
+                                                            <span className="text-slate-500 font-medium">
+                                                                {!isAnnual
+                                                                    ? "/Mois"
+                                                                    : "/Année"}
+                                                            </span>
+                                                        )}
                                                     </div>
                                                     {/* <div className="text-sm text-slate-500 mb-5">
-                                                        There are many
-                                                        variations available,
-                                                        but the majority have
-                                                        suffered.
+                                                        {item.desc}
                                                     </div> */}
                                                 </div>
                                                 <div className="text-slate-200 font-medium mb-3">
@@ -293,9 +291,7 @@ function TarifPage() {
                                                         );
                                                     })}
                                                 </ul>
-                                                <div
-                                                   
-                                                >
+                                                <div>
                                                     <a
                                                         className="w-full mt-6 inline-flex justify-center whitespace-nowrap rounded-lg bg-indigo-500 px-3.5 py-2.5 text-sm font-medium text-white shadow-sm shadow-indigo-950/10 hover:bg-indigo-600 focus-visible:outline-none focus-visible:ring focus-visible:ring-indigo-300 dark:focus-visible:ring-slate-600 transition-colors duration-150"
                                                         href="/dashboard"
@@ -322,6 +318,8 @@ export default TarifPage;
 const packages = [
     {
         nom: "Pack Elite",
+        desc: "",
+        unique: false,
         month: formatPrice(33000),
         annuel: formatPrice(350000),
         items: [
@@ -360,25 +358,27 @@ const packages = [
         ],
     },
     {
-        nom: "Pack Premium",
-        month: formatPrice(100000),
-        annuel: formatPrice(1000000),
+        nom: "COBALT ACADEMY",
+        month: formatPrice(300000),
+        annuel: formatPrice(300000),
+        unique: true,
+        desc: "Notre objectif est de former 100 personnes pour qu'elles soient capables de prendre des Trades avec nous dès le 3ème mois.",
         items: [
             {
                 id: 1,
-                nom: "Accès complet au site web avec tous nos cours en ligne.",
+                nom: "Sessions de formations",
             },
             {
                 id: 2,
-                nom: "Participation au Discord exclusif avec l'ensemble de notre communauté.",
+                nom: "Coaching personnalisé",
             },
             {
                 id: 3,
-                nom: "Récapitulatif hebdomadaire de nos activités, disponible une fois par semaine.",
+                nom: "Trading en direct assisté",
             },
             {
                 id: 4,
-                nom: "Accès aux cours en présentiel dans nos bureaux ou via un appel Zoom, une fois par semaine.",
+                nom: "Séances en présentiel",
             },
             {
                 id: 5,
@@ -386,20 +386,20 @@ const packages = [
             },
             {
                 id: 6,
-                nom: "Partage d'analyses de manière récurrente dans notre Discord.",
+                nom: "100 places disponibles",
             },
-            {
-                id: 7,
-                nom: "Réponses à toutes vos préoccupations et questions dans le Discord, avec un support personnalisé de nos traders.",
-            },
-            {
-                id: 8,
-                nom: "Examen de fin de formation obligatoire pour obtenir le financement de COBALT INVEST LTD.",
-            },
-            {
-                id: 9,
-                nom: "Opportunité de participer à nos examens de financement pour devenir trader chez Cobalt.",
-            },
+            // {
+            //     id: 7,
+            //     nom: "Réponses à toutes vos préoccupations et questions dans le Discord, avec un support personnalisé de nos traders.",
+            // },
+            // {
+            //     id: 8,
+            //     nom: "Examen de fin de formation obligatoire pour obtenir le financement de COBALT INVEST LTD.",
+            // },
+            // {
+            //     id: 9,
+            //     nom: "Opportunité de participer à nos examens de financement pour devenir trader chez Cobalt.",
+            // },
         ],
     },
 ];

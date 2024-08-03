@@ -51,7 +51,7 @@ const Academy = () => {
                                 <div className="w-full px-3 sm:px-4 xl:w-1/2">
                                     <div className="relative z-10 my-4">
                                         <img
-                                            src="/ac4.jpeg"
+                                            src="/ac5.jpeg"
                                             alt=""
                                             className="w-full rounded-2xl"
                                         />

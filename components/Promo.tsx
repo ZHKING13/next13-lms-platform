@@ -52,7 +52,7 @@ const PromotionModal: React.FC<PromotionModalProps> = ({
                         Nous vous offrons une formation intensive en présentiel
                         dès le{" "}
                         <span className="text-[#7043EC] font-bold">
-                            03 Août 2024.{" "}
+                            31 Août 2024.{" "}
                         </span>{" "}
                         Soyez prêt à trader avec nous dès le troisième mois et à
                         développer votre carrière avec nous.

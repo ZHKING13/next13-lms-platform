@@ -115,13 +115,13 @@ export default function HomePage() {
             );
         }
     }
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            setShowPromo(true);
-        }, 2000); 
+    // useEffect(() => {
+    //     const timer = setTimeout(() => {
+    //         setShowPromo(true);
+    //     }, 2000); 
 
-        return () => clearTimeout(timer);
-    }, []); 
+    //     return () => clearTimeout(timer);
+    // }, []); 
 
    
     useEffect(() => {
